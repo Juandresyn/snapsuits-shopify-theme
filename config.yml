@@ -1,0 +1,53 @@
+# -----------------------------------------
+#
+# Getting Started Guide
+# ---
+# https://shopify.github.io/themekit/
+#
+# Example Executables
+# ---
+# `theme download --env=production`
+# `theme watch --env=develop`
+# `theme upload --env=test`
+# 
+# -----------------------------------------
+
+production:
+  theme_id: 123456789
+  password: PRIVATE_APP_PASSWORD
+  store: store-name.myshopify.com
+  concurrency: 4
+  timeout: 60s
+  ignore_files:
+    - "node_modules/*"
+    - "src/*"
+    - .jshintignore
+    - "*.sublime-workspace"
+    - "*.sublime-project"
+    - "package.json"
+test:
+  theme_id: 123456789
+  password: PRIVATE_APP_PASSWORD
+  store: store-name.myshopify.com
+  concurrency: 4
+  timeout: 60s
+  ignore_files:
+    - "node_modules/*"
+    - "src/*"
+    - .jshintignore
+    - "*.sublime-workspace"
+    - "*.sublime-project"
+    - "package.json"
+develop:
+  theme_id: 123456789
+  password: PRIVATE_APP_PASSWORD
+  store: store-name.myshopify.com
+  concurrency: 4
+  timeout: 60s
+  ignore_files:
+    - "node_modules/*"
+    - "src/*"
+    - .jshintignore
+    - "*.sublime-workspace"
+    - "*.sublime-project"
+    - "package.json"
