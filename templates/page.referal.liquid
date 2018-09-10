@@ -1,0 +1,54 @@
+{% layout 'landing' %}
+<div class="landing landing-referal">
+  <div class="landing-referal__content">
+    <div class="landing-content">
+      <img src="{{ 'logo-grey.png' | asset_url }}" alt="Snapsuits Logo" class="landing-logo landing-logo--grey">
+      <p class="text--regular landing-text">Earn up to $100* for telling your friends about SnapSuits Weddings. Send this personal tracking link to your friends to register for free swatches:</p>
+      {% if customer %}
+        <div class="js-referal-options referal-options">
+          <input class="js-referal-code referal-code" value="Referal.snapsuits.com/?code=" readonly="">
+          <span class=" referal-hint hint--right hint--md desktop--only" aria-label="Copy Code!"><span class="js-copy-referalcode icon--copy referal-copy"></span></span>
+          <span class="js-copy-referalcode icon--copy referal-copy mobile--only"></span>
+        </div>
+      {% else %}
+        <span class="button button--red js-share-referal">SHARE WITH FRIENDS</span>
+        <div class="js-referal-options referal-options" style="display: none;">
+          <a href="#login_modal" class="button button-white js-popup">Login</a>
+          <a href="#register_modal" class="button button--red js-popup">Register & Earn</a>
+        </div>
+      {% endif %}
+      <p class="text--regular landing-text">
+        <span class="text--regular landing-subtitle">HOW IT WORKS</span><br>
+        $20 for each suit purchased, up to $100. Once the wedding has been initiated, you will be paid via Amazon gift card.
+      </p>
+      <p class="text--regular landing-text landing-copyright">© <script>new Date().getFullYear()>2010&&document.write(new Date().getFullYear());</script> SnapSuits.com - Call us <a href="callto:{{ settings.phone_number }}">{{ settings.phone_number }}</a>,<br class="mobile--only"> email at <a href="mailto:{{ settings.email_support }}">{{ settings.email_support }}</a></p>
+    </div>
+  </div>
+  <div class="landing-referal__content has-background-image" style="background-image: url({{ 'referal.jpg' | asset_url }})">
+    <div class="landing-content">
+      <h1 class="landing-title--main">Pay It Forward:<br>Share SnapSuits with Grooms to Be</h1>
+      <h2 class="landing-title--medium m-t-md">There’s No Better Feeling<br>Than Looking Your Best!</h2>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('.js-share-referal').on('click', function() {
+    $(this).fadeOut('fast', function(){
+      $('.js-referal-options').fadeIn('fast');
+    });
+  });
+
+  {% if customer %}
+    var referalUrl = "Referal.snapsuits.com/?code=";
+    var referalCode = btoa('{{ customer.email }}');
+
+    $('.js-referal-code').val(referalUrl + referalCode);
+
+    $('.js-copy-referalcode').on('click', function() {
+      $('.js-referal-code').select();
+      document.execCommand("copy");
+    });
+  {% else %}
+
+  {% endif %}
+</script>

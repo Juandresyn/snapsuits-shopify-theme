@@ -1,0 +1,87 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 10)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta name="google-site-verification" content="QOCUhxathoBSreRYDtmL6Lvdw9oQmymbq2-xeKSGW7c" />
+  <meta charset="utf-8" />
+  <title>
+    {% if template contains "referal" %}
+      Get $275 Custom Groomsmen Suits
+    {% else %}
+      {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    {% endif %}
+  </title>
+  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+  {% if template contains "referal" %}
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Get $275 Custom Groomsmen Suits">
+    <meta property="og:description" content="Share SnapSuits with Grooms to Be">
+    <meta property="og:url" content="https://snapsuits.com">
+    <meta property="og:image:secure_url" content="https://referal.snapsuits.com/metaimg.jpg">
+    <meta itemprop="image" content="https://referal.snapsuits.com/metaimg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="Share SnapSuits with Grooms to Be">
+    <meta name="twitter:title" content="#NeverRentAgain - SnapSuits.com">
+    <meta name="twitter:site" content="@snapsuits">
+    <meta name="twitter:image" content="https://referal.snapsuits.com/metaimg.jpg">
+    <meta name="twitter:creator" content="@snapsuits">
+  {% else %}
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}" />
+    {% endif %}
+    <link rel="canonical" href="{{ canonical_url }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% include 'open-graph-tags' %}
+  {% endif %}
+
+  {{ content_for_header }}
+
+  <!--<link rel="stylesheet" href="https://i.icomoon.io/public/8cbf3a41dc/snapsuits/style.css">-->
+  {{ 'icons.css' | asset_url | stylesheet_tag }}
+  {{ 'magnific.css' | asset_url | stylesheet_tag }}
+  {{ 'vendor.css' | asset_url | stylesheet_tag }}
+
+  <!-- Stylesheets ================================ -->
+  {{ 'shop.css' | asset_url | stylesheet_tag }}
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js"></script>
+  {{ 'facebook-pixel-code.js'  | asset_url | script_tag }}
+   <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:569845,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+  {{ 'googleTagManager.js'  | asset_url | script_tag }}
+</head>
+<body class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {{ page.handle }}">
+  <main id="main" role="main">
+    {{ content_for_layout }}
+  </main> <!-- wrapper -->
+
+  {% include 'modal-account' %}
+    <!-- Footer Scripts ================================ -->
+      {{ 'magnific.js' | asset_url | script_tag }}
+      {{ 'vendor.js' | asset_url | script_tag }}
+      {{ 'scripts.js' | asset_url | script_tag }}
+      <script type="text/javascript">
+        $(document).on('ready', function() {
+          theme.popup('.js-popup, .js-modal');
+        })
+      </script>
+	  <script>!function(a,b,c,d){a.Kustomer=c,c._q=[],c._i=[],c.init=function(a){function b(a,b){a[b]=function(){a._q.push([b].concat(Array.prototype.slice.call(arguments,0)))}}for(var d="init clear identify track start describe".split(" "),e=0;e<d.length;e++)b(c,d[e]);c._i.push(a)};var e=b.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://cdn.kustomerapp.com/cw/sdk.v1.1.min.js";var f=b.getElementsByTagName("script")[0];f.parentNode.insertBefore(e,f)}(this,document,window.Kustomer||{});
+
+	  // Add your API key here
+      Kustomer.init('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4MzcwZDFhODNjYzQwMTAwMDBlYjZjZiIsInVzZXIiOiI1ODM3MGQxYTRiY2MzYzExMDBiYWM1YTgiLCJvcmciOiI1ODM3MGQxYWQzMDk1MzEwMDA3MWQ1YTkiLCJvcmdOYW1lIjoic25hcHN1aXRzIiwidXNlclR5cGUiOiJtYWNoaW5lIiwicm9sZXMiOlsib3JnLnRyYWNraW5nIl0sImF1ZCI6InVybjpjb25zdW1lciIsImlzcyI6InVybjphcGkiLCJzdWIiOiI1ODM3MGQxYTRiY2MzYzExMDBiYWM1YTgifQ.AvyISRbxn1Q7z7pq7bRMUCtgtWQBMXOZ3k1cdyaBVXE');
+
+      // Start the chat client
+      Kustomer.start();</script>
+  </body>
+</html>

@@ -1,0 +1,244 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  background: #fff;
+  height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+  min-width: 320px;
+  font-size: 100%;
+  line-height: 1.5;
+  overflow-x: hidden;
+  // @include transitions(0.2s);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: normal;
+  line-height: 1;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+button {
+  border: 0;
+  outline: 0;
+}
+
+input {
+  &:focus::-webkit-input-placeholder {
+    color: transparent !important;
+  }
+
+  &:focus:-moz-placeholder {
+    color: transparent !important;
+  }
+
+  &:focus::-moz-placeholder {
+    color: transparent !important;
+  }
+
+  &:focus:-ms-input-placeholder {
+    color: transparent !important;
+  }
+
+  &[type=number]::-webkit-inner-spin-button,
+  &[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+}
+
+.cf{
+  clear: both;
+  overflow: hidden;
+}
+
+.main-wrapper{
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1220px) {
+    padding: 0 10px;
+  }
+}
+
+.wrapper {
+  &--560 {
+    max-width: 560px;
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1220px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  &--650 {
+    max-width: 560px;
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1220px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  &--770 {
+    max-width: 770px;
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    @media screen and (max-width: 1220px) {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  &--850 {
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1220px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  &--950 {
+    max-width: 950px;
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1220px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+
+[class^="mobile--"], [class*=" mobile--"]{
+  display: none;
+  @media screen and (min-width: #{$mobile-large} + 1){
+    display: none !important;
+  }
+  @media screen and (max-width: #{$mobile-large}){
+    display: block !important;
+  }
+}
+
+[class^="mobile-alt--"], [class*=" mobile-alt--"]{
+  display: none;
+  @media screen and (min-width: #{$tablet} + 1){
+    display: none !important;
+  }
+  @media screen and (max-width: #{$tablet}){
+    display: block !important;
+  }
+}
+
+[class^="desktop--"], [class*=" desktop--"]{
+  @media screen and (max-width: #{$mobile-large}){
+    display: none !important;
+  }
+}
+
+[class^="desktop-alt--"], [class*=" desktop-alt--"]{
+  display: block;
+  @media screen and (max-width: #{$tablet} + 1){
+    display: none !important;
+  }
+}
+
+.hide-till--desktop {
+  @media screen and (max-width: #{$desktop} + 1){
+    display: none !important;
+  }
+}
+
+.no-selection{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.no-scroll{
+  overflow: hidden;
+}
+
+.select-like-input{
+  -webkit-appearance:textfield;
+  -moz-appearance:textfield;
+  appearance:textfield
+}
+
+html body div{
+  .m-r-0{
+    margin-right: 0;
+  }
+}
+
+html body .destroy{
+  width: 0.00001px;
+  height: 0.00001px;
+  opacity: 0;
+  visibility: hidden;
+  display: block;
+}
+
+// top-info
+.text--highlight {
+    color: $brand-primary;
+}
+
+.hidden,
+.hide {
+  display: none !important;
+}
+
+:focus {
+  outline: none;
+}
+
+.bg {
+  &--gray {
+    background-color: $gray;
+  }
+}

@@ -1,0 +1,53 @@
+{% layout 'landing' %}
+<div class="landing landing-womans has-background-image" style="background-image: url({{ 'womans-suits.jpg' | asset_url }})">
+  <div class="landing-content">
+    <img src="{{ 'logo-white.svg' | asset_url }}" class="landing-logo" alt="Snapsuits Logo">
+    <div class="landing-info">
+      <h1 class="landing-title--main">Custom Suits for Women</h1>
+      <h2 class="landing-title--medium">Coming Soon!</h2>
+      <p class="text--regular landing-text js-submit-hide">You asked us for women’s suits. SnapSuits is working on them for you!<br>Ladies, leave us your email so you can be the first to know.</p>
+      <form action="//SnapSuits.us10.list-manage.com/subscribe/post?u=c35c79fe27bea673f5c76fd2e&amp;id=27c2431222" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="landing-form js-landing-form" target="_blank" novalidate>
+        <div class="landing-form--row">
+          <input type="email" class="landing-input" name="EMAIL" id="mce-EMAIL" placeholder="Email Address" autocomplete="off" required>
+          <span class="icon--envelope icon-on-input"></span>
+          <!-- Spam prevention -->
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c35c79fe27bea673f5c76fd2e_27c2431222" tabindex="-1" value=""></div>
+        </div>
+        <div class="landing-form--row">
+          <input type="submit" id="mc-embedded-subscribe" name="subscribe" class="landing-button button button--red" value="SUBSCRIBE">
+        </div>
+      </form>
+      <p class="text--regular landing-text m-b-md m-t-md bold js-confirmation-text" style="display: none">Thanks for subscribing! Be sure to tell you friends about SnapSuits :)</p>
+      <a href="/" class="landing-link text--regular">Go to SnapSuits.com</a>
+    </div>
+    <div class="landing-footer">
+      <p class="text--regular landing-text">© <script>new Date().getFullYear()>2010&&document.write(new Date().getFullYear());</script> SnapSuits.com - Call us <a href="callto:{{ settings.phone_number }}">{{ settings.phone_number }}</a>,<br class="mobile--only"> email at <a href="mailto:{{ settings.email_support }}">{{ settings.email_support }}</a></p>
+      <ul class="landing-social">
+        <li>
+          {% if settings.twitter_icon %}
+            <a target="_blank" href="{{ settings.twitter_icon }}"><span class="icon--tw"></span></a>
+          {% endif %}
+          {% if settings.fb_icon %}
+            <a target="_blank" href="{{ settings.fb_icon }}"><span class="icon--fb"></span></a>
+          {% endif %}
+          {% if settings.instagram_icon %}
+            <a target="_blank" href="{{ settings.instagram_icon }}"><span class="icon--ig"></span></a>
+          {% endif %}
+          {% if settings.pinterest_icon %}
+            <a target="_blank" href="{{ settings.pinterest_ico }}"><span class="icon--pt"></span></a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).on('ready', function() {
+    $('.js-landing-form').on('submit', function() {
+      $(this).fadeOut('fast', function(){
+        $('.js-submit-hide').fadeOut('fast');
+        $('.js-confirmation-text').fadeIn('fast');
+      });
+    });
+  });
+</script>

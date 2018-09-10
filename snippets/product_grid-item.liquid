@@ -1,0 +1,15 @@
+<div class="collection-show__item">
+  <a href="{{ product.url }}">
+    <div class="product__image--wrapper">
+      <div class="product__image has-background-image" style="background-image: url('{{ product.featured_image.src | product_img_url: 'grande' }}')"></div>
+    </div>
+  </a>
+  <a href="{{ product.url }}">
+    <h4 class="product__title">{{ product.title }}</h4>
+  </a>
+  {% for variant in product.variants %}
+    {% if forloop.first %}
+      <p class="product__price highlight">{{ variant.price | money | strip_html | remove: ",00" }}</p>
+    {% endif %}
+  {% endfor %}
+</div>

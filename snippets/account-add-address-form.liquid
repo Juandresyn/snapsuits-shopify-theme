@@ -1,0 +1,50 @@
+<div id="add_address" style="display: none;" data-add-address>
+  {% form 'customer_address', customer.new_address %}
+    <div id="errors" class="js-errors">{{ form.errors | default_errors }}</div>
+    <div class="input-control">
+      <input type="text" name="address[first_name]" id="first_name" required="required">
+      <label for="first_name" class="form-label">First name</label>
+    </div>
+    <div class="input-control">
+      <input type="text" name="address[last_name]" id="last_name" required="required">
+      <label for="last_name" class="form-label">Last name</label>
+    </div>
+ 
+    <div class="input-control">
+      <input type="text" name="address[address1]" id="address_1" required="required">
+      <label for="address_1" class="form-label">Address 1</label>
+    </div>
+    <div class="input-control">
+      <input type="text" name="address[address2]" id="address_2" >
+      <label for="address_2" class="form-label">Address 2</label>
+    </div>
+    <div class="input-control">
+      <select id="country" class="select-like-input input" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+      <label for="country" class="form-label">Country</label>
+    </div>
+    <div class="input-control">
+      <input type="text" id="province" name="address[province]" data-default="{{ form.province }}" required="required">
+      <label for="province" class="form-label">province</label>
+    </div>
+    <div class="input-control">
+      <input type="text" name="address[city]" id="city" required="required">
+      <label for="city" class="form-label">City</label>
+    </div>
+    <div class="input-control">
+      <input type="text" name="address[zip]" id="zip_code" required="required">
+      <label for="zip_code" class="form-label">ZIP/Postal Code</label>
+    </div>
+    <div class="input-control">
+      <input type="text" name="address[phone]" id="phone_number" required="required">
+      <label for="phone_number" class="form-label">Phone Number</label>
+    </div>
+    <div class="input-control">
+      {{ form.set_as_default_checkbox }}
+      <label for="address_default_address_new" class="form-label form-label--lineal">Set as default</label>
+    </div>
+    <div class="form-actions center">
+      <span class="cancel js-footer-free" data-cancel-address>cancel</span>
+      <input type="submit" class="button button--primary cta" value="Submit">
+    </div>
+  {% endform %}
+</div>

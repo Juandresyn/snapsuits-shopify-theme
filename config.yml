@@ -8,7 +8,7 @@
 # ---
 # `theme download --env=production`
 # `theme watch --env=develop`
-# `theme upload --env=test`
+# `theme deploy --env=test`
 # 
 # -----------------------------------------
 
@@ -39,9 +39,9 @@ test:
     - "*.sublime-project"
     - "package.json"
 develop:
-  theme_id: 123456789
-  password: PRIVATE_APP_PASSWORD
-  store: store-name.myshopify.com
+  theme_id: 36189601861
+  password: e10498d1263c125e68ac9b676dd6c241
+  store: suitssuits.myshopify.com
   concurrency: 4
   timeout: 60s
   ignore_files:

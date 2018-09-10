@@ -1,0 +1,68 @@
+.accordion{
+  &__title{
+    background-color: lighten($gray, 52%);
+    padding: 20px;
+    font-size: $size-2;
+    font-family: $font-primary--light;
+    color: $gray;
+    cursor: pointer;
+    margin-bottom: 20px;
+    @include transitions(0.3s);
+
+    @media screen and (max-width: #{$mobile-large}){
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    &:focus{
+      outline: none;
+    }
+    .carret{
+      @include transitions(0.3s);
+      color: $gray;
+      float: right;
+      margin-right: 15px;
+
+      @media screen and (max-width: #{$mobile-large}) {
+        margin-right: 0;
+      }
+    }
+
+    &.ui-state-active{
+      .carret{
+        color: $brand-primary;
+        transform: rotate(180deg);
+      }
+    }
+  }
+  &__content{
+    padding: 0px 20px;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: #{$mobile-large}){
+      padding: 0px 10px;
+    }
+  }
+}
+
+.ui-accordion-header{
+  cursor: pointer;
+
+  &:focus{
+    outline: 0;
+  }
+
+  .carret, .icon, .status{
+    float: right;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.ui-state-active{
+  .carret, .icon, .status{
+    transform: rotate(180deg);
+  }
+}

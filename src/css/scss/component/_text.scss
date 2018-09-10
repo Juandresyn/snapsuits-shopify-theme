@@ -1,0 +1,120 @@
+.highlight, .color-main {
+  color: $brand-primary !important;
+}
+
+.text {
+  &--regular {
+    font-size: 13px;
+    line-height: 22px;
+    letter-spacing: normal;
+    color: $gray;
+    font-family: $font-primary--light;
+  }
+
+  &--strong-regular {
+    font-size: 13px;
+    line-height: 22px;
+    letter-spacing: normal;
+    color: $gray;
+    font-family: $font-primary;
+  }
+
+  &--regular-14 {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: normal;
+    color: $gray;
+    font-family: $font-primary--light;
+  }
+
+  &--16 {
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: normal;
+    color: $gray;
+    font-family: $font-primary;
+  }
+  &--16--light {
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: normal;
+    color: $gray;
+    font-family: $font-primary--light;
+  }
+
+  &--strong-14 {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: normal;
+    color: $gray;
+    font-family: $font-primary;
+  }
+
+  &-second--regular {
+    font-size: 16px;
+    line-height: 1.65em;
+    letter-spacing: normal;
+    color: $gray;
+    font-family: $font-secondary;
+
+    &-14 {
+      font-size: 14px;
+    }
+  }
+
+  &--small {
+    font-size: 12px;
+    line-height: 1.65em;
+    letter-spacing: normal;
+    color: $gray;
+    font-family: $font-primary--light;
+  }
+
+  &--center {
+    text-align: center !important;
+  }
+
+  &--left {
+    text-align: left !important;
+  }
+
+  &--right {
+    text-align: right !important;
+  }
+}
+
+.link {
+  &--regular {
+    font-size: 14px;
+    line-height: 24px;
+    cursor: pointer;
+  }
+
+  &--u {
+    text-decoration: underline;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.lowercase {
+  text-transform: lowercase;;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
+}

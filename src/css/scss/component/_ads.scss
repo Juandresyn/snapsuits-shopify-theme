@@ -1,0 +1,90 @@
+.ads {
+  max-width: 600px;
+  margin: auto;
+
+  &__wrapper {
+    max-width: 600px;
+    width: 100%;
+    min-height: 450px;
+    max-height: 100vh;
+    margin: auto;
+    position: relative;
+    padding: 1px;
+  }
+
+  &__content {
+    margin: 30px 25px;
+    padding: 35px;
+    background-color: rgba(255, 255, 255, 0.95);
+
+    @media screen and (max-width: #{$mobile-large}) {
+      margin: 10px;
+      padding: 25px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    color: #666;
+    top: 45px;
+    right: 40px;
+    padding: 0;
+    width: initial;
+    height: initial;
+    line-height: 1;
+    cursor: pointer;
+
+    @media screen and (max-width: #{$mobile-large}) {
+      top: 25px;
+      right: 25px;
+    }
+
+    &-icon {
+      font-size: 15px;
+    }
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: 16px;
+    color: $brand-primary;
+    margin-bottom: 25px;
+
+    &--strong {
+      font-family: $font-primary--bold;
+      font-size: 16px;
+      color: $gray;
+      display: block;
+      margin-top: 5px;
+    }
+  }
+
+  &__text {
+    font-family: $font-primary--light;
+    font-size: 14px;
+    color: $gray;
+    margin-bottom: 25px;
+
+    @media screen and (max-width: #{$mobile-large}) {
+      font-size: 13px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__highlight {
+    font-family: $font-primary;
+    font-size: 14px;
+    color: $brand-primary;
+
+    @media screen and (max-width: #{$mobile-large}) {
+      font-size: 13px;
+    }
+  }
+
+  .mfp-close {
+    display: none;
+  }
+}

@@ -1,0 +1,239 @@
+{% unless private.handle contains "shirt"  %}
+  </main> <!-- Close .main-wrapper to allow full width -->
+    <section class="hero-slider hero-slider--no-flex">
+      <article class="hero-slide hero-slider-item has-background-image banner" style="background-image: url({{ 'collection-hero.jpg' | asset_url }})">
+        <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+          <div class="hero-slide__content hero-slide__content--big">
+            <h1 class="title--28 title--main-bold">Affordable Custom Suits</h1>
+            <h2 class="title--22 title--22-white">Let us help you find the perfect custom tailored suit for $275</h2>
+            <div class="hero-slide__wrapper m-t-lg">
+              <!--<a href="/pages/{{ settings['custom-basics-page'] }}" class="button button--red">Explore our most popular suits</a>-->
+              <!-- <p class="hero-slider-weddings--text m-y-sm">- OR -</p> -->
+              <!-- <a href="/products/create-custom-suit?openapp=true" class="button button--green">Design Your Own Custom Suit - $300</a> -->
+            </div>
+          </div>
+        </main> <!-- Close .main-wrapper to allow full width -->
+      </article>
+    </section>
+    <div class="hero-slider--relative">
+      <a href="#content" class="js-scroll hero-slider-learn-more">
+        <span>LEARN MORE</span><br>
+        <span class="icon--carret-down hero-slider-learn-more__icon"></span>
+      </a>
+    </div>
+  <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+    <div id="content" class="m-b-lg"></div>
+{% endunless %}
+
+{% for collection in collections %}
+  {% if collection.handle == handle %}
+    {% assign name = collection.title %}
+  {% endif %}
+{% endfor %}
+
+{% capture currentCollectionUrl %}/collections/{{ handle }}{% endcapture %}
+<div class="main-wrapper">
+  <div class="collection">
+    <div class="collection__sidebar mobile--only">
+      <div class="sidebar__block js-accordion js-accordion--close">
+        <h3 class="title--small sidebar-block__heading">
+          COLLECTIONS
+          <span class="carret icon--carret-up"></span>
+        </h3>
+        <div class="sidebar-block__content">
+          {% comment %}
+            Create a Nav in shopify and call it 'collections_nav', include in there all the links you wanna use.
+          {% endcomment %}
+          <ul class="collection__list">
+            {% for collectionlinks in linklists.collections_nav.links %}
+              <li class="text--regular collection__item">
+                <a href="{{ collectionlinks.url }}" {% if collectionlinks.url == currentCollectionUrl %}class="is-active"{% endif %}>{{ collectionlinks.title}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% comment %} <div class="sidebar__block">
+        <div class="sidebar-block__content padding-0">
+          <div class="sidebar__filters filter__content">
+            <div class="sidebar-filters__item js-accordion js-accordion--close">
+              <h3 class="sidebar-filters__heading text--regular">
+                Color
+                <span class="carret icon--carret-up"></span>
+              </h3>
+              <div class="sidebar-filters__content">
+                {% for tag in collections.suits.tags %}
+                  {% if tag contains 'narrow--' and tag contains 'color_' %}
+                    <div class="filter__row">
+                      <input type="checkbox" name="filter"
+                             value="{{ tag | handle }}"
+                             id="m-{{ tag | handle }}"
+                             class="js-m-product-filter filter__input"
+                             {% if current_tags contains tag %} checked="checked" {% endif %}>
+                      <label for="m-{{ tag | handle }}" class="filter__label">
+                        <span class="filter__label--fake">{{ tag | remove: "narrow--color_" }}</span>
+                      </label>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="sidebar-filters__item js-accordion js-accordion--close">
+              <h3 class="sidebar-filters__heading text--regular">
+                Fabric
+                <span class="carret icon--carret-up"></span>
+              </h3>
+              <div class="sidebar-filters__content">
+                {% for tag in collections.suits.tags %}
+                  {% if tag contains 'narrow--' and tag contains 'fabric_' %}
+                    <div class="filter__row">
+                      <input type="checkbox"
+                             name="filter"
+                             value="{{ tag | handle }}" id="{{ tag | handle }}"
+                             class="js-m-product-filter filter__input"
+                             {% if current_tags contains tag %} checked="checked" {% endif %}>
+                      <label for="{{ tag | handle }}" class="filter__label">
+                        <span class="filter__label--fake">{{ tag | remove: "narrow--fabric_" }}</span>
+                      </label>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> {% endcomment %}
+    </div>
+    <div class="collection__sidebar desktop--only">
+      <div class="sidebar__block">
+        <div class="sidebar-block__heading">
+          <h3 class="title--small">COLLECTIONS</h3>
+        </div>
+        <div class="sidebar-block__content">
+          {% comment %}
+            Create a Nav in shopify and call it 'collections_nav', include in there all the links you wanna use.
+          {% endcomment %}
+          <ul class="collection__list">
+            {% for collectionlinks in linklists.collections_nav.links %}
+              <li class="text--regular collection__item">
+                <a href="{{ collectionlinks.url }}" {% if collectionlinks.url == currentCollectionUrl %}class="is-active"{% endif %}>{{ collectionlinks.title}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <!-- <div class="sidebar__block">
+        <div class="sidebar-block__heading">
+          <h3 class="title--small">NARROW BY</h3>
+        </div>
+        <div class="sidebar-block__content padding-0">
+          <div class="sidebar__filters">
+            <div class="sidebar-filters__item js-accordion">
+              <h3 class="sidebar-filters__heading text--regular">
+                Color
+                <span class="carret icon--carret-up"></span>
+              </h3>
+              <div class="sidebar-filters__content">
+                {% for tag in collections.suits.tags %}
+                  {% if tag contains 'narrow--' and tag contains 'color_' %}
+                    <div class="filter__row">
+                      <input type="checkbox" name="filter"
+                             value="{{ tag | handle }}"
+                             id="{{ tag | handle }}"
+                             class="js-product-filter filter__input"
+                             {% if current_tags contains tag %} checked="checked" {% endif %}>
+                      <label for="{{ tag | handle }}" class="filter__label">
+                        <span class="filter__label--fake">{{ tag | remove: "narrow--color_" }}</span>
+                      </label>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="sidebar-filters__item js-accordion">
+              <h3 class="sidebar-filters__heading text--regular">
+                Fabric
+                <span class="carret icon--carret-up"></span>
+              </h3>
+              <div class="sidebar-filters__content">
+                {% for tag in collections.suits.tags %}
+                  {% if tag contains 'narrow--' and tag contains 'fabric_' %}
+                    <div class="filter__row">
+                      <input type="checkbox"
+                             name="filter"
+                             value="{{ tag | handle }}" id="{{ tag | handle }}"
+                             class="js-product-filter filter__input"
+                             {% if current_tags contains tag %} checked="checked" {% endif %}>
+                      <label for="{{ tag | handle }}" class="filter__label">
+                        <span class="filter__label--fake">{{ tag | remove: "narrow--fabric_" }}</span>
+                      </label>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="collection__show">
+      {% paginate collections by 20 %}
+        <div class="collection-show__content">
+          {% if private %}
+              {% include 'product_grid' with private %}
+          {% else %}
+            {% for collection in collections %}
+              {% unless collection.handle contains "custom-basics" %}
+                {% include 'product_grid' with collection %}
+              {% endunless %}
+            {% endfor %}
+          {% endif %}
+        </div>
+        {% unless private %}
+          <div class="pagination">
+            {{ paginate | default_pagination }}
+          </div>
+        {% endunless %}
+      {% endpaginate %}
+    </div>
+  </div>
+</div>
+{% unless private.handle contains "shirt"  %}
+  </main> <!-- Close .main-wrapper to allow full width -->
+    <section class="section bg--gray has-background-image" style="background-image: url({{ 'collections-footer.jpg' | asset_url }})">
+      <div class="wrapper--770 p-y-md text--center">
+        <h3 class="title--medium white m-b-md">Want to design your own suit from top to bottom?</h3>
+        <p class="text--strong-regular white">Create a unique style that is truly your own. Design a fully custom suit,<br class="desktop--only">down to each and every detail, for just $350. Here's what is included.</p>
+        <a href="/products/create-custom-suit?openapp=true" class="button button-outline-white">Design Your Own Custom Suit - $350</a>
+      </div>
+    </section>
+  <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+{% endunless %}
+
+<script type="text/javascript">
+  $(document).on('ready', function(){
+    var path = window.location.pathname,
+        filters = path.split('/'),
+        filters_link = filters[filters.length - 1],
+        current = [],
+        url;
+    function collecFilters($el) {
+      $($el).on('change', function(){
+        $($el).each(function(){
+          if( $(this).is(':checked') ){
+            current.push($(this).val());
+          }
+        });
+          if (current.length > 0) {
+            url = "/collections/suits/" + current.join('+');
+          }else{
+            url = "/collections";
+          }
+          setTimeout(window.location = url, 500);
+      });
+    }
+    collecFilters('.js-product-filter');
+    collecFilters('.js-m-product-filter');
+    theme.accordion();
+  });
+</script>

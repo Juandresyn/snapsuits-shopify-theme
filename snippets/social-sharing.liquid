@@ -1,0 +1,26 @@
+<div class="blog-share">
+  {% if template contains 'product' %}
+    {% assign url_to_share = shop.url | append: product.url %}
+    {% capture img_to_share %}http:{{ product.featured_image | product_img_url: 'master' }}{% endcapture %}
+    {% assign title_to_share = product.title %}
+  {% else %}
+    {% assign url_to_share = shop.url | append: social-sharing.url %}
+    {% assign img_to_share = false %}
+    {% assign title_to_share = social-sharing.title %}
+  {% endif %}
+
+  {% if social-sharing %}
+    {% assign url_to_share = shop.url | append: article.url %}
+    {% capture img_to_share %}http:{{ article.image.src | img_url: 'master' }}{% endcapture %}
+    {% assign title_to_share = article.title %}
+  {% endif %}
+    <a target="_blank" class="blog-share__item fb" href="https://www.facebook.com/sharer/sharer.php?u={{ url_to_share | url_param_escape }}">
+      <span class="icon--fb"></span>
+    </a>
+    <a target="_blank" class="blog-share__item tw" href="https://twitter.com/intent/tweet?text=Check out {{ title_to_share | url_param_escape }}: {{ url_to_share | url_param_escape }}">
+      <span class="icon--tw"></span>
+    </a>
+    <a target="_blank" class="blog-share__item pt" href="//pinterest.com/pin/create/button/?url={{ url_to_share | url_param_escape }}&amp;media={{ img_to_share | url_param_escape }}&amp;description={{ title_to_share | url_param_escape }}">
+      <span class="icon--pt"></span>
+    </a>
+</div>

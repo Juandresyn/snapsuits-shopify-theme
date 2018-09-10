@@ -1,0 +1,87 @@
+<div id ="login_main">
+  {% include 'red-title' with title: "Log In" %}
+  <p class="text--regular text--center m-t-lg hidden js-login-copy"></p>
+  <div class="form-wrapper">
+    <form method="post" action="{{ shop.url }}/account/login" id="customer_login" class="form js-login" accept-charset="UTF-8">
+      <div id="errors" class="js-errors">{{ form.errors | default_errors }}</div>
+      <div class="input-control">
+        <input type="text" name="customer[email]" required="required" id="email" class="js-login-email">
+        <label for="email" class="form-label">Email address</label>
+      </div>
+      <div class="input-control">
+        <input type="password" name="customer[password]" required="required" id="password" class="input" autocomplete="new-password">
+        <label for="password" class="form-label">password</label>
+      </div>
+      <div class="form-actions center">
+        <input type="submit" class="button button--primary cta" value="Log In">
+        <p class="text--regular">I don’t have an account,  <a href="/account/register" class="highlight">Register</a></p>
+        <div class="cf">
+          <hr class="form-separator">
+        </div>
+        <span class="link--regular color-main js-show-recover">Forgot Password?</span>
+      </div>
+    </form>
+    {% form 'recover_customer_password', class: "form js-recover", style: "display: none;" %}
+      <div id="errors" class="js-errors">{{ form.errors | default_errors }}</div>
+      <p class="text--regular">We will send you an email to reset your password.</p>
+      <div class="input-control">
+        <input type="text" name="email" id="recover-email" required="required" class="">
+        <label for="recover-email" class="form-label">REGISTERED EMAIL</label>
+      </div>
+      <div class="form-actions center">
+        <span class="cancel js-show-login">cancel</span>
+        <input type="submit" class="button button--primary" value="Submit">
+      </div>
+    {% endform %}
+  </div>
+</div>
+<script type="text/javascript">
+$(document).on('ready', function(){
+  function showRecover() {
+    $('.js-recover').fadeIn();
+    $('.js-login').fadeOut();
+    $('.js-title').text('Reset Password');
+  }
+
+  function showLogin() {
+    $('.js-recover').fadeOut();
+    $('.js-login').fadeIn();
+    $('.js-title').text('Log In');
+  }
+
+  var currentUrl = window.location.href,
+      recoverHash = currentUrl.split('#');
+
+  if (recoverHash[1] === 'recover') { showRecover() }
+
+  $('.js-errors').on("click", function(){
+    $(this).fadeOut();
+  });
+
+  $('.js-show-login').on("click", function(){
+    showLogin();
+  });
+
+  $('.js-show-recover').on("click", function(){
+    showRecover();
+  });
+
+  function validateRegisterData(el, val) {
+    el.val(val);
+    el.attr('readonly', 'readonly');
+    el.siblings('label').addClass('form-label--valid');
+  }
+
+  var rRegister = theme.getParam('login');
+
+  if(rRegister){
+    var rEmail = theme.getParam('email');
+    var $iEmail = $('.js-login-email');
+
+    $('.js-login-copy').text('Now that we have your measurements, log in to access your size.');
+    $('.js-login-copy').removeClass('hidden');
+
+    validateRegisterData($iEmail, rEmail);
+  }
+});
+</script>

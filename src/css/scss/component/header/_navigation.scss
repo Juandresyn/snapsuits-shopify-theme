@@ -1,0 +1,186 @@
+.main-nav{
+  display: inline-block;
+  margin: 20px 0;
+
+  &__ul{
+    @include border-line("right", 2px);
+    font-weight: bolder;
+    font-family: $font-primary;
+  }
+
+  &__li{
+    &:last-child{
+      padding-right: 22px;
+    }
+  }
+}
+.main-nav__li.is-active > .main-nav__link,
+.main-nav__link:hover{
+  color: $brand-primary;
+  // &:after{
+  //   content: '';
+  //   width: 40%;
+  //   height: 2px;
+  //   background: $brand-primary;
+  //   position: absolute;
+  //   bottom: -4px;
+  //   left: 30%;
+  // }
+}
+.customer-nav{
+  display: inline-block;
+  font-family: "montserrat-regular",Arial,sans-serif;
+  &__li{
+    padding-right: 0;
+    // padding: 0 7px;
+    &:first-child{
+      padding-left: 11px;
+    }
+  }
+  &__link{
+    font-weight: bold;
+    // padding-left: 0;
+    // padding-right: 0;
+    padding: 22px 20px;
+
+  &:focus {
+    outline: none;
+    }
+  }
+}
+.nav-search{
+  .main-header-nav__link{
+    display: inline-block;
+    padding: 0;
+    margin: 18px 0;
+    width: 15px;
+    color: $gray;
+    font-weight: bolder;
+
+    .ico{
+      &-back{
+        color: $border-color-primary;
+        font-size: 26px;
+        position: absolute;
+        z-index: 220;
+      }
+      &-front{
+        font-size: 12px;
+        position: absolute;
+        z-index: 222;
+        display: inline-block;
+        padding: 7px;
+      }
+    }
+  }
+}
+.body-nav .nav-search {
+  display: none;
+}
+
+.nav-weddings-icon {
+  font-size: 18px;
+  vertical-align: sub;
+  padding-right: 5px;
+}
+
+.nav-cart-icon {
+  font-size: 18px;
+  vertical-align: sub;
+  padding-right: 5px;
+}
+
+.menu-name-remove {
+  position: relative;
+  top: -1px;
+}
+
+@media screen and (max-width: $mobile-large){
+
+  .menu-name-remove,
+  .cart-name-remove {
+    display: none;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .customer-nav {
+    top: 22px;
+    position: absolute;
+    right: 7px;
+  }
+
+  .hamburger-menu {
+    margin-left: 0;
+  }
+}
+
+.template-index .hamburger-menu {
+  @media screen and (max-width: #{$mobile-large}) {
+    left: 3.5px;
+  }
+}
+
+.hamburger-menu {
+  left: 5px;
+
+  @media screen and (max-width: #{$mobile-large}) {
+    left: 0;
+  }
+
+  &--alternative {
+    display: inline-block;
+    left: 5px;
+
+    @media screen and (max-width: #{$mobile-large}) {
+      left: 0;
+    }
+
+    &:hover {
+      color: $brand-primary;
+      }
+
+    .bar{
+      &,
+      &:after,
+      &:before {
+        background-color: $gray;
+      }
+
+      &.bar:hover {
+        color: $red;
+      }
+
+      &.animate {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.menu-trigger-mod {
+  border: 2px solid #CCCCCC;
+  border-radius: 2px;
+  padding: 10px 0;
+
+  &:hover {
+    border-color: $brand-primary;
+  }
+}
+
+.is-active {
+  color: $brand-primary;
+}
+
+.inline-navigation {
+    position: fixed;
+    right: -300px;
+    z-index: 100;
+    height: 100%;
+    width: 300px;
+    background-color: $brand-primary;
+    padding: 20px;
+    top: 0;
+}

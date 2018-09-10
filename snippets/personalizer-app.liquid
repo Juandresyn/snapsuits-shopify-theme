@@ -1,0 +1,192 @@
+<div id="personalizer-app" class="app personalizer personalizer-app mfp-hide">
+  <div class="app__wrapper">
+    <span class="app__quit"><a href="#close-alert" class="mfp-close app__quit-icon custom--close js-popup no-iphone-safari"></a></span>
+    <div class="app__container">
+      <div class="app__mobile--header">
+          <span class="app-mobile--header__back mfp-close js-reset-customizer iphone-safari"><span class="back-icon custom--carret-left"></span> GO BACK / CANCEL</span>
+          <span class="app-mobile--header__back mfp-close js-reset-customizer no-iphone-safari"><span class="back-icon custom--carret-left"></span> GO BACK TO <span class="highlight">{{ product.title }}</span></span>
+          <div class="iphone-safari top-controls">
+            <span class="btn-prev js-app-prev js-gf-prev gf-prev"><span class="custom--carret-left"></span></span><!--
+            --><span class="btn-next js-app-next js-gf-next gf-next"><span class="custom--carret-right"></span></span><!--
+            --><a href="#bridge" class="btn-finish js-custom-finish js-action-finish js-popup mfp-close" style="display: none;"><span class="custom--carret-right"></span></a>
+          </div>
+      </div>
+      <header class="app__header">
+        <ol class="app__progress app__steps" data-steps="3">
+            <li class="done step-item js-step1" data-slide="0">
+                <span class="step"></span>
+            </li>
+            <li class="step-item js-step2" data-slide="1">
+                <span class="step"></span>
+            </li>
+            <li class="step-item js-step3" data-slide="2">
+                <span class="step"></span>
+            </li>
+        </ol>
+        <ol class="app__progress app__steps-labels" data-steps="3">
+          <li class="step-label js-step js-step3 done" data-go="0" data-slide="0">
+            Linings
+          </li>
+          <li class="step-label js-step js-step6" data-go="1" data-slide="1">
+            Monogram
+          </li>
+          <li class="step-label js-step js-step8" data-go="2" data-slide="2">
+            Extra
+          </li>
+        </ol>
+      </header>
+      <main class="app__content js-app-slider">
+        <section class="step-slide">
+          <h2 class="step-slide__heading">LININGS</h2>
+          <div class="step-slide__wrapper" data-items="4">
+            <article class="step-slide__item step-with-image">
+              <input type="radio" class="step-slide__input" name="property-lining" id="step-item__tie" value="" checked="checked" data-default="checked">
+              <label for="step-item__tie" class="step-slide__label">
+                <span class="step-slide__icon custom--tie"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">No Lining Upgrade</h3>
+                </div>
+              </label>
+            </article>
+            {% for product in collections[linersVendor].products %}
+              {% for variant in product.variants %}
+                <article class="step-slide__item step-with-image">
+                  <input type="radio" class="step-slide__input js-addon" name="property-lining" id="step-item__{{ variant.id }}" value="{{ variant.id }}" data-type="Lining">
+                  <label for="step-item__{{ variant.id }}" class="step-slide__label" title="{{ product.title }}">
+                    <div class="step-slide__image" style="background-image: url({{ product.featured_image | product_img_url: 'master' }})"></div>
+                    <span class="step-slide__price">+ $<span>{{ variant.price | remove: '00' }}</span></span>
+                    <div class="step-slide__information">
+                      <h3 class="step-slide__title">{{ product.title }}</h3>
+                    </div>
+                  </label>
+                </article>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </section>
+        <section class="step-slide">
+          <h2 class="step-slide__heading js-stitchings">PERSONAL MONOGRAM</h2>
+          <div class="step-slide__wrapper js-stitchings just-monogram" data-items="2">
+            <article class="step-slide__item step-with-image">
+              <input type="radio" class="step-slide__input" name="property-stitching" id="step-item__stitching_tie" value="" checked="checked" data-default="checked">
+              <label for="step-item__stitching_tie" class="step-slide__label">
+                <span class="step-slide__icon custom--tie"></span>
+                <h3 class="step-slide__title">Non Stitching Adds</h3>
+              </label>
+            </article>
+            {% for product in collections.customize-stitching.products %}
+              {% if product.title contains "Monogrammed" %}
+                {% for variant in product.variants %}
+                  {% assign hide = "data-hide='.js-stitchings'" %}
+                  {% if product.title contains "Monogrammed" %}
+                    {% assign show = "data-show='.js-stitching-monogramed'" %}
+                    {% assign color = "data-color='.js-color-monogramed'" %}
+                    {% assign label = "data-label='.js-monogramed-input'" %}
+                  {% endif %}
+                  <article class="step-slide__item step-with-image">
+                    <input type="radio" class="step-slide__input js-addon" name="property-stitching" id="step-item__{{ variant.id }}" value="{{ variant.id }}" data-type="Stitching" {{ color }} {{ label }} data-name="{{ product.title }}">
+                    <label for="step-item__{{ variant.id }}" class="step-slide__label" title="{{ product.title }}" {{ show }} {{ hide }} data-input="#step-item__{{ variant.id }}">
+                      <div class="step-slide__image" style="background-image: url({{ product.featured_image | product_img_url: 'master' }})"></div>
+                      <span class="step-slide__price">+ $<span>{{ variant.price | remove: '00' }}</span></span>
+                      <h3 class="step-slide__title">{{ product.title }}</h3>
+                    </label>
+                  </article>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="wrapper-scroll__425 js-stitching-monogramed" style="display: none;">
+            <div class="js-monogramed-label">
+              <h2 class="step-slide__heading" data-hide=".js-stitching-monogramed" data-show=".js-stitchings" data-toggle=".js-actions"><span class="app__back custom--back"></span> PERSONAL MONOGRAM</h2>
+              <div class="monogramed">
+                <div class="monogramed__item monogramed__icon--wrapper">
+                  <img src="{{ 'monogram.png' | asset_url }}" alt="" class="monogramed__icon">
+                </div>
+                <div class="monogramed__item monogramed__label--wrapper">
+                  <h3 class="monogramed__title">What should your monogram say?</h3>
+                  <label for="monogramed-text" class="monogramed__label">MONOGRAM TEXT <span class="highlight">*</span></label>
+                  <input type="text" name="mmonogramed-text" placeholder="50 Characters or Less" id="monogramed-text" class="monogramed__input js-monogramed-input">
+                  <span class="js-monogramed-count text--regular height">20</span>
+                  <div>
+                    <span class="monogramed__color-btn" data-show=".js-monogramed-color" data-hide=".js-monogramed-label">PICK COLOR</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="js-monogramed-color" style="display: none;">
+            <h2 class="step-slide__heading" data-hide=".js-monogramed-color" data-show=".js-monogramed-label" data-toggle=".js-actions"><span class="app__back custom--back"></span> STITCHING COLOR FOR YOUR MONOGRAM</h2>
+            <div class="step-slide__wrapper" data-items="4">
+              <article class="step-slide__item step-with-image">
+                <input type="radio" class="step-slide__input js-color-monogramed" name="property-monogramed-color" id="color-monogramed_tie" value="Same as Suit" checked="checked" data-default="checked">
+                <label for="color-monogramed_tie" class="step-slide__label">
+                  <span class="step-slide__icon custom--tie"></span>
+                  <h3 class="step-slide__title">Same Color as Suit</h3>
+                </label>
+              </article>
+            {% for product in collections.customize-stitching-colored.products %}
+              {% if product.tags contains 'c_monogram' %}
+                {% for variant in product.variants %}
+                  <article class="step-slide__item step-with-image">
+                    <input type="radio" class="step-slide__input js-color-monogramed" name="property-monogramed-color" id="monogramed_{{ variant.id }}" value="{{ product.title | capitalize }}" data-type="Color">
+                    <label for="monogramed_{{ variant.id }}" class="step-slide__label" title="{{ product.title }}">
+                      <div class="step-slide__image" style="background-image: url({{ product.featured_image | product_img_url: '120x' }})"></div>
+                      <h3 class="step-slide__title">{{ product.title }}</h3>
+                    </label>
+                  </article>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+            </div>
+          </div>
+        </section>
+        <section class="step-slide">
+          <h2 class="step-slide__heading">EXTRA</h2>
+          {% for product in collections.customize-extras.products %}
+            {% assign grid_size = forloop.length %}
+          {% endfor %}
+          <div class="step-slide__wrapper" data-items="{{ grid_size }}">
+            {% for product in collections.customize-extras.products %}
+              {% for variant in product.variants %}
+                <article class="step-slide__item step-with-image">
+                  <input type="checkbox" class="step-slide__input js-addon" name="property-extra" id="step-item__{{ variant.id }}" value="{{ variant.id }}" data-type="Extra">
+                  <label for="step-item__{{ variant.id }}" class="step-slide__label" title="{{ product.title }}">
+                    <div class="step-slide__image no-border" style="background-image: url({{ product.featured_image | product_img_url: 'master' }})"></div>
+                    <span class="step-slide__price">+ $<span>{{ variant.price | remove: '00' }}</span></span>
+                    <h3 class="step-slide__title">{{ product.title }}</h3>
+                  </label>
+                </article>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </section>
+      </main>
+      <footer class="app__footer">
+        <div class="actions-left js-actions">
+          <a href="#close-alert" class="app__btn button js-popup mfp-close no-selection">cancel</a>
+        </div>
+        <div class="actions-right js-actions">
+          <span class="app__btn button no-selection js-app-prev btn-prev">prev</span>
+          <span class="app__btn btn-sp button button--primary no-selection m-r-0 js-app-next js-action-next btn-next">next</span>
+          <a href='#bridge' class="app__btn btn-sp button button--success no-selection js-custom-finish js-action-finish js-popup mfp-close btn-finish">finish</a>
+        </div>
+        <div class="stitching-actions actions-right full-width js-actions" style="display: none;">
+          <span class="app__btn button no-selection js-stitching-cancel" data-show=".js-stitchings" data-hide="" data-toggle=".js-actions" data-input-reset="">back</span>
+          <span class="app__btn btn-sp button button--primary no-selection js-stitching-choose" data-show=".js-stitchings" data-hide=".js-monogramed-color, .js-monogramed-label" data-toggle=".js-actions">choose</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+{% include 'close-alert' with target: 'personalizer-app' with reset: 'js-reset-customizer' %}
+
+<script type="text/javascript">
+  $('.js-monogramed-input').on('change', function() {
+    var val = $(this).val();
+    if(val != ""){
+      $(".js-monogrammed").prop('checked', true);
+    }else{
+      $(".js-monogrammed").prop('checked', false);
+    }
+  })
+</script>

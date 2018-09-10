@@ -1,0 +1,1968 @@
+[
+  {
+    "name": "SnapSuits Theme Settings",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "This is Snap Suits theme for Shopify. Designed by Pablo Lastra, Frontend and Shopify Developer: Juandres Yepes N."
+      },
+      {
+        "type": "text",
+        "label": "Hash Tag",
+        "id": "main_ht"
+      }
+    ]
+  },
+  {
+    "name": "Contact Information",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Phone number",
+        "id": "phone_number"
+      },
+      {
+        "type": "text",
+        "label": "Contact Email",
+        "id": "email_info"
+      },
+      {
+        "type": "text",
+        "label": "Support Email",
+        "id": "email_support"
+      }
+    ]
+  },
+  {
+    "name": "Homepage",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Homepage Options"
+      },
+      {
+        "type": "text",
+        "label": "Shipping banner content",
+        "id": "banner-shipping-content"
+      }
+    ]
+  },
+  {
+    "name": "Homepage Philanthropy",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Homepage Philanthropy Section"
+      },
+      {
+        "type": "text",
+        "label": "Content",
+        "id": "philanthropy-home-text"
+      },
+      {
+        "type": "text",
+        "label": "Button text",
+        "id": "philanthropy-home-button-text"
+      },
+      {
+        "type": "page",
+        "label": "Button link",
+        "id": "philanthropy-home-button-link"
+      },
+      {
+        "type": "image_picker",
+        "id": "philanthropy_home_image",
+        "label": "Bg image"
+      }
+    ]
+  },
+  {
+    "name": "Homepage Value Props",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Value props 1"
+      },
+      {
+        "type": "image",
+        "id": "value-props-1.png",
+        "label": "image"
+      },
+      {
+        "type": "text",
+        "label": "title",
+        "id": "value-prop-title-1"
+      },
+      {
+        "type": "textarea",
+        "label": "content",
+        "id": "value-prop-content-1"
+      },
+      {
+        "type": "header",
+        "content": "Value props 2"
+      },
+      {
+        "type": "image",
+        "id": "value-props-2.png",
+        "label": "image"
+      },
+      {
+        "type": "text",
+        "label": "title",
+        "id": "value-prop-title-2"
+      },
+      {
+        "type": "textarea",
+        "label": "content",
+        "id": "value-prop-content-2"
+      },
+      {
+        "type": "header",
+        "content": "Value props 3"
+      },
+      {
+        "type": "image",
+        "id": "value-props-3.png",
+        "label": "image"
+      },
+      {
+        "type": "text",
+        "label": "title",
+        "id": "value-prop-title-3"
+      },
+      {
+        "type": "textarea",
+        "label": "content",
+        "id": "value-prop-content-3"
+      },
+      {
+        "type": "header",
+        "content": "Value props 4"
+      },
+      {
+        "type": "image",
+        "id": "value-props-4.png",
+        "label": "image"
+      },
+      {
+        "type": "text",
+        "label": "title",
+        "id": "value-prop-title-4"
+      },
+      {
+        "type": "textarea",
+        "label": "content",
+        "id": "value-prop-content-4"
+      }
+    ]
+  },
+  {
+    "name": "Homepage How it Works",
+    "settings": [
+      {
+        "type": "header",
+        "content": "How it Works Link"
+      },
+      {
+        "type": "text",
+        "id": "works-link",
+        "label": "How it works Link"
+      },
+      {
+        "type": "header",
+        "content": "How it Works 1"
+      },
+      {
+        "type": "text",
+        "id": "works-icon-1",
+        "label": "How it works 1 icon"
+      },
+      {
+        "type": "text",
+        "label": "content",
+        "id": "works-content-1"
+      },
+      {
+        "type": "header",
+        "content": "How it Works 2"
+      },
+      {
+        "type": "text",
+        "id": "works-icon-2",
+        "label": "How it works 2 icon"
+      },
+      {
+        "type": "text",
+        "label": "content",
+        "id": "works-content-2"
+      },
+      {
+        "type": "header",
+        "content": "How it Works 3"
+      },
+      {
+        "type": "text",
+        "id": "works-icon-3",
+        "label": "How it works 3 icon"
+      },
+      {
+        "type": "text",
+        "label": "content",
+        "id": "works-content-3"
+      },
+      {
+        "type": "header",
+        "content": "How it Works 4"
+      },
+      {
+        "type": "text",
+        "id": "works-icon-4",
+        "label": "How it works 4 icon"
+      },
+      {
+        "type": "text",
+        "label": "content",
+        "id": "works-content-4"
+      },
+      {
+        "type": "header",
+        "content": "How it Works 5"
+      },
+      {
+        "type": "text",
+        "id": "works-icon-5",
+        "label": "How it works 5 icon"
+      },
+      {
+        "type": "text",
+        "label": "content",
+        "id": "works-content-5"
+      }
+    ]
+  },
+  {
+    "name": "Homepage Testimonials",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Testimonial 1"
+      },
+      {
+        "type": "image",
+        "id": "testimonial-img-1.png",
+        "label": "Testimonial 1 image"
+      },
+      {
+        "type": "text",
+        "label": "name",
+        "id": "testimonial-name-1"
+      },
+      {
+        "type": "text",
+        "label": "Age",
+        "id": "testimonial-age-1"
+      },
+      {
+        "type": "text",
+        "label": "location",
+        "id": "testimonial-location-1"
+      },
+      {
+        "type": "text",
+        "label": "date-of-wedding",
+        "id": "testimonial-date-1"
+      },
+      {
+        "type": "text",
+        "label": "occupation",
+        "id": "testimonial-occupation-1"
+      },
+      {
+        "type": "product",
+        "label": "Suit",
+        "id": "testimonial-suit-1"
+      },
+      {
+        "type": "textarea",
+        "label": "Testimonial",
+        "id": "testimonial-quote-1"
+      },
+      {
+        "type": "header",
+        "content": "Testimonial 2"
+      },
+      {
+        "type": "image",
+        "id": "testimonial-img-2.png",
+        "label": "Testimonial 2 image"
+      },
+      {
+        "type": "text",
+        "label": "name",
+        "id": "testimonial-name-2"
+      },
+      {
+        "type": "text",
+        "label": "Age",
+        "id": "testimonial-age-2"
+      },
+      {
+        "type": "text",
+        "label": "date-of-wedding",
+        "id": "testimonial-date-2"
+      },
+      {
+        "type": "text",
+        "label": "location",
+        "id": "testimonial-location-2"
+      },
+      {
+        "type": "text",
+        "label": "occupation",
+        "id": "testimonial-occupation-2"
+      },
+      {
+        "type": "product",
+        "label": "Suit",
+        "id": "testimonial-suit-2"
+      },
+      {
+        "type": "textarea",
+        "label": "Testimonial",
+        "id": "testimonial-quote-2"
+      },
+      {
+        "type": "header",
+        "content": "Testimonial 3"
+      },
+      {
+        "type": "image",
+        "id": "testimonial-img-3.png",
+        "label": "Testimonial 3 image"
+      },
+      {
+        "type": "text",
+        "label": "name",
+        "id": "testimonial-name-3"
+      },
+      {
+        "type": "text",
+        "label": "Age",
+        "id": "testimonial-age-3"
+      },
+      {
+        "type": "text",
+        "label": "date-of-wedding",
+        "id": "testimonial-date-3"
+      },
+      {
+        "type": "text",
+        "label": "location",
+        "id": "testimonial-location-3"
+      },
+      {
+        "type": "text",
+        "label": "occupation",
+        "id": "testimonial-occupation-3"
+      },
+      {
+        "type": "product",
+        "label": "Suit",
+        "id": "testimonial-suit-3"
+      },
+      {
+        "type": "textarea",
+        "label": "Testimonial",
+        "id": "testimonial-quote-3"
+      }
+    ]
+  },
+  {
+    "name": "Homepage Partners & Press",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Partner 1"
+      },
+      {
+        "type": "image",
+        "id": "partner-img-1.png",
+        "label": "Partner 1 image"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "partner-tite-1"
+      },
+      {
+        "type": "text",
+        "label": "Link",
+        "id": "partner-link-1"
+      },
+      {
+        "type": "header",
+        "content": "Partner 2"
+      },
+      {
+        "type": "image",
+        "id": "partner-img-2.png",
+        "label": "Partner 2 image"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "partner-tite-2"
+      },
+      {
+        "type": "text",
+        "label": "Link",
+        "id": "partner-link-2"
+      },
+      {
+        "type": "header",
+        "content": "Partner 3"
+      },
+      {
+        "type": "image",
+        "id": "partner-img-3.png",
+        "label": "Partner 3 image"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "partner-tite-3"
+      },
+      {
+        "type": "text",
+        "label": "Link",
+        "id": "partner-link-3"
+      }
+    ]
+  },
+  {
+    "name": "Homepage Slideshow",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Slide 1"
+      },
+      {
+        "type": "image",
+        "id": "slide-img-1.jpg",
+        "label": "Slide 1 image"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "tite-1"
+      },
+      {
+        "type": "text",
+        "label": "Subtitle",
+        "id": "subtitle-1"
+      },
+      {
+        "type": "text",
+        "label": "Button Text",
+        "id": "button-text-1"
+      },
+      {
+        "type": "text",
+        "label": "Page Link",
+        "id": "page-link-1"
+      },
+      {
+        "type": "text",
+        "label": "Video URL",
+        "id": "video-url-1"
+      },
+      {
+        "type": "text",
+        "label": "Background Position",
+        "id": "background-position-1"
+      },
+      {
+        "type": "header",
+        "content": "Slide 2"
+      },
+      {
+        "type": "image",
+        "id": "slide-img-2.jpg",
+        "label": "Slide 2 image"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "tite-2"
+      },
+      {
+        "type": "text",
+        "label": "Subtitle",
+        "id": "subtitle-2"
+      },
+      {
+        "type": "text",
+        "label": "Button Text",
+        "id": "button-text-2"
+      },
+      {
+        "type": "text",
+        "label": "Page Link",
+        "id": "page-link-2"
+      },
+      {
+        "type": "text",
+        "label": "Video URL",
+        "id": "video-url-2"
+      },
+      {
+        "type": "text",
+        "label": "Background Position",
+        "id": "background-position-2"
+      },
+      {
+        "type": "header",
+        "content": "Slide 3"
+      },
+      {
+        "type": "image",
+        "id": "slide-img-3.jpg",
+        "label": "Slide 3 image"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "tite-3"
+      },
+      {
+        "type": "text",
+        "label": "Subtitle",
+        "id": "subtitle-3"
+      },
+      {
+        "type": "text",
+        "label": "Button Text",
+        "id": "button-text-3"
+      },
+      {
+        "type": "text",
+        "label": "Page Link",
+        "id": "page-link-3"
+      },
+      {
+        "type": "text",
+        "label": "Video URL",
+        "id": "video-url-3"
+      },
+      {
+        "type": "text",
+        "label": "Background Position",
+        "id": "background-position-3"
+      },
+      {
+        "type": "header",
+        "content": "Slide 4"
+      },
+      {
+        "type": "image",
+        "id": "slide-img-4.jpg",
+        "label": "Slide 4 image"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "tite-4"
+      },
+      {
+        "type": "text",
+        "label": "Subtitle",
+        "id": "subtitle-4"
+      },
+      {
+        "type": "text",
+        "label": "Button Text",
+        "id": "button-text-4"
+      },
+      {
+        "type": "text",
+        "label": "Page Link",
+        "id": "page-link-4"
+      },
+      {
+        "type": "text",
+        "label": "Video URL",
+        "id": "video-url-4"
+      },
+      {
+        "type": "text",
+        "label": "Background Position",
+        "id": "background-position-4"
+      }
+    ]
+  },
+  {
+    "name": "Page How It Works",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hero Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "hiw-img-hero",
+        "label": "Hero image here"
+      },
+      {
+        "type": "header",
+        "content": "Content 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "hiw-image-content-1",
+        "label": "Content image here"
+      },
+      {
+        "type": "text",
+        "id": "hiw-title-1",
+        "label": "1st title"
+      },
+      {
+        "type": "textarea",
+        "id": "hiw-content-1",
+        "label": "1st Content"
+      },
+      {
+        "type": "header",
+        "content": "Content 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "hiw-image-content-2",
+        "label": "Content image here"
+      },
+      {
+        "type": "text",
+        "id": "hiw-title-2",
+        "label": "2nd title"
+      },
+      {
+        "type": "textarea",
+        "id": "hiw-content-2",
+        "label": "2nd Content"
+      },
+      {
+        "type": "header",
+        "content": "Content 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "hiw-image-content-3",
+        "label": "Content image here"
+      },
+      {
+        "type": "text",
+        "id": "hiw-title-3",
+        "label": "3th title"
+      },
+      {
+        "type": "textarea",
+        "id": "hiw-content-3",
+        "label": "3th Content"
+      },
+      {
+        "type": "header",
+        "content": "Content 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "hiw-image-content-4",
+        "label": "Content image here"
+      },
+      {
+        "type": "text",
+        "id": "hiw-title-4",
+        "label": "4th title"
+      },
+      {
+        "type": "textarea",
+        "id": "hiw-content-4",
+        "label": "4th Content"
+      },
+      {
+        "type": "header",
+        "content": "Footer Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "hiw-img-footer",
+        "label": "Footer image here"
+      },
+      {
+        "type": "text",
+        "id": "hiw-footer-title",
+        "label": "Footer Title"
+      },
+      {
+        "type": "textarea",
+        "id": "hiw-footer-content",
+        "label": "Footer Content"
+      }
+    ]
+  },
+  {
+    "name": "Page Our Quality",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hero Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "quality-img-hero",
+        "label": "Hero image here"
+      },
+      {
+        "type": "header",
+        "content": "Quality One"
+      },
+      {
+        "type": "image_picker",
+        "id": "quality-img-1",
+        "label": "Quality 1 image here"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "quality-title-1"
+      },
+      {
+        "type": "textarea",
+        "label": "Content",
+        "id": "quality-content-1"
+      },
+      {
+        "type": "header",
+        "content": "Quality Two"
+      },
+      {
+        "type": "image_picker",
+        "id": "quality-img-2",
+        "label": "Quality 2 image here"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "quality-title-2"
+      },
+      {
+        "type": "textarea",
+        "label": "Content",
+        "id": "quality-content-2"
+      },
+      {
+        "type": "header",
+        "content": "Quality Three"
+      },
+      {
+        "type": "image_picker",
+        "id": "quality-img-3",
+        "label": "Quality 3 image here"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "quality-title-3"
+      },
+      {
+        "type": "textarea",
+        "label": "Content",
+        "id": "quality-content-3"
+      },
+      {
+        "type": "header",
+        "content": "Quality Four"
+      },
+      {
+        "type": "image_picker",
+        "id": "quality-img-4",
+        "label": "Quality 4 image here"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "quality-title-4"
+      },
+      {
+        "type": "textarea",
+        "label": "Content",
+        "id": "quality-content-4"
+      },
+      {
+        "type": "header",
+        "content": "Quality Five"
+      },
+      {
+        "type": "image_picker",
+        "id": "quality-img-5",
+        "label": "Quality 5 image here"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "quality-title-5"
+      },
+      {
+        "type": "textarea",
+        "label": "Content",
+        "id": "quality-content-5"
+      },
+      {
+        "type": "header",
+        "content": "Quality Six"
+      },
+      {
+        "type": "image_picker",
+        "id": "quality-img-6",
+        "label": "Quality 6 image here"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "quality-title-6"
+      },
+      {
+        "type": "textarea",
+        "label": "Content",
+        "id": "quality-content-6"
+      }
+    ]
+  },
+  {
+    "name": "Page Weedings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Weddings Members"
+      },
+      {
+        "type": "image",
+        "label": "Weddings Member 1 image",
+        "id": "w_member_1_image.jpg"
+      },
+      {
+        "type": "image",
+        "label": "Weddings Member 2 image",
+        "id": "w_member_2_image.jpg"
+      },
+      {
+        "type": "image",
+        "label": "Weddings Member 3 image",
+        "id": "w_member_3_image.jpg"
+      },
+      {
+        "type": "image",
+        "label": "Weddings Member 4 image",
+        "id": "w_member_4_image.jpg"
+      },
+      {
+        "type": "image",
+        "label": "Weddings Member 5 image",
+        "id": "w_member_5_image.jpg"
+      },
+      {
+        "type": "image",
+        "label": "Weddings Member 6 image",
+        "id": "w_member_6_image.jpg"
+      },
+      {
+        "type": "image",
+        "label": "Weddings Member 7 image",
+        "id": "w_member_7_image.jpg"
+      },
+      {
+        "type": "image",
+        "label": "Weddings Member 8 image",
+        "id": "w_member_8_image.jpg"
+      },
+      {
+        "type": "image",
+        "label": "Weddings Member 9 image",
+        "id": "w_member_9_image.jpg"
+      },
+      {
+        "type": "image",
+        "label": "Weddings Member 10 image",
+        "id": "w_member_10_image.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Page FAQ",
+    "settings": [
+      {
+        "type": "header",
+        "content": "How it Works 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "faq-img-hero",
+        "label": "FAQ hero image"
+      },
+      {
+        "type": "header",
+        "content": "FAQ one"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-1"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-1"
+      },
+      {
+        "type": "header",
+        "content": "FAQ two"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-2"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-2"
+      },
+      {
+        "type": "header",
+        "content": "FAQ three"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-3"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-3"
+      },
+      {
+        "type": "header",
+        "content": "FAQ four"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-4"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-4"
+      },
+      {
+        "type": "header",
+        "content": "FAQ five"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-5"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-5"
+      },
+      {
+        "type": "header",
+        "content": "FAQ six"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-6"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-6"
+      },
+      {
+        "type": "header",
+        "content": "FAQ seven"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-7"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-7"
+      },
+      {
+        "type": "header",
+        "content": "FAQ eight"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-8"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-8"
+      },
+      {
+        "type": "header",
+        "content": "FAQ nine"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-9"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-9"
+      },
+      {
+        "type": "header",
+        "content": "FAQ ten"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-10"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-10"
+      },
+      {
+        "type": "header",
+        "content": "FAQ eleven"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-11"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-11"
+      },
+      {
+        "type": "header",
+        "content": "FAQ twelve"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-12"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-12"
+      },
+      {
+        "type": "header",
+        "content": "FAQ thirteen"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-13"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-13"
+      },
+      {
+        "type": "header",
+        "content": "FAQ fourteen"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-14"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-14"
+      },
+      {
+        "type": "header",
+        "content": "FAQ fifteen"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-15"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-15"
+      },
+      {
+        "type": "header",
+        "content": "FAQ sixteen"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-16"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-16"
+      },
+      {
+        "type": "header",
+        "content": "FAQ seventeen"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-17"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-17"
+      },
+      {
+        "type": "header",
+        "content": "FAQ eighteen"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-18"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-18"
+      },
+      {
+        "type": "header",
+        "content": "FAQ nineteen"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-19"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-19"
+      },
+      {
+        "type": "header",
+        "content": "FAQ twenty"
+      },
+      {
+        "type": "text",
+        "label": "Question",
+        "id": "faq-question-20"
+      },
+      {
+        "type": "textarea",
+        "label": "Answer",
+        "id": "faq-answer-20"
+      }
+    ]
+  },
+  {
+    "name": "Team",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hero Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "about-img-hero",
+        "label": "Hero image here"
+      },
+      {
+        "type": "header",
+        "content": "EXECUTIVE TEAM"
+      },
+      {
+        "type": "text",
+        "label": "Executive Member 1 name",
+        "id": "x_member_1_name"
+      },
+      {
+        "type": "text",
+        "label": "Executive Member 1 roll",
+        "id": "x_member_1_roll"
+      },
+      {
+        "type": "image",
+        "label": "Executive Member 1 image",
+        "id": "x_member_1_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Executive Member 2 name",
+        "id": "x_member_2_name"
+      },
+      {
+        "type": "text",
+        "label": "Executive Member 2 roll",
+        "id": "x_member_2_roll"
+      },
+      {
+        "type": "image",
+        "label": "Executive Member 2 image",
+        "id": "x_member_2_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Executive Member 3 name",
+        "id": "x_member_3_name"
+      },
+      {
+        "type": "text",
+        "label": "Executive Member 3 roll",
+        "id": "x_member_3_roll"
+      },
+      {
+        "type": "image",
+        "label": "Executive Member 3 image",
+        "id": "x_member_3_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Executive Member 4 name",
+        "id": "x_member_4_name"
+      },
+      {
+        "type": "text",
+        "label": "Executive Member 4 roll",
+        "id": "x_member_4_roll"
+      },
+      {
+        "type": "image",
+        "label": "Executive Member 4 image",
+        "id": "x_member_4_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Executive Member 5 name",
+        "id": "x_member_5_name"
+      },
+      {
+        "type": "text",
+        "label": "Executive Member 5 roll",
+        "id": "x_member_5_roll"
+      },
+      {
+        "type": "image",
+        "label": "Executive Member 5 image",
+        "id": "x_member_5_image.jpg"
+      },
+      {
+        "type": "header",
+        "content": "DESIGN"
+      },
+      {
+        "type": "text",
+        "label": "Design Member 1 name",
+        "id": "d_member_1_name"
+      },
+      {
+        "type": "text",
+        "label": "Design Member 1 roll",
+        "id": "d_member_1_roll"
+      },
+      {
+        "type": "image",
+        "label": "Design Member 1 image",
+        "id": "d_member_1_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Design Member 2 name",
+        "id": "d_member_2_name"
+      },
+      {
+        "type": "text",
+        "label": "Design Member 2 roll",
+        "id": "d_member_2_roll"
+      },
+      {
+        "type": "image",
+        "label": "Design Member 2 image",
+        "id": "d_member_2_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Design Member 3 name",
+        "id": "d_member_3_name"
+      },
+      {
+        "type": "text",
+        "label": "Design Member 3 roll",
+        "id": "d_member_3_roll"
+      },
+      {
+        "type": "image",
+        "label": "Design Member 3 image",
+        "id": "d_member_3_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Design Member 4 name",
+        "id": "d_member_4_name"
+      },
+      {
+        "type": "text",
+        "label": "Design Member 4 roll",
+        "id": "d_member_4_roll"
+      },
+      {
+        "type": "image",
+        "label": "Design Member 4 image",
+        "id": "d_member_4_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Design Member 5 name",
+        "id": "d_member_5_name"
+      },
+      {
+        "type": "text",
+        "label": "Design Member 5 roll",
+        "id": "d_member_5_roll"
+      },
+      {
+        "type": "image",
+        "label": "Design Member 5 image",
+        "id": "d_member_5_image.jpg"
+      },
+      {
+        "type": "header",
+        "content": "SALES"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 1 name",
+        "id": "s_member_1_name"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 1 roll",
+        "id": "s_member_1_roll"
+      },
+      {
+        "type": "image",
+        "label": "Sales Member 1 image",
+        "id": "s_member_1_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 2 name",
+        "id": "s_member_2_name"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 2 roll",
+        "id": "s_member_2_roll"
+      },
+      {
+        "type": "image",
+        "label": "Sales Member 2 image",
+        "id": "s_member_2_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 3 name",
+        "id": "s_member_3_name"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 3 roll",
+        "id": "s_member_3_roll"
+      },
+      {
+        "type": "image",
+        "label": "Sales Member 3 image",
+        "id": "s_member_3_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 4 name",
+        "id": "s_member_4_name"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 4 roll",
+        "id": "s_member_4_roll"
+      },
+      {
+        "type": "image",
+        "label": "Sales Member 4 image",
+        "id": "s_member_4_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 5 name",
+        "id": "s_member_5_name"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 5 roll",
+        "id": "s_member_5_roll"
+      },
+      {
+        "type": "image",
+        "label": "Sales Member 5 image",
+        "id": "s_member_5_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 6 name",
+        "id": "s_member_6_name"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 6 roll",
+        "id": "s_member_6_roll"
+      },
+      {
+        "type": "image",
+        "label": "Sales Member 6 image",
+        "id": "s_member_6_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 7 name",
+        "id": "s_member_7_name"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 7 roll",
+        "id": "s_member_7_roll"
+      },
+      {
+        "type": "image",
+        "label": "Sales Member 7 image",
+        "id": "s_member_7_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 8 name",
+        "id": "s_member_8_name"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 8 roll",
+        "id": "s_member_8_roll"
+      },
+      {
+        "type": "image",
+        "label": "Sales Member 8 image",
+        "id": "s_member_8_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 9 name",
+        "id": "s_member_9_name"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 9 roll",
+        "id": "s_member_9_roll"
+      },
+      {
+        "type": "image",
+        "label": "Sales Member 9 image",
+        "id": "s_member_9_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 10 name",
+        "id": "s_member_10_name"
+      },
+      {
+        "type": "text",
+        "label": "Sales Member 10 roll",
+        "id": "s_member_10_roll"
+      },
+      {
+        "type": "image",
+        "label": "Sales Member 10 image",
+        "id": "s_member_10_image.jpg"
+      },
+      {
+        "type": "header",
+        "content": "TECHNOLOGY"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 1 name",
+        "id": "t_member_1_name"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 1 roll",
+        "id": "t_member_1_roll"
+      },
+      {
+        "type": "image",
+        "label": "Tech Member 1 image",
+        "id": "t_member_1_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 2 name",
+        "id": "t_member_2_name"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 2 roll",
+        "id": "t_member_2_roll"
+      },
+      {
+        "type": "image",
+        "label": "Tech Member 2 image",
+        "id": "t_member_2_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 3 name",
+        "id": "t_member_3_name"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 3 roll",
+        "id": "t_member_3_roll"
+      },
+      {
+        "type": "image",
+        "label": "Tech Member 3 image",
+        "id": "t_member_3_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 4 name",
+        "id": "t_member_4_name"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 4 roll",
+        "id": "t_member_4_roll"
+      },
+      {
+        "type": "image",
+        "label": "Tech Member 4 image",
+        "id": "t_member_4_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 5 name",
+        "id": "t_member_5_name"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 5 roll",
+        "id": "t_member_5_roll"
+      },
+      {
+        "type": "image",
+        "label": "Tech Member 5 image",
+        "id": "t_member_5_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 6 name",
+        "id": "t_member_6_name"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 6 roll",
+        "id": "t_member_6_roll"
+      },
+      {
+        "type": "image",
+        "label": "Tech Member 6 image",
+        "id": "t_member_6_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 7 name",
+        "id": "t_member_7_name"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 7 roll",
+        "id": "t_member_7_roll"
+      },
+      {
+        "type": "image",
+        "label": "Tech Member 7 image",
+        "id": "t_member_7_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 8 name",
+        "id": "t_member_8_name"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 8 roll",
+        "id": "t_member_8_roll"
+      },
+      {
+        "type": "image",
+        "label": "Tech Member 8 image",
+        "id": "t_member_8_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 9 name",
+        "id": "t_member_9_name"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 9 roll",
+        "id": "t_member_9_roll"
+      },
+      {
+        "type": "image",
+        "label": "Tech Member 9 image",
+        "id": "t_member_9_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 10 name",
+        "id": "t_member_10_name"
+      },
+      {
+        "type": "text",
+        "label": "Tech Member 10 roll",
+        "id": "t_member_10_roll"
+      },
+      {
+        "type": "image",
+        "label": "Tech Member 10 image",
+        "id": "t_member_10_image.jpg"
+      },
+      {
+        "type": "header",
+        "content": "ADVISORS"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 1 name",
+        "id": "a_member_1_name"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 1 roll",
+        "id": "a_member_1_roll"
+      },
+      {
+        "type": "image",
+        "label": "Advisor Member 1 image",
+        "id": "a_member_1_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 2 name",
+        "id": "a_member_2_name"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 2 roll",
+        "id": "a_member_2_roll"
+      },
+      {
+        "type": "image",
+        "label": "Advisor Member 2 image",
+        "id": "a_member_2_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 3 name",
+        "id": "a_member_3_name"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 3 roll",
+        "id": "a_member_3_roll"
+      },
+      {
+        "type": "image",
+        "label": "Advisor Member 3 image",
+        "id": "a_member_3_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 4 name",
+        "id": "a_member_4_name"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 4 roll",
+        "id": "a_member_4_roll"
+      },
+      {
+        "type": "image",
+        "label": "Advisor Member 4 image",
+        "id": "a_member_4_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 5 name",
+        "id": "a_member_5_name"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 5 roll",
+        "id": "a_member_5_roll"
+      },
+      {
+        "type": "image",
+        "label": "Advisor Member 5 image",
+        "id": "a_member_5_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 6 name",
+        "id": "a_member_6_name"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 6 roll",
+        "id": "a_member_6_roll"
+      },
+      {
+        "type": "image",
+        "label": "Advisor Member 6 image",
+        "id": "a_member_6_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 7 name",
+        "id": "a_member_7_name"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 7 roll",
+        "id": "a_member_7_roll"
+      },
+      {
+        "type": "image",
+        "label": "Advisor Member 7 image",
+        "id": "a_member_7_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 8 name",
+        "id": "a_member_8_name"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 8 roll",
+        "id": "a_member_8_roll"
+      },
+      {
+        "type": "image",
+        "label": "Advisor Member 8 image",
+        "id": "a_member_8_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 9 name",
+        "id": "a_member_9_name"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 9 roll",
+        "id": "a_member_9_roll"
+      },
+      {
+        "type": "image",
+        "label": "Advisor Member 9 image",
+        "id": "a_member_9_image.jpg"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 10 name",
+        "id": "a_member_10_name"
+      },
+      {
+        "type": "text",
+        "label": "Advisor Member 10 roll",
+        "id": "a_member_10_roll"
+      },
+      {
+        "type": "image",
+        "label": "Advisor Member 10 image",
+        "id": "a_member_10_image.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Collections Options",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Collections Options"
+      },
+      {
+        "type": "page",
+        "label": "Custom Basics Page",
+        "id": "custom-basics-page"
+      }
+    ]
+  },
+  {
+    "name": "Social Networks",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Facebook",
+        "id": "fb_icon"
+      },
+      {
+        "type": "text",
+        "label": "Twitter",
+        "id": "twitter_icon"
+      },
+      {
+        "type": "text",
+        "label": "Instagram",
+        "id": "instagram_icon"
+      },
+      {
+        "type": "text",
+        "label": "Pinterest",
+        "id": "pinterest_icon"
+      }
+    ]
+  },
+  {
+    "name": "Shirt's values",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Type the options comma separated, eg: Red, Blue, Green."
+      },
+      {
+        "type": "text",
+        "label": "Collar type tags",
+        "id": "shirts_collar_type"
+      },
+      {
+        "type": "text",
+        "label": "Sleeve type tags",
+        "id": "shirts_sleeve_type"
+      },
+      {
+        "type": "text",
+        "label": "Cuff type tags",
+        "id": "shirts_cuff_type"
+      }
+    ]
+  },
+  {
+    "name": "Wedding Leads",
+    "settings": [
+      {
+        "type": "image",
+        "id": "adsbg.jpg",
+        "label": "Wedding Leads Bg image"
+      },
+      {
+        "type": "text",
+        "label": "Wedding leads main title",
+        "id": "leads_title"
+      },
+      {
+        "type": "text",
+        "label": "Wedding leads paragraph",
+        "id": "leads_text"
+      },
+      {
+        "type": "text",
+        "label": "Wedding leads bottom text",
+        "id": "leads_footer"
+      }
+    ]
+  },
+  {
+    "name": "API urls",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "API urls here. (including protocol)"
+      },
+      {
+        "type": "text",
+        "label": "FM API URL",
+        "id": "fm_api_url"
+      },
+      {
+        "type": "text",
+        "label": "Register API URL",
+        "id": "register_api_url"
+      },
+      {
+        "type": "text",
+        "label": "Referals API URL",
+        "id": "referal_api_url"
+      }
+    ]
+  },
+  {
+    "name": "Custom Links",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Customs links"
+      },
+      {
+        "type": "text",
+        "label": "Custom measurements link",
+        "id": "custom_measurement_url"
+      }
+    ]
+  },
+  {
+    "name": "Custom Basics Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Custom Basics Page"
+      },
+      {
+        "type": "image_picker",
+        "id": "cb-hero",
+        "label": "Custom Basics Hero image"
+      }
+    ]
+  }
+]

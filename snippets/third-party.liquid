@@ -1,0 +1,43 @@
+<!-- Paste in here all the Third Party Snippets such like Google Analytics, GTM, Facebook Pixel, etc -->
+<!--  ================================ -->
+
+<!-- Kustomer ================================ -->
+<script>
+  !function(a,b,c,d){a.Kustomer=c,c._q=[],c._i=[],c.init=function(a){function b(a,b){a[b]=function(){a._q.push([b].concat(Array.prototype.slice.call(arguments,0)))}}for(var d="init clear identify track start describe".split(" "),e=0;e<d.length;e++)b(c,d[e]);c._i.push(a)};var e=b.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://cdn.kustomerapp.com/cw/sdk.v1.min.js";var f=b.getElementsByTagName("script")[0];f.parentNode.insertBefore(e,f)}(this,document,window.Kustomer||{});
+  Kustomer.init('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4MzcwZDFhODNjYzQwMTAwMDBlYjZjZiIsInVzZXIiOiI1ODM3MGQxYTRiY2MzYzExMDBiYWM1YTgiLCJvcmciOiI1ODM3MGQxYWQzMDk1MzEwMDA3MWQ1YTkiLCJvcmdOYW1lIjoic25hcHN1aXRzIiwidXNlclR5cGUiOiJtYWNoaW5lIiwicm9sZXMiOlsib3JnLnRyYWNraW5nIl0sImF1ZCI6InVybjpjb25zdW1lciIsImlzcyI6InVybjphcGkiLCJzdWIiOiI1ODM3MGQxYTRiY2MzYzExMDBiYWM1YTgifQ.AvyISRbxn1Q7z7pq7bRMUCtgtWQBMXOZ3k1cdyaBVXE');
+  Kustomer.start();
+</script>
+
+<!-- Facebook pixel ================================ -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '152694761819053'); // Insert your pixel ID here.
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=152694761819053&ev=PageView&noscript=1"
+/></noscript>
+
+<!-- Klaviyo ================================ -->
+<script>
+  var _learnq = _learnq || [];
+
+  _learnq.push(['account', 'HtemLJ']);
+
+  _learnq.push(['identify', {
+    // Change the line below to dynamically print the user's email.
+    {% if customer %}
+     '$email' : '{{ customer.email }}'
+    {% endif %}
+  }]);
+
+  (function () {
+  var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+  b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+  var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+  })();
+</script>

@@ -1,0 +1,39 @@
+<div class="main-top">
+  <div class="top-info">
+    <p class="text--regular bold highlight">{{ settings['banner-shipping-content'] }}</p>
+  </div>
+</div>
+
+{% if template contains 'index' or template contains '404' %}
+  <div class="new-nav-header {% if template contains '404' %}page-404-header{% endif %}">
+    <div class="header-block header-left">
+      <a href="/" class="logo-link">
+        <img src="{{ 'logo-white.svg' | asset_url }}" alt="Snap Suits" class="logo logo--home"/>
+      </a>
+    </div>
+    <div class="header-block header-right">
+      <ul class="nav-list">
+        <li>
+          <a href="#">Shop</a>
+        </li>
+        <li>
+          <a href="#">Weddings</a>
+        </li>
+      </ul>
+      <ul class="nav-list">
+        <li>
+          <a href="/cart" class="cart-link-mobile">Cart (<span class="js-cart-count">{{ cart.item_count }}</span>)</a>
+          <span class="js-inline-cart-show header-item cart-link-desktop">Cart ( <span class="js-cart-count">{{ cart.item_count }}</span> )</span>
+        </li>
+        <li class="menu-trigger menu-hidde">
+          <a class="menu-hide-mobile header-item" href="#">
+            Menu
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endif %}

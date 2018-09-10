@@ -1,0 +1,99 @@
+//
+//	MIXINS & FUNCTIONS
+//	A few simple Sass helpers.
+//
+
+
+// mq($value)
+//
+// Mobile-first media query
+//
+// $value - A number with unit or keyword string reflecting at what screen width to break on
+//
+// Styleguide Helpers.Mixins
+@mixin mq($value) {
+  @if (type-of($value) == number) {
+    @media only screen and (min-width: $value) {
+      @content;
+    }
+  } @else if(type-of($value) == string) {
+    @if $value == "mobile-large" {
+      @media only screen and (min-width: $mobile-large) {
+        @content;
+      }
+    } @else if $value == "tablet" {
+      @media only screen and (min-width: $tablet) {
+        @content;
+      }
+    } @else if $value == "tablet-large" {
+      @media only screen and (min-width: $tablet-large) {
+        @content;
+      }
+    } @else if $value == "desktop" {
+      @media only screen and (min-width: $desktop) {
+        @content;
+      }
+    } @else if $value == "desktop-large" {
+      @media only screen and (min-width: $desktop-large) {
+        @content;
+      }
+    }
+  }
+}
+
+// @font-face mixin
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: $font-family;
+		font-weight: $weight;
+		font-style: $style;
+
+		src: url('#{$file-path}.eot');
+		src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+		     url('#{$file-path}.woff') format('woff'),
+		     url('#{$file-path}.ttf') format('truetype'),
+		    //  url('#{$file-path}.svg##{$font-family}') format('svg');
+	}
+}
+
+// Strip units from values
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// Calculate ems from pixels
+@function calc-em($px, $base: 16) {
+	$px: strip-unit($px);
+	$base: strip-unit($base);
+	@if $px == 1 {
+		@return 0.0725em;
+	}
+	@return ($px / $base) * 1em;
+}
+
+// Borders
+@mixin border-line($position: 'all', $size: $border-size-primary, $type: $border-type-primary, $color: $border-color-primary) {
+	@if $position == "top" {
+		border-top: $size $type $color;
+	}
+	@if $position == "bottom" {
+		border-bottom: $size $type $color;
+	}
+	@if $position == "left" {
+		border-left: $size $type $color;
+	}
+	@if $position == "right" {
+		border-right: $size $type $color;
+	}
+	@if $position == "all" {
+		border: $size $type $color;
+	}
+}
+
+// Transitions all
+@mixin transitions($time){
+	-webkit-transition: all $time ease-in-out;
+  -moz-transition: all $time ease-in-out;
+  -o-transition: all $time ease-in-out;
+  transition: all $time ease-in-out;
+}

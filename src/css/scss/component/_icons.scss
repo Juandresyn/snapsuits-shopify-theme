@@ -1,0 +1,26 @@
+.icon {
+  &-regular {
+    &-white {
+      color: #fff;
+      font-size: 30px;
+    }
+
+    &-brand {
+      color: $brand-primary;
+      font-size: 30px;
+    }
+
+    &-gray {
+      color: $gray;
+      font-size: 30px;
+    }
+  }
+}
+
+[class^="icon"], [class*=" icon"] {
+  &:focus,
+  &:active,
+  &:hover {
+    outline: none;
+  }
+}

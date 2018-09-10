@@ -1,0 +1,29 @@
+</main> <!-- Close .main-wrapper for full width effect -->
+<div class="has-background-image background-center page-banner--header" style="background-image: url({{ settings['hiw-img-hero'].src | img_url: 'master' }})">
+  <div class="wrapper--560">
+    <h1 class="title--main">{{ page.title }}</h1>
+  </div>
+</div>
+<main class="main-wrapper"> <!-- Open again .main-wrapper for wrapper effect -->
+  <section class="section hiw__content">
+    {% for i in (1..4) %}
+      <article class="hiw__item">
+        {% capture hiw_image %}hiw-image-content-{{ i }}{% endcapture %}
+        {% capture hiw_title %}hiw-title-{{ i }}{% endcapture %}
+        {% capture hiw_content %}hiw-content-{{ i }}{% endcapture %}
+        {% if settings[hiw_title] != "" %}
+          <img src="{{ settings[hiw_image].src | img_url: 'master' }}" alt="{{ settings[hiw_title] }}" class="m-b-md">
+          <h2 class="title--14">{{ settings[hiw_title] }}</h2>
+          <p class="text--regular">{{ settings[hiw_content] }}</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </section>
+</main> <!-- Close .main-wrapper for full width effect -->
+<section class="section hiw__footer has-background-image background-center" style="background-image: url({{ settings['hiw-img-footer'].src | img_url: 'master' }})">
+  <div class="wrapper--770">
+    <h2 class="title--28 title--28-bold">{{ settings['hiw-footer-title'] }}</h2>
+    <p class="text--16 text--center white">{{ settings['hiw-footer-content'] }}</p>
+  </div>
+</section>
+<main class="main-wrapper"> <!-- Open again .main-wrapper for wrapper effect -->

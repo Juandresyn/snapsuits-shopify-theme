@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="184px" height="189px" viewBox="0 0 184 189" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 24</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="25" cy="25" r="25"></circle>
+        <rect id="path-2" x="0" y="7" width="77" height="69" rx="1"></rect>
+        <mask id="mask-3" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="77" height="69" fill="white">
+            <use xlink:href="#path-2"></use>
+        </mask>
+        <path d="M18,0.5 L18,12.5 C18,12.7761424 18.2238576,13 18.5,13 C18.7761424,13 19,12.7761424 19,12.5 L19,0.5 C19,0.223857625 18.7761424,0 18.5,0 C18.2238576,0 18,0.223857625 18,0.5 L18,0.5 Z" id="path-4"></path>
+        <mask id="mask-5" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-4" y="-4" width="9" height="21">
+            <rect x="14" y="-4" width="9" height="21" fill="white"></rect>
+            <use xlink:href="#path-4" fill="black"></use>
+        </mask>
+        <path d="M58,0.5 L58,12.5 C58,12.7761424 58.2238576,13 58.5,13 C58.7761424,13 59,12.7761424 59,12.5 L59,0.5 C59,0.223857625 58.7761424,0 58.5,0 C58.2238576,0 58,0.223857625 58,0.5 L58,0.5 Z" id="path-6"></path>
+        <mask id="mask-7" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-4" y="-4" width="9" height="21">
+            <rect x="54" y="-4" width="9" height="21" fill="white"></rect>
+            <use xlink:href="#path-6" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Weddings" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-weddings" transform="translate(-1043.000000, -833.000000)">
+            <g id="Group-24" transform="translate(1044.000000, 834.000000)">
+                <path d="M91.5,188 C142.034055,188 183,147.034055 183,96.5 C183,45.9659454 142.034055,5 91.5,5 C40.9659454,5 0,45.9659454 0,96.5 C0,147.034055 40.9659454,188 91.5,188 Z" id="Oval-110-Copy-3" fill="#F9F9F9"></path>
+                <g id="Group-17" transform="translate(6.000000, 0.000000)">
+                    <g id="Group-13">
+                        <g id="Oval-122">
+                            <use stroke="#FFFFFF" stroke-width="12" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            <use stroke="#FE433E" stroke-width="2" xlink:href="#path-1"></use>
+                        </g>
+                        <text id="4" font-family="Montserrat-Regular, Montserrat" font-size="14" font-weight="normal" fill="#FE3A35">
+                            <tspan x="20.807" y="29">4</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="Group-14" transform="translate(53.000000, 58.000000)">
+                    <path d="M44.79,29 C42.0653846,29 39.6958577,30.9546154 38.4226923,32.3169231 C37.1489346,30.9546154 34.78,29 32.0553846,29 C27.3169231,29 24,32.3169231 24,37.0257692 C24,42.2084615 28.1165385,45.5846154 32.085,48.8423077 C33.9507692,50.3526923 35.9053846,51.9519231 37.3861538,53.7288462 C37.6526923,54.025 38.0080769,54.2026923 38.3634615,54.2026923 L38.4523077,54.2026923 C38.8373077,54.2026923 39.1926923,54.025 39.4592308,53.7288462 C40.94,51.9519231 42.8946154,50.3526923 44.7603846,48.8423077 C48.7288462,45.5846154 52.8453846,42.2084615 52.8453846,37.0257692 C52.8453846,32.3169231 49.5284615,29 44.79,29 L44.79,29 Z" id="Fill-4" stroke="#FE3A35"></path>
+                    <use id="Rectangle-105" stroke="#AAAAAA" mask="url(#mask-3)" stroke-width="2" xlink:href="#path-2"></use>
+                    <g id="Line">
+                        <use fill="#AAAAAA" fill-rule="evenodd" xlink:href="#path-4"></use>
+                        <use stroke="#F9F9F9" mask="url(#mask-5)" stroke-width="8" xlink:href="#path-4"></use>
+                    </g>
+                    <g id="Line">
+                        <use fill="#AAAAAA" fill-rule="evenodd" xlink:href="#path-6"></use>
+                        <use stroke="#F9F9F9" mask="url(#mask-7)" stroke-width="8" xlink:href="#path-6"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

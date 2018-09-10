@@ -1,0 +1,30 @@
+</main> <!-- Close .main-wrapper for full width effect -->
+<div class="has-background-image background-center page-banner--header" style="background-image: url({{ settings['quality-img-hero'].src | img_url: 'master' }})">
+  <div class="wrapper--560">
+    <h1 class="title--main">{{ page.title }}</h1>
+    <h2 class="title--medium white">Have you ever wondered why suits are so expensive?</h2>
+    <p class="text-second--regular text-second--regular-14">We did too. Turns out, they don’t have to be. Brick and mortar brands make suits for very little, in poor working conditions, mark up suits over 300%, and send hundreds emails for “50% off sales” or  “Buy 3 for the price of 1” to get you to come into their stores.</p>
+    <p class="text-second--regular text-second--regular-14">No cheesy sales tactics. Our suits are always $275.</p>
+    <a href="#content" class="icon--down icon-regular-white js-scroll"></a>
+  </div>
+</div>
+<main class="main-wrapper"> <!-- Open again .main-wrapper for wrapper effect -->
+<div id="content" class="our-qualities--items">
+  {% for i in (1..6) %}
+    <div class="our-qualities--item">
+      {% capture quality_image %}quality-img-{{ i }}{% endcapture %}
+      {% capture quality_title %}quality-title-{{ i }}{% endcapture %}
+      {% capture quality_content %}quality-content-{{ i }}{% endcapture %}
+
+      <div class="our-qualities--content">
+        <h3>{{ settings[quality_title] }}</h3>
+        <p>{{ settings[quality_content] }}</p>
+      </div>
+      <div class="our-qualities--image">
+        <div class="our-qualities--image-border">
+          <img src="{{ settings[quality_image].src | img_url: 'master' }}" alt="{{ settings[quality_image].alt | escape }}" />
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

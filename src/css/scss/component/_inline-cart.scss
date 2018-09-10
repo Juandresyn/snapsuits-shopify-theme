@@ -1,0 +1,194 @@
+.inline-cart {
+  position: fixed;
+  right: -345px;
+  top: 0;
+  width: 345px;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 100;
+  flex-direction: column;
+  border-left: 1px solid #eee;
+
+  @include flexbox;
+
+  &.is-active {
+    z-index: 1000; // it change from 100 to 1000 cuz now we have 2 different slide content and for hidding intercom globe.
+  }
+
+  &-header {
+    background-color: #f8f8f8;
+    padding: 25px 20px;
+    font-size: 20px;
+    color: $gray;
+    font-family: $font-primary;
+  }
+
+  &-title{
+    font-size: 20px;
+    font-family: $font-primary;
+    display: inline;
+  }
+
+  &-count {
+    float: right;
+    cursor: pointer;
+
+    &:hover {
+      color: $brand-primary;
+    }
+  }
+
+  &-icon {
+    vertical-align: middle;
+  }
+
+  &-content {
+    overflow-y: scroll;
+    height: 100%;
+    padding-bottom: 96px;
+    background: #fff;
+
+    &.is-empty {
+      align-items: center;
+
+      @include flexbox;
+    }
+  }
+
+  &-item {
+    padding: 15px 20px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+
+    &__image {
+
+      &-wrapper {
+        margin-right: 15px;
+      }
+    }
+
+    &__delete {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: $gray;
+    }
+
+    &__details {
+      @include flexbox;
+    }
+
+    &__title {
+      font-size: 14px;
+      font-family: $font-primary--bold;
+      color: $gray;
+      text-align: left;
+      padding-right: 20px;
+      line-height: 20px;
+    }
+
+    &__price {
+      font-size: 14px;
+      font-family: $font-primary--bold;
+      color: $brand-primary;
+      text-align: left;
+    }
+  }
+
+  &-edit {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    color: $gray;
+  }
+
+  .customizations {
+    position: relative;
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+
+    &-title {
+      position: absolute;
+      top: 90px;
+      left: 125px;
+      font-size: 13px;
+      color: $brand-primary;
+      font-family: $font-primary;
+
+      .carret {
+        font-size: 10px;
+        padding: 0 10px;
+      }
+    }
+  }
+
+  &-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+  }
+
+  &-fit {
+    border-top: 3px solid #eee;
+    padding: 15px 20px;
+
+    .button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
+
+    .link {
+      vertical-align: sub;
+    }
+  }
+
+  &-total {
+    border-top: 1px solid #eee;
+    padding: 15px 20px;
+    justify-content: space-between;
+
+    p {
+      font-weight: bold;
+    }
+
+    @include flexbox;
+  }
+
+  &-checkout {
+    .button {
+      width: 100%;
+      padding: 15px 0;
+      text-align: center;
+      margin-bottom: 0;
+    }
+  }
+
+  &-empty {
+    text-align: center;
+    padding: 0 55px;
+  }
+}
+
+.cart-link,
+.display-inline {
+  &-mobile {
+    @media screen and (min-width: 1025px) {
+      display: none !important;
+    }
+  }
+
+  &-desktop {
+    display: none !important;
+    @media screen and (min-width: 1025px) {
+      display: inline-block !important;
+    }
+  }
+}
+
+.display-inline {
+  display: inline !important;
+}

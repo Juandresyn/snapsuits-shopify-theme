@@ -1,0 +1,35 @@
+<div id="login_modal" class="mfp-hide login--modal">
+  <img src="{{ 'logo-white.svg' | asset_url }}" alt="Snapsuits logo" class="login--modal-logo">
+  <h2 class="login--modal-title">Log In</h2>
+  <div class="form-wrapper">
+    <span class="login--modal-close js-modal-close"><span class="ads__close-icon icon--menu-close"></span></span>
+    <form method="post" action="https://{{ shop.domain }}/account/login" id="customer_login" class="form js-login" accept-charset="UTF-8">
+      <input type="hidden" name="checkout_url" class="js-form-redirect" value="/account" />
+      <div id="errors" class="js-errors">{{ form.errors | default_errors }}</div>
+      <div class="input-control">
+        <input type="text" name="customer[email]" required="required" id="email" class="js-login-email">
+        <label for="email" class="form-label">Email address</label>
+      </div>
+      <div class="input-control">
+        <input type="password" name="customer[password]" required="required" id="password" class="input js-login-password" autocomplete="new-password">
+        <label for="password" class="form-label">password</label>
+      </div>
+      <div class="form-actions center">
+        <input type="submit" class="button button--primary cta js-login-submit" value="Log In">
+        <p class="text--regular">I don’t have an account,  <a href="#register_modal" class="highlight js-popup">Register</a></p>
+        <div class="cf">
+          <hr class="form-separator">
+        </div>
+        <a href="/account/login#recover" class="text--regular pointer bold color-main">Forgot Password?</a>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).on('ready', function() {
+    // $('.js-form-redirect').val('/account');
+  });
+  $('.js-modal-close').on('click', function() {
+    $.magnificPopup.close();
+  });
+</script>

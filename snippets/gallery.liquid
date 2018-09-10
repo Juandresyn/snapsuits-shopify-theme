@@ -1,0 +1,14 @@
+<div class="product-gallery">
+  {% for image in product.images %}
+    {% if forloop.first == true %}
+      <div class="gallery-image__full">
+        <img src="{{ image.src | product_img_url: 'grande' }}" alt="" class="js-image-full">
+      </div>
+    {% endif %}
+  {% endfor %}
+  <div class="gallery-tumbnails__list">
+    {% for image in product.images %}
+      <div class="gallery-tumbnail__item js-tumbnail {% if forloop.first == true %} is-active {% endif %}" data-hd="{{ image.src | product_img_url: 'grande' }}" style="background-image: url('{{ image.src | product_img_url: 'compact' }}');"></div>
+    {% endfor %}
+  </div>
+</div>

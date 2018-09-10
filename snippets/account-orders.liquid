@@ -1,0 +1,90 @@
+<div class="orders">
+  <div class="orders__wrapper">
+    {% paginate customer.orders by 10 %}
+      {% if customer.orders.size != 0 %}
+          <div class="js-accordion accordion">
+            {% for order in customer.orders %}
+
+              <h3 class="order__title accordion__title">
+                <div class="title-left">
+                  <div class="title-container">
+                    <div class="order-label">Order Placed</div>
+                    <div class="order-input">{{ order.created_at | date: "%B %d, %Y" }}</div>
+                  </div>
+                  <div class="title-container">
+                    <div class="order-label">Total</div>
+                    <div class="order-input">{{ order.total_price | money | remove: '.00' }}</div>
+                  </div>
+                  <div class="title-container">
+                    <div class="order-label">Ship to</div>
+                    <div class="order-input">{{ customer.name }}</div>
+                  </div>
+                  <div class="title-container">
+                    <div class="order-label">Status</div>
+                    <div class="order-input">{{ order.fulfillment_status }}</div>
+                  </div>
+                </div>
+                <div class="title-right">
+                  <div>
+                    <strong>Order {{ order.name }}</strong> <br>
+                    <span class="order-dets">Order Details</span>
+                  </div>
+                  <span class="icon--carret-down"></span>
+                </div>
+              </h3>
+              <div class="order__content">
+                <div class="mobile--status order-info">
+                  <span class="order-info__price">Order Total: <strong>{{ order.total_price | money | remove: '.00' }}</strong></span>
+                  <span class="order-info__status">Status: <strong>{{ order.financial_status }}, {{ order.fulfillment_status }}</strong></span>
+                </div>
+                {% for line_item in order.line_items %}
+                  {% assign loop = forloop.index0 | modulo: 2 %}
+                  {% if loop == 0 %}
+                    {% assign edge = 'even' %}
+                  {% else %}
+                    {% assign edge = 'odd' %}
+                  {% endif %}
+                  <div class="order__item {{ edge }}">
+                    <div class="order__image-wrapper">
+                      {{ line_item.image | img_url: '142x' | img_tag: line_item.title, 'order__image' }}
+                    </div>
+                    <div class="order__info-wrapper">
+                        <p class="order__product-title"><strong>Product: </strong>{{ line_item.title | link_to: line_item.product.url }}</p>
+                        <div class="order__info-container">
+                        {% unless line_item.properties == empty %}
+                          <div class="order__properties">
+                            {% for property in line_item.properties %}
+                              {% unless property.first contains "Ref" %}
+                                <p class="text--regular"><span class="properties__icon icon--{{ property.first | downcase }}"></span> <strong>{{ property.first }}: </strong>{{ property.last }}</p>
+                              {% endunless %}
+                            {% endfor %}
+                          </div>
+                        {% endunless %}
+                        <div class="order__status">
+                          {% unless line_item.properties == empty %}
+                            {% for property in line_item.properties %}
+                              {% if property.first contains "Ref" %}
+                                <p class="text--regular"><span class="properties__icon-stable icon--cirlcle"></span> <strong>{{ property.first }}: </strong>{{ property.last }}</p>
+                              {% endif %}
+                            {% endfor %}
+                            <p class="text--regular"><span class="properties__icon-stable icon--cirlcle"></span> <strong>Price: <span class="highlight">{{ line_item.price | money | remove: '.00' }}</span></strong></p>
+                          {% endunless %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="orders__empty">
+            {{ 'suitholder.svg' | asset_url | img_tag: 'no orders yet', 'orders__empty-image' }}
+            <p class="text--regular">You haven't placed any orders yet.</p>
+            <a href="/collections" class="link--regular orders__link">Start Shopping!</a>
+          </div>
+      {% endif %}
+      {{ paginate | default_pagination }}
+    {% endpaginate %}
+  </div>
+</div>

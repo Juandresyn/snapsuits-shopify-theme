@@ -1,0 +1,143 @@
+.inline-navigation {
+	position: fixed;
+	right: -300px;
+	z-index: -1;
+	height: 100%;
+	width: 300px;
+	background-color: $brand-primary;
+	padding: 20px;
+
+  &.is-active {
+    z-index: 100;
+  }
+}
+
+.inline-search {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: $white;
+	input[type="text"] {
+		width: 80%;
+		background: transparent;
+		border: none;
+		margin-bottom: 0;
+		box-shadow: none;
+		color: #666;
+		font-family: $montserrat;
+		font-size: 13px;
+		font-weight: 300;
+		line-height: 23px;
+		padding: 5px 10px;
+	}
+	input[type="submit"] {
+		width: 20%;
+	}
+	.search-submit {
+		display: block;
+		width: 18px;
+		height: 18px;
+		background-image: url("{{ 'search.png' | asset_url }}");
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-color: transparent;
+		margin: 0;
+	}
+}
+
+.customer-logins {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 0;
+	border-bottom: 1px solid rgba($white, 0.2);
+	li:first-child a {
+		background-color: $white;
+		color: darken($brand-primary, 16%);;
+	}
+	li:last-child a {
+		background-color: darken($brand-primary, 16%);;
+		color: $white;
+	}
+	a {
+		display: block;
+		padding: 14px 0;
+		width: 122px;
+		font-family: $montserrat;
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 14px;
+		text-transform: uppercase;
+		text-align: center;
+		transition: all 0.25s;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+.main-nav-new {
+	margin: 15px 0 0;
+	padding-bottom: 15px;
+	border-bottom: 1px solid rgba($white, 0.2);
+	a {
+		display: block;
+		opacity: 0.7;
+		color: white;
+		font-family: $montserrat;
+		font-size: 13px;
+		font-weight: 400;
+		line-height: 14px;
+		text-transform: uppercase;
+		padding: 7px 0;
+		transition: all 0.25s;
+		&.active-link,
+		&:hover {
+			opacity: 1;
+			font-weight: bold;
+		}
+	}
+}
+
+.side-nav-list {
+	display: flex;
+	align-items: center;
+	margin: 20px 0 15px;
+	li {
+		margin-right: 10px;
+		transition: all 0.25s;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+	li i {
+		font-size: 1.875rem;
+		&:before {
+			color: $white;
+		}
+	}
+}
+
+.contact-info {
+	color: white;
+	font-family: $montserrat;
+	font-size: 13px;
+	line-height: 24px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid rgba($white, 0.2);
+	a {
+		text-decoration: underline;
+		&:hover {
+			color: $white;
+		}
+	}
+}
+
+.side-tagline {
+	color: white;
+	font-family: $montserrat;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 19px;
+	margin-top: 15px;
+}

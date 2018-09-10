@@ -1,0 +1,41 @@
+{% comment %}
+{% unless collection.handle contains "shirt" %}
+  </main> <!-- Close .main-wrapper to allow full width -->
+    <section class="hero-slider">
+      <article class="hero-slide hero-slider-item has-background-image banner" style="background-image: url({{ 'collection-hero.jpg' | asset_url }})">
+        <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+          <div class="hero-slide__content hero-slide__content--big">
+            <h1 class="title--28 title--main-bold">Affordable Custom Suits</h1>
+            <h2 class="title--22 title--22-white">Let us help you find the perfect custom tailored suit for $275</h2>
+            <div class="hero-slide__wrapper m-t-lg">
+              <!-- <a href="#" class="button button--red">Explore our most popular suits</a>
+              <p class="hero-slider-weddings--text m-y-sm">- OR -</p> -->
+              <!-- <a href="/products/create-custom-suit?openapp=true" class="button button--green">Design Your Own Custom Suit - $300</a> -->
+            </div>
+          </div>
+        </main> <!-- Close .main-wrapper to allow full width -->
+      </article>
+    </section>
+    <div class="hero-slider--relative">
+      <a href="#content" class="js-scroll hero-slider-learn-more">
+        <span>LEARN MORE</span><br>
+        <span class="icon--carret-down hero-slider-learn-more__icon"></span>
+      </a>
+    </div>
+  <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+    <div id="content" class="m-b-lg"></div>
+{% endunless %}
+{% endcomment %}
+    {% include 'collection' %}
+    {% comment %}
+    {% unless collection.handle contains "shirt" %}
+      </main> <!-- Close .main-wrapper to allow full width -->
+        <section class="section bg--gray has-background-image" style="background-image: url({{ 'collections-footer.jpg' | asset_url }})">
+          <div class="wrapper--770 p-y-md text--center">
+            <p class="title--medium white m-b-md">Want to design your own suit from top to bottom?</p>
+            <a href="/products/create-custom-suit?openapp=true" class="button button-outline-white">Design Your Own Custom Suit - $350</a>
+          </div>
+        </section>
+      <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+    {% endunless %}
+    {% endcomment %}

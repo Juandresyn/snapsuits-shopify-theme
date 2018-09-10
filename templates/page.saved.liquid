@@ -1,0 +1,263 @@
+{% if customer %}
+  {% include 'red-title' with title: "Save for later" with class: "desktop--title no-gap" %}
+  {% include 'account-breadcrumb' with current_title: 'Saved Suits'  with current_url: '#' %}
+  <div id="account_main" class="saved-suits cart">
+    <div class="cart__count desktop--only">
+      <table class="cart__items">
+        <thead>
+          <td>ITEM</td>
+          <td>PRICE</td>
+          <td>QUANTITY</td>
+          <td>TOTAL</td>
+          <td>ACTIONS</td>
+        </thead>
+        <tbody class="js-saved-suits-content">
+
+        </tbody>
+      </table>
+      <div class="cart__empty js-cart__empty">
+        {{ 'cart_empty.svg' | asset_url | img_tag: 'Cart Empty', 'cart-empty__image' }}
+        <p class="text--regular">You haven’t saved anything yet! <a href="/collections" class="link highlight">Go back to the store</a> to continue looking.</p>
+        <a href="/collections" class="button button-white small">GO BACK TO THE STORE</a>
+      </div>
+    </div><!--
+    --><div class="cart__options desktop--cart">
+      <div class="cart-option cart-options__measurement js-cart-measurement__no">
+        <h3 class="cart-option__title small">MEASUREMENTS <span class="icon--delete delete"></span></h3>
+        <p class="text--regular highlight caption">You need to get fitted before checking out.</p>
+        <ul class="account-links space">
+          <li>
+            <a href="#login_modal" class="js-popup">log in</a>
+          </li>
+        </ul>
+        <a href="#get-fitted-app-intro" class="button button-white small js-get-fitted-popup">GET FITTED</a>
+      </div>
+      <div class="cart-option cart-options__measurement success js-cart-measurement__yes" style="display: none;">
+        <h3 class="cart-option__title small">MEASUREMENTS <span class="icon--checked success"></span></h3>
+        <p class="text--regular highlight caption">We have measurements for your profile saved on our data base.</p>
+        <ul class="account-links space">
+          <li>
+            <a href="/pages/my-measurement">View measurements</a>
+          </li>
+        </ul>
+        <a href="#get-fitted-app-intro" class="button button-white small js-get-fitted-popup">GET FITTED AGAIN</a>
+      </div>
+      <div class="cart-option cart-options__checkout">
+        <span class="button button--red button--full-width saved-suits__all js-saved-add-all-to-cart">ADD EVERYTHING TO CART</span>
+      </div>
+    </div>
+  <div class="cart__form mobile--cart">
+    <div class="cart__content js-mobile-cart mobile--only">
+      <div class="js-mobile-saved-loop"></div>
+      <div class="cart__checkout-wrapper">
+        <span class="button button--red saved-suits__all js-saved-add-all-to-cart">ADD EVERYTHING TO CART</span>
+      </div>
+      <div class="cart__empty">
+        {{ 'cart_empty.svg' | asset_url | img_tag: 'Cart Empty', 'cart-empty__image' }}
+        <p class="text--regular">You haven’t saved anything yet! <a href="/collections" class="link highlight">Go back to the store</a> to continue looking.</p>
+        <a href="/collections" class="button button-white small">GO BACK TO THE STORE</a>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="cf"></div>
+  {% include 'get-fitted-app' %}
+  <script type="text/javascript">
+    $(document).on('ready', function(){
+      {% if customer %}
+        var $parentElements = $('.js-saved-suits-content, .js-mobile-saved-loop');
+
+        $.ajax({
+          url: "https://demo.snapsuits.com/api/v1/customizations/{{ customer.id }}/my-customizations",
+          type: 'GET',
+          headers : {
+            'Authorization' : 'Token bb8dd34ceaf3506a63ee3986d6ab0438becf19a1'
+          },
+          success: function(data){
+            $('.js-saved-suits-content').loadTemplate("#saved-suit-template", data);
+            $('.js-mobile-saved-loop').loadTemplate("#saved-suit-template-mobile", data);
+            if (!data.length > 0) {
+              $('.js-saved-add-all-to-cart').hide();
+            }
+            setTimeout(function() {
+              for (i = 0; i < data.length; i++) {
+                for (j = 0; j < Object.keys(data[i].properties).length; j++){
+                  var key = Object.keys(data[i].properties)[j];
+                  var value = data[i].properties[key];
+
+                  if (value && key != "variant_id") {
+
+                    if (key.toLowerCase() === "for") {
+                      $('.js-saved-suits-content .js-item[id="' + data[i].unique_id + '"]').find('.js-saved-add').attr('data-ref', value.replace(/[^0-9.]/g, ''));
+                      $('.js-saved-suits-content .js-item[id="' + data[i].unique_id + '"]').find('.js-saved-remove').attr('data-ref', value.replace(/[^0-9.]/g, ''));
+                    }else if (key.toLowerCase() === "ref") {
+                      $('.js-saved-suits-content .js-item[id="' + data[i].unique_id + '"]').attr('data-ref', value.replace(/[^0-9.]/g, ''));
+                      $('.js-saved-suits-content .js-item[id="' + data[i].unique_id + '"]').addClass('js-main-item main');
+                      $('.js-mobile-saved-loop .js-item[id="' + data[i].unique_id + '"]').attr('data-ref', value.replace(/[^0-9.]/g, ''));
+                      $('.js-mobile-saved-loop .js-item[id="' + data[i].unique_id + '"]').addClass('js-main-item main');
+                    }
+
+                    $('.js-saved-suits-content .js-properties-loop[id="' + data[i].unique_id + '"]').append('<p class="cart-item__properties"><strong>' + key + ':</strong> <span>' + value + '</span></p>');
+                    $('.js-mobile-saved-loop .js-mobile-properties[id="' + data[i].unique_id + '"]').append('<p class="cart-item__properties"><strong>' + key + ':</strong> ' + value + '</p>');
+
+                    if (key.toLowerCase() === "type") {
+                      $('.js-saved-suits-content .js-item[id="' + data[i].unique_id + '"]').find('.js-saved-add, br').hide();
+                      $('.js-mobile-saved-loop .js-item[id="' + data[i].unique_id + '"]').find('.js-saved-add, br').hide();
+                    }
+                  }
+                }
+                $('.js-saved-suits-content .js-item[id="' + data[i].unique_id + '"]').attr('data-customizations', JSON.stringify(data[i].properties))
+                $('.js-mobile-saved-loop .js-item[id="' + data[i].unique_id + '"]').attr('data-customizations', JSON.stringify(data[i].properties))
+              }
+            }, 2000);
+            if ($('.js-saved-suits-content .js-item').length > 0) {
+              $('.cart__empty').hide();
+            }
+          },
+        });
+
+        var urlBase = "{{ settings.fm_api_url }}?email={{ customer.email }}",
+            urlget = urlBase;
+        $.ajax({
+          dataType: 'json',
+          contentType: "application/x-www-form-urlencoded",
+          url : urlget,
+          headers : {
+              'Authorization' : 'Token bb8dd34ceaf3506a63ee3986d6ab0438becf19a1'
+          },
+          type: "GET",
+          success: function(data, textStatus, jqXHR){
+            if (textStatus != "not found") {
+              $('.js-cart-measurement__yes').show();
+              $('.js-cart-measurement__no').hide();
+            }
+          }
+        });
+      {% endif %}
+
+      function deleteItem(id, cb) {
+        $.ajax({
+          url: "https://demo.snapsuits.com/api/v1/customizations/{{ customer.id }}/delete/" + id,
+          type: 'POST',
+          headers : {
+            'Authorization' : 'Token bb8dd34ceaf3506a63ee3986d6ab0438becf19a1'
+          },
+          success: function(data){
+            $parentElements.find('.js-item[id="' + id + '"]').fadeOut('fast').remove();
+            if ($('.js-saved-suits-content .js-item').length > 0) {
+              $('.cart__empty').hide();
+            }else {
+              $('.cart__empty').fadeIn('fast');
+              $('.js-saved-add-all-to-cart').hide();
+            }
+            if (cb()) {
+              cb();
+            }
+          },
+          complete: function(data) {
+          }
+        });
+      }
+
+      $parentElements.on('click', '.js-saved-add', function(){
+        var addId      = $(this).attr('id');
+        var itemRef    = $(this).parents('.js-item').attr('data-ref');
+        var itemId     = $(this).parents('.js-item').attr('id');
+        var siteUrl    = document.location.hostname;
+        var addUrl     = "/cart/add.js";
+        var cartAddUrl = "//" + siteUrl + addUrl;
+
+        $.ajax({
+          url: cartAddUrl,
+          dataType: "json",
+          type: 'POST',
+          async: false,
+          data: {
+            quantity: 1,
+            id: addId,
+            properties: $(this).parents('.js-item').data('customizations')
+          },
+          success: function(data){
+            deleteItem(itemId, function () {
+              theme.toggleInlineCart();
+              theme.updateCart();
+            });
+            $('.js-saved-add[data-ref="' + itemRef + '"]').each(function() {
+              $(this).trigger('click');
+            });
+          }, error: function(data) {
+          }
+        });
+      });
+
+      $parentElements.on('click', '.js-saved-remove', function(){
+        var deleteId = $(this).parents('.js-item').attr('id');
+        var itemRef    = $(this).parents('.js-item').attr('data-ref');
+        deleteItem(deleteId, function(){
+          $('.js-saved-remove[data-ref="' + itemRef + '"]').each(function() {
+            $(this).trigger('click');
+          });
+        });
+      });
+
+      $('.js-saved-add-all-to-cart').on('click', function(){
+        var _this = $(this);
+        _this.text('Adding to cart...');
+
+        $('.js-main-item .js-saved-add').each(function(){
+          $(this).trigger('click');
+        });
+        setTimeout(function(){
+          _this.text('success!');
+
+          setTimeout(function(){
+            _this.text('Add everything to cart');
+          }, 2000);
+        }, 5000);
+      });
+    });
+  </script>
+
+  <script type="text/html" id="saved-suit-template">
+    <tr class="cart-item js-item item" data-id="unique_id">
+      <td class="td--item">
+        <div class="cart-item__image-wrapper">
+          <a data-href="product_url"><img data-src="product_image" alt="" class="cart-item__image"></a>
+        </div>
+        <div class="cart-item__info js-properties-loop" data-id="unique_id">
+          <h2 class="cart-item__title"><a data-href="product_url" data-content="product_name"></a></h2>
+        </div>
+      </td>
+      <td class="td--price"><span data-content="product_price"></span></td>
+      <td class="td--quantity"><p class="cart-item__quantity">1</p></td>
+      <td class="td--total js-total highlight"><span data-content="product_price"></span></td>
+      <td class="td--actions">
+        <span class="item-action js-saved-add highlight pointer" data-id="properties.variant_id"><span class="icon--save delete"></span> Add to Cart</span>
+        <br>
+        <a class="item-action js-saved-remove highlight pointer"><span class="icon--delete delete"></span> Delete</a>
+      </td>
+    </tr>
+  </script>
+  <script type="text/html" id="saved-suit-template-mobile">
+    <div class="cart-item js-item" data-id="unique_id">
+      <div class="cart-item__content">
+        <div class="cart-item__image-wrapper">
+          <a data-href="product_url"><img data-src="product_image" alt="" class="cart-item__image"></a>
+        </div>
+        <div class="cart-item__information">
+          <h2 class="cart-item__title"><a data-href="product_url" data-content="product_name"></a></h2>
+          <p class="cart-item__properties"><strong class="highlight">Price: <span data-content="product_price"></span></strong></p>
+          <div class="js-mobile-properties" data-id="unique_id"></div>
+        </div>
+      </div>
+      <div class="cart-item__option">
+        <span class="button button-white js-saved-add" data-id="properties.variant_id"><span class="icon--save delete"></span> Add to Cart</span><!--
+        --><span class="button button-white button-white--gray js-saved-remove"><span class="icon--delete delete"></span> Remove</span>
+      </div>
+    </div>
+  </script>
+{% else %}
+  <script type="text/javascript">
+    window.location.href = "/account/login";
+  </script>
+{% endif %}

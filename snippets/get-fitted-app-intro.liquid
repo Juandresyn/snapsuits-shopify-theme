@@ -1,0 +1,59 @@
+<div id="get-fitted-app-intro" class="app get-fitted-intro get-fitted-app-intro mfp-hide">
+  <div class="app__wrapper">
+    <span class="app__quit"><span class="mfp-close app__quit-icon custom--close desktop--only"></span></span>
+    <div class="app__container">
+      <h1 class="title--medium title--medium-primary--bold">GET FITTED WITH SNAPSUITS</h1>
+      <div class="get-fitted-options">
+        <article class="get-fitted-option">
+          <div class="get-fitted-option__header">
+            <h2 class="title--14 get-fitted-option__title uppercase"><span class="icon--time get-fitted-option__icon"></span> Less than 5 minutes: by yourself.</h2>
+            <img src="{{ 'gf-op1.jpg' | asset_url }}" alt="">
+          </div>
+          <div class="get-fitted-option__body">
+            <h2 class="title--14 uppercase">GET FITTED WITH OUR EZ Tailor</h2>
+            <p class="text--regular">Answer 8-10 questions about your body size and fit. It’s science!</p>
+            <a href="#get-fitted-app-size" class="button button--red js-get-fitted-popup mfp-close">GET FITTED WITH OUR EZ Tailor</a>
+          </div>
+        </article>
+        <article class="get-fitted-option">
+          <div class="get-fitted-option__header">
+            <h2 class="title--14 get-fitted-option__title uppercase"><span class="icon--time get-fitted-option__icon"></span> 10-15 minutes: need one partner.</h2>
+            <img src="{{ 'gf-op2.jpg' | asset_url }}" alt="">
+          </div>
+          <div class="get-fitted-option__body">
+            <h2 class="title--14 uppercase">Submit your own measurements</h2>
+            <p class="text--regular">Grab a measuring tape. Follow our instruction. Submit your body measurements.</p>
+            <a href="#get-fitted-custom" data-reinit="true" class="button button--red js-app-popup mfp-close">Submit your own measurements</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).on('ready', function(){
+    var $slider = $('.js-get-fitted-slider, .js-app-slider');
+    $('.js-get-fitted-popup, .js-app-popup').on('click', function(){
+      $('.js-get-fitted-slider.slick-initialized, .js-app-slider.slick-initialized').slick('unslick');
+      setTimeout(function() {
+        if ($slider.hasClass('slick-initialized')) {
+          $slider.slick('unslick');
+        }
+        $slider.slick({
+          draggable: false,
+          arrows: false,
+          infinite: false,
+          touchMove: false,
+          adaptiveHeight: true
+        });
+        console.log('reinit-true');
+        setTimeout(function() {
+          $slider.slick('reinit');
+        },10);
+      },200);
+
+    });
+  });
+</script>
+{% include "get-fitted-app" %}
+{% include "get-fitted-custom" %}

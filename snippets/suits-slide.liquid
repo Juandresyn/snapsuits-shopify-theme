@@ -1,0 +1,31 @@
+{% assign collectionsArray = collectionsList | split: ", " %}
+{% assign collectionsTitles = collectionsNames | split: ", " %}
+
+{% if slidersTabs %}
+  <ul class="slide-suits-tabs">
+    {% for i in (0..10) %}
+    	{% if collectionsTitles[i] != blank %}
+          <li class="slide-suits-tab js-slide-suits-tab {% if forloop.first == true %}is-active{% endif %}" data-slide="#collection-{{ collectionsArray[i] }}">
+            <span>{{ collectionsTitles[i] }}</span>
+          </li>
+	    {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}
+{% for collectionName in collectionsArray %}
+  <div id="collection-{{ collectionName }}" class="js-slide-suits js-slider slide-suits {% if forloop.first == true %}is-active{% endif %}" data-slick='{"speed":300,"slidesToShow":4,"slidesToScroll":4,"infinite":true,"responsive":[{"breakpoint":1030,"settings":{"slidesToShow":3,"slidesToScroll":3,"infinite":true}},{"breakpoint":850,"settings":{"slidesToShow":2,"slidesToScroll":2,"infinite":true}},{"breakpoint":520,"settings":{"slidesToShow":1,"slidesToScroll":1,"infinite":true}}]}'>
+    {% for product in collections[collectionName].products %}
+      {% unless product.handle contains 'create-your-own-shirt' %}
+        <div class="slide-suits__item">
+          <div class="slide-suits__image--wrapper">
+            <a href="{{ product.url }}">
+              <div class="slide-suits__image" style="background-image: url({{ product.featured_image.src | product_img_url: 'grande' }})"></div>
+            </a>
+          </div>
+          <h3 class="text--strong-14">{{ product.title }}</h3>
+          <div class="text--strong-14 highlight">{{ product.variants[0].price | money_with_currency | remove: 'USD' }}</div>
+        </div>
+      {% endunless %}
+    {% endfor %}
+  </div>
+{% endfor %}

@@ -1,0 +1,247 @@
+// Button
+//
+// A button suitable for clicking.
+//
+// Markup:
+// <a class="button {{modifier_class}}" href="#">Continue Shopping</a>
+//
+// .button--black - A black version of the button.
+// .button--full-width - A full width version of the button.
+// .button--large - A large version of the button.
+//
+// Styleguide Components.Buttons
+.button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: $montserrat;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  border-radius: 1px;
+  transition: all 0.25s;
+  cursor: pointer;
+  color: $white;
+  background-color: #ccc;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &.button-white {
+    color: $red;
+    background: $white;
+    border: 2px solid $red;
+    padding: 15px 40px;
+
+    &:hover {
+      color: $white;
+      background: $red;
+    }
+
+    #{&}#{&}--gray {
+      color: $gray;
+      background: $white;
+      border-color: #ccc;
+
+      &:hover {
+        color: $white;
+        background: #ccc;
+      }
+    }
+  }
+  &.button-outline{
+    &-white {
+      color: $white;
+      border: 2px solid $white;
+      padding: 15px 40px;
+      background-color: transparent;
+
+      &:hover {
+        color: $red;
+        background: $white;
+      }
+    }
+    #{&}--gray {
+      color: $gray;
+      border: 2px solid #ccc;
+      padding: 15px 40px;
+      background-color: transparent;
+
+      &:hover {
+        color: #fff;
+        background: $gray;
+        border-color: $gray;
+      }
+    }
+
+    #{&}--red {
+      color: $brand-primary;
+      border: 2px solid $brand-primary;
+      padding: 15px 40px;
+      background-color: transparent;
+
+      &:hover {
+        background: $brand-primary;
+        color: #fff;
+      }
+    }
+
+    #{&}--blue {
+      color: $blue;
+      border: 2px solid $blue;
+      padding: 14px 39px;
+      background-color: transparent;
+
+      &:hover {
+        color: #fff;
+        background: $blue;
+        border-color: $blue;
+      }
+    }
+  }
+  &.button--red {
+    color: $white;
+    background-color: $red;
+  }
+
+  &.button--primary {
+    color: $white;
+    background-color: $brand-primary;
+  }
+
+  &.button--green,
+  &.button--success {
+    color: $white;
+    background-color: $success;
+
+    &:hover {
+      background-color: darken($success, 10%);
+    }
+  }
+
+  &.button--blue,
+  &.button--info {
+    color: $white;
+    background-color: $blue;
+
+    &:hover {
+      background-color: darken($blue, 10%);
+    }
+  }
+
+  #{&}--secondary {
+    background: $brand-secondary;
+    color: $color-white;
+
+    &:hover {
+      background: lighten($brand-secondary, 10%);
+      color: $white;
+    }
+  }
+
+  &.button--full-width {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  &.button--large {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: $size-base;
+  }
+}
+
+.goback,
+.cancel {
+  color: $gray;
+  font-weight: bold;
+  font-size: 13px;
+  font-family: $font-primary;
+  text-transform: capitalize;
+  vertical-align: baseline;
+  cursor: pointer;
+
+  &:before {
+    content: "\e905";
+    font-family: #{$font-icon} !important;
+    font-size: 10px;
+    color: $gray;
+    padding-right: 5px;
+  }
+
+  &:hover{
+    color: $brand-primary;
+
+    &:before{
+      color: $brand-primary;
+    }
+  }
+
+  & + * {
+    margin-left: 20px;
+  }
+
+  * ~ & {
+    margin-left: 20px;
+  }
+}
+
+.cta {
+
+  & + * {
+    margin-top: 10px;
+  }
+}
+
+.button-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+
+  &:first-child {
+    padding-right: 11px;
+  }
+
+  &:last-child {
+    padding-left: 11px;
+  }
+}
+
+.social {
+  &__button {
+    color: #fff;
+    padding: 12px 25px;
+    background-color: #ccc;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: $font-primary--bold;
+    font-weight: bold;
+    text-align: center;
+
+    @include transitions(0.2s);
+
+    &.fb {
+      background-color: $fb-color;
+
+      &:hover {
+        background-color: lighten($fb-color, 10%);
+      }
+    }
+
+    &.tw {
+      background-color: $tw-color;
+
+      &:hover {
+        background-color: lighten($tw-color, 10%);
+      }
+    }
+
+    .icon {
+      font-size: 16px;
+      padding-right: 10px;
+      display: inline;
+      vertical-align: sub;
+    }
+  }
+}
