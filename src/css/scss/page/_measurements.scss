@@ -1,0 +1,218 @@
+.measurement{
+  &-buttons{
+    display: inline-block;
+    padding-top: 30px;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .parag{
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ccc;
+    max-width: 37%;
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+}
+
+.my-measurement {
+
+  .accordion__title.default_true {
+    // Due limits on the plugin im using for loading the template, i had to use the ID
+    color: $brand-primary;
+    border: 1px solid $brand-primary;
+  }
+
+  &__footer {
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+    @include flexbox;
+
+    @media screen and (max-width: #{$mobile-large}) {
+      flex-direction: column;
+    }
+  }
+
+  &__btn {
+    @media screen and (max-width: #{$mobile-large}) {
+      margin-top: 30px;
+    }
+  }
+
+  .measurement-view {
+
+    .took_from {
+      background: $green;
+      font-size: 12px;
+      color: #fff;
+      font-family: $font-primary--bold;
+      padding: 7px 15px;
+      border-radius: 2px;
+      display: inline-block;
+      margin-left: 10px;
+
+      &.fashion_metrics {
+        display: none;
+      }
+
+      &.custom_measure {
+        display: inline-block;;
+      }
+
+      @media screen and (max-width: #{$mobile-large}) {
+        background: transparent;
+        color: $green;
+        font-size: 15px;
+        padding: 0;
+        border-radius: 0;
+      }
+    }
+
+    .is-default {
+      font-size: 12px;
+      float: right;
+      margin-right: 20px;
+      color: $brand-primary;
+      font-family: $font-primary--bold;
+      display: none;
+
+      &.default_true {
+        display: inline-block;
+      }
+
+      @media screen and (max-width: #{$mobile-large}) {
+        margin-right: 10px;
+        font-size: 15px;
+      }
+    }
+
+    &__btn{
+      margin: 0;
+    }
+
+    .app__content {
+      margin-top: 0;
+
+      &.no-slide {
+        margin-top: 0;
+        margin-bottom: 0;
+        max-height: none;
+
+        @media screen and (max-width: #{$mobile-large}) {
+          margin: 0;
+        }
+      }
+
+      .step-slide__wrapper {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #eee;
+      }
+    }
+
+    .get-fitted__results {
+      @media screen and (max-width: #{$mobile-large}) {
+        flex-direction: column;
+        width: 100%;
+        margin: 25px auto;
+      }
+    }
+    .get-fitted__result {
+      width: 48%;
+
+      @media screen and (max-width: #{$mobile-large}) {
+        width: 100%;
+      }
+
+      &:first-child {
+        margin-right: 4%;
+        border-right: 1px solid #eee;
+
+        @media screen and (max-width: #{$mobile-large}) {
+          margin-right: 0;
+          border-right: none;
+        }
+      }
+    }
+
+    .result {
+      &__type {
+        font-weight: bold;
+      }
+
+      &-rack {
+        flex-wrap: wrap;
+
+        @include flexbox;
+
+        @media screen and (max-width: #{$mobile-large}) {
+          flex-direction: column;
+        }
+      }
+
+      &-box {
+        width: 44%;
+        margin-right: 6%;
+
+        @media screen and (max-width: #{$mobile-large}) {
+          width: 100%;
+          margin-right: 0;
+        }
+      }
+
+      &-details {
+        font-weight: 500;
+      }
+
+      &__btn {
+        margin-top: 30px;
+        margin-bottom: 0;
+        margin-right: 20px;
+
+        &.default_true {
+          // Due limits on the plugin im using for loading the template, i had to use the ID
+          display: none;
+        }
+      }
+    }
+
+    .accordion__title {
+      @media screen and (max-width: #{$mobile-large}) {
+        margin: 0;
+        margin-bottom: 15px;
+
+        strong{
+          display: none;
+        }
+      }
+    }
+  }
+
+  .result {
+    &__type {
+      font-weight: bold;
+    }
+
+    &-details {
+      font-weight: 500;
+    }
+
+    &--default {
+      color: $brand-primary;
+      border: 1px solid $brand-primary;
+    }
+  }
+
+  .empty-state {
+    &__image {
+      margin-bottom: 45px;
+    }
+
+    &__btn {
+      margin: 15px 0 25px 0;
+      padding: 15px 50px;
+    }
+  }
+}

@@ -1,33 +1,34 @@
 // --------------------------------
 // 			Modules
 // --------------------------------
-var gulp = require('gulp'),
-	jshint = require ('gulp-jshint'),
-	concat = require('gulp-concat'),
-	stripDebug = require('gulp-strip-debug'),
-	uglify = require('gulp-uglify'),
-	sass = require('gulp-sass'),
-	notify = require('gulp-notify'),
-	gutil = require('gulp-util'),
-	rename = require('gulp-rename'),
-	autoprefixer = require('autoprefixer'),
-	postCss = require('gulp-postcss'),
-	mqPacker = require('css-mqpacker'),
-	pxToRem = require('postcss-pxtorem'),
-	sourceMaps = require('gulp-sourcemaps'),
-	cssNano = require('gulp-cssnano'),
-	browserSync = require('browser-sync').create(),
-	watch = require('gulp-watch'),
-	fs = require("fs"),
-	cacheBuster = require("postcss-cachebuster");
+const gulp = require('gulp');
+const jshint = require ('gulp-jshint');
+const concat = require('gulp-concat');
+const stripDebug = require('gulp-strip-debug');
+const uglify = require('gulp-uglify');
+const sass = require('gulp-sass');
+const notify = require('gulp-notify');
+const gutil = require('gulp-util');
+const rename = require('gulp-rename');
+const autoprefixer = require('autoprefixer');
+const postCss = require('gulp-postcss');
+const mqPacker = require('css-mqpacker');
+const pxToRem = require('postcss-pxtorem');
+const sourceMaps = require('gulp-sourcemaps');
+const cssNano = require('gulp-cssnano');
+const browserSync = require('browser-sync').create();
+const watch = require('gulp-watch');
+const fs = require("fs");
+const cacheBuster = require("postcss-cachebuster");
+const shell = require('gulp-shell');
 
 
 // --------------------------------
 // 			Setup
 // --------------------------------
-var storeName = 'Store Name',
+var storeName = 'SnapSuits',
 	projectName = storeName.toLowerCase().replace(/\s/g, '-'),
-	url = 'https://store-name.myshopify.com/', // Note: Url must be the actual shop url for BrowserSync to work properly
+	url = 'https://suitssuits.myshopify.com/', // Note: Url must be the actual shop url for BrowserSync to work properly
 	jsfiles = [
 			'src/js/libs/jquery-2.2.4.min.js',
 			'src/js/libs/*.js',
@@ -115,13 +116,12 @@ function handleSassError(err){
 	}).write(err);
 }
 
-
 // --------------------------------
 // 			Executables
 // --------------------------------
 
 // Command: `gulp`
-gulp.task('default', ['js:hint','js:concat','css:postsass'], function() {
+gulp.task('default', ['js:hint','js:concat','css:postsass',], function() {
 	fs.readFile('config.yml', 'utf-8', function(err, _data) {
 		var themeId =  /develop:(\n+)[^#](\s+)theme_id:(\s+)([0-9]+)/.exec(_data)[4]; // it's magic, just go with it.
 

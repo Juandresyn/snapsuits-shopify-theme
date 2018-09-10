@@ -1,0 +1,108 @@
+.title {
+
+  &--small {
+    font-family: $font-primary--bold;
+    color: $gray;
+    font-size: 13px;
+  }
+
+  &--medium {
+    font-family: $font-secondary;
+    color: $gray;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 40px;
+
+    &-white  {
+      color: #fff;
+    }
+
+    &-primary {
+      font-family: $font-primary;
+
+      &--bold {
+        font-family: $font-primary--bold;
+      }
+    }
+  }
+
+  &--main {
+    font-family: $font-secondary;
+    color: #fff;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 16px;
+
+    &-bold  {
+      font-weight: bold;
+    }
+  }
+
+  &--12 {
+    font-family: $font-primary;
+    color: $gray;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  &--14 {
+    font-family: $font-primary--bold;
+    color: $gray;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  &--16 {
+    font-family: $font-primary--bold;
+    color: $gray;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  &--18 {
+    font-family: $font-primary--bold;
+    color: $gray;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  &--20 {
+    font-family: $font-secondary--bold;
+    color: $gray;
+    font-size: 20px;
+    margin-bottom: 16px;
+    text-align: left;
+
+    &-primary {
+      font-family: $font-primary;
+
+      &--bold {
+        font-family: $font-primary--bold;
+      }
+    }
+  }
+
+  &--22 {
+    font-family: $font-secondary;
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+
+    &-bold  {
+      font-weight: bold;
+    }
+  }
+
+  &--28 {
+    font-family: $font-secondary;
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-align: center;
+
+    &-bold  {
+      font-weight: bold;
+    }
+  }
+}

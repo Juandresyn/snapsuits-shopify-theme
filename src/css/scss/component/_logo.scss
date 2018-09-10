@@ -1,0 +1,21 @@
+.main-logo{
+  width: auto;
+  height: 22px;
+  display: inline-block;
+  margin: 20px 0;
+  position: relative;
+  top: 5px;
+
+  @media screen and (max-width: $tablet) {
+    width: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.logo {
+  &--home {
+    width: 175px;
+    height: auto;
+  }
+}

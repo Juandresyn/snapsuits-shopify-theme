@@ -1,0 +1,80 @@
+<div class="inline-navigation">
+  <form class="inline-search" action="/search" method="get">
+    <input type="text" placeholder="E.g. wedding suits" name="q" value="{{ search.terms | escape }}" class="search-input"/>
+    <input type="submit" value="" class="search-submit">
+  </form>
+
+  {% unless customer %}
+    <ul class="customer-logins">
+      <li>
+        <a href="#register_modal" class="js-popup">Register</a>
+      </li>
+      <li>
+        <a href="#login_modal" class="js-popup js-inline-login">Login</a>
+      </li>
+    </ul>
+  {% else %}
+    <ul class="customer-logins">
+      <li>
+        <a href="/account">My Account</a>
+      </li>
+      <li>
+        {{ 'Log out' | customer_logout_link }}
+      </li>
+    </ul>
+  {% endunless %}
+
+  <nav class="main-nav-new">
+    <ul>
+      {% for link in linklists.main-menu.links %}
+        {% assign has_sub_menu = false %}
+        {% assign has_sub_categories = false %}
+        {% assign parent_link_active = false %}
+        {% assign child_list_handle = link.title | handle %}
+        {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+          {% assign has_sub_menu = true %}
+          {% for l in linklists[child_list_handle].links %}
+            {% if handle != blank and handle == l.object.handle %}
+              {% assign parent_link_active = true %}
+            {% elsif page_title == l.title %}
+              {% assign parent_link_active = true %}
+            {% endif %}
+          {% endfor %}
+        {% elsif link.type == 'collection_link' and link.object.all_tags.size > 0 %}
+          {% assign has_sub_categories = true %}
+        {% endif %}
+        <li>
+          <a class="{% if link.active or parent_link_active %}active-link{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+  <div class="social-contact">
+    <ul class="side-nav-list">
+      {% if settings.twitter_icon %}
+        <li><a target="_blank" href="{{ settings.twitter_icon }}"><span class="social-icon icon--tw"></span></a></li>
+      {% endif %}
+      {% if settings.fb_icon %}
+        <li><a target="_blank" href="{{ settings.fb_icon }}"><span class="social-icon icon--fb"></span></a></li>
+      {% endif %}
+      {% if settings.instagram_icon %}
+        <li><a target="_blank" href="{{ settings.instagram_icon }}"><span class="social-icon icon--ig"></span></a></li>
+      {% endif %}
+      {% if settings.pinterest_icon %}
+        <li><a target="_blank" href="{{ settings.pinterest_ico }}"><span class="social-icon icon--pt"></span></a></li>
+      {% endif %}
+    </ul>
+  </div>
+
+  <ul class="contact-info">
+    <li>
+      <strong>Phone: </strong><a href="callto:980505SNAP">980-505-SNAP</a>
+    </li>
+    <li>
+      <strong>Email: </strong><a href="mailto:support@snapsuits.com">support@snapsuits.com</a>
+    </li>
+  </ul>
+
+  <div class="side-tagline">#NeverRentAgain</div>
+</div>

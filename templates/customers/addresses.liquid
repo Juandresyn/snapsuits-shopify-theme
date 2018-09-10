@@ -1,0 +1,64 @@
+<section class="account-details-wrapper">
+  
+  {% include 'account-sidebar' %}
+
+  <div class="account-main-content">
+
+    <div class="account-title">
+      <h1 class="account-title--header">My Addresses</h1>
+      <div class="account-title--actions">
+        <a class="cancel" href="/account">Back</a>
+        {% if customer.addresses_count >= 1 %}
+          <span class="button button--red js-footer-free" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">Add New Address</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="account-main--page">
+
+      {% if customer.addresses_count >= 1 %}
+        {% include 'account-edit-addresses' %}
+      {% else %}
+        {% include 'account-empty-addresses' %}
+      {% endif %}
+
+      {% include 'account-add-address-form' %}
+
+    </div>
+
+    {% include 'account-fake-pages' %}
+
+</section>
+
+{% include 'account-footer-ctas' %}
+
+ <script>
+   $(document).on('ready', function() {
+     Shopify.CustomerAddress = {
+       toggleForm: function(id) {
+         $('#EditAddress_'+id).toggle();
+         return false;
+       },
+       toggleNewForm: function() {
+         $('#add_address').toggle();
+         return false;
+       },
+       destroy: function(id, confirm_msg) {
+         if (confirm(confirm_msg || "Are you sure you wish to delete this address?")) {
+           Shopify.postLink('/account/addresses/'+id, {'parameters': {'_method': 'delete'}});
+         }
+       }
+     }
+
+     $('.empty-addresses--link').on('click', function() {
+      $('[data-empty-address-content]').hide();
+      $('[data-add-address]').show();
+     });
+
+     $('[data-cancel-address]').on('click', function() {
+      $('[data-add-address]').hide();
+      $('[data-empty-address-content]').show();
+     });
+   });
+
+ </script>

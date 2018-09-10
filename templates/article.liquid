@@ -1,0 +1,12 @@
+{% include 'red-title' with title: "Blog" with class: "desktop--title desktop-alt--only" %}
+<div id="{{ article.handle }}" class="blog__single {{ article.handle }}">
+  <h3 class="blog-article__title">{{ article.title }}</h3>
+  <p class="blog-time"><time pubdate datetime="{{ article.published_at | date: "%a, %b %d, %y" }}">Date: {{ article.published_at | date: "%b %d, %y" }}</time>, By: {{ article.author }}</p>
+  <ul class="blog__share">
+    {% include 'social-sharing' with article %}
+  </ul>
+  <div class="has-background-image blog-article__image" style="background-image: url({% if article.image %}{{ article | img_url: 'grande' }}{% endif %})"></div>
+  <div class="blog-article__content">
+    {{ article.content }}
+  </div>
+</div>

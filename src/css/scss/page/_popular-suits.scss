@@ -1,0 +1,202 @@
+.popular-suits {
+  &__wrapper {
+    padding: 30px 0;
+    max-width: 1140px;
+    margin: 0 auto;
+
+    @include justify-content(space-between);
+    @include flex-wrap(wrap);
+    @include flexbox;
+  }
+
+  &__item {
+    max-width: 530px;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  &-item {
+    &__head {
+      @include justify-content(space-between);
+      @include flexbox;
+    }
+
+    &__body {
+      box-shadow: 0 2px 15px 0 rgba(0,0,0, 0.13);
+      padding: 15px 15px 0 15px;
+      position: relative;
+
+      &-wrapper {
+        @include flexbox;
+
+        @media screen and (max-width: #{$tablet-small}){
+          @include flex-direction(column);
+        }
+      }
+    }
+
+    &__footer {
+      margin-top: 13px;
+      padding: 14px 0 21px 0;
+      border-top: 1px solid $border-color-primary;
+    }
+
+    &__buttons {
+      @include justify-content(space-between);
+      @include flexbox;
+
+      @media screen and (max-width: #{$tablet-small}){
+        @include flex-direction(column-reverse);
+      }
+
+      .button {
+        padding-left: 0;
+        padding-right: 0;
+        width: calc(50% - 5px);
+
+        @media screen and (max-width: #{$tablet-small}){
+          width: 100%;
+          margin: 5px 0;
+        }
+      }
+    }
+
+    &__description {
+      margin-top: 14px;
+      border-top: 1px solid $border-color-primary;
+      padding-top: 20px;
+    }
+
+    &-description {
+      &__title {
+        font-size: 13px;
+        margin-bottom: 0;
+        cursor: pointer;
+
+        &.ui-state-active {
+          margin-bottom: 10px;
+        }
+
+        & .carret {
+          font-size: 18px;
+          color: #ccc;
+          margin-top: -3px;
+          display: inline-block;
+          float: right;
+        }
+      }
+
+      &__content {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        padding: 20px 0;
+
+        &--wrapper{
+          height: calc(100% - 66px);
+          overflow-y: scroll;
+          padding: 0 20px;
+
+          @media screen and (max-width: #{$tablet-small}){
+            height: calc(100% - 135px);
+          }
+
+          p,
+          li,
+          ul,
+          meta,
+          span {
+            font-size: 13px !important;
+            line-height: 22px !important;
+            letter-spacing: normal !important;
+            color: $gray !important;
+            font-family: $font-primary--light !important;
+          }
+        }
+      }
+
+      &__footer {
+        padding: 20px;
+        border-top: 1px solid $border-color-primary;
+      }
+    }
+
+    &__image {
+      width: 252px;
+      height: 272px;
+      background-size: cover;
+      background-position: center;
+
+      @media screen and (max-width: #{$tablet-small}){
+        width: 100%;
+      }
+    }
+  }
+
+  &__fabric {
+    margin-left: 10px;
+    border-left: 1px solid $border-color-primary;
+    padding-left: 15px;
+
+    @media screen and (max-width: #{$tablet-small}){
+      border: 0;
+      margin-left: 0;
+      padding-left: 0;
+      padding-top: 15px;
+    }
+  }
+
+  &-fabric {
+    &__image {
+      width: 222px;
+      height: 222px;
+      background-size: cover;
+      background-position: center;
+      margin-top: 13px;
+
+      @media screen and (max-width: #{$tablet-small}){
+        width: 100%;
+        height: 60px;
+        background-size: 110%;
+      }
+    }
+  }
+}
+
+.collections__footer {
+
+}
+
+.collections-footer__list {
+  max-width: 420px;
+  margin: 20px auto 38px auto;
+  width: 100%;
+
+  @include flexbox;
+  @include justify-content(space-between);
+  @include flex-wrap(wrap);
+
+  @media screen and (max-width: #{$tablet-small}){
+    @include flex-direction(columns);
+  }
+}
+
+.collections-footer-list__item {
+  width: 49%;
+  text-align: left;
+  margin: 7px 0;
+
+  @media screen and (max-width: #{$tablet-small}){
+    width: 100%;
+  }
+}
+
+.collections-footer__icon {
+  font-size: 25px;
+  vertical-align: middle;
+  padding-right: 7px;
+}

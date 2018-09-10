@@ -1,0 +1,11 @@
+<div id ="fm_main">
+  {% include 'red-title' with title: "Get Fitted" %}
+  {% include 'get-fitted-app-intro' %}
+  <a href="#get-fitted-app-intro" class="product__detail__btns--gray js-trigger-gf js-get-fitted-popup text-center hidden">Get Fitted</a>
+</div>
+
+<script type="text/javascript">
+  $(document).on('ready', function(){
+    $('.js-trigger-gf').trigger('click');
+  });
+</script>

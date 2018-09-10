@@ -1,0 +1,19 @@
+.input-group {
+  margin-bottom: $global-spacing-unit / 2;
+}
+
+.input-group input {
+  border: 1px solid $color-grey;
+  width: 100%;
+  padding: $global-size-base / 2;
+  border-radius: $global-radius;
+}
+
+.hidden-label {
+  position: absolute;
+  height: 0;
+  width: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}

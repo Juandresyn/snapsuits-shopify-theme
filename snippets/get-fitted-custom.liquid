@@ -1,0 +1,674 @@
+<div id="get-fitted-custom" class="app get-fitted get-fitted-app get-fitted-custom mfp-hide">
+  <form action="" class="js-get-fitted-cm-form app__form">
+    <input type="text" name="is_body_measurement" value="true" class="hidden">
+    <div class="app__wrapper">
+      <span class="app__quit"><a href="#close-alert2" class="mfp-close app__quit-icon custom--close js-popup no-iphone-safari"></a></span>
+      <div class="app__container">
+        <div class="app__mobile--header">
+            <span class="app-mobile--header__back mfp-close js-reset-customizer iphone-safari"><span class="back-icon custom--carret-left"></span> GO BACK / CANCEL</span>
+            <span class="app-mobile--header__back mfp-close js-reset-customizer no-iphone-safari"><span class="back-icon custom--carret-left"></span> GO BACK</span>
+            <div class="iphone-safari top-controls">
+              <span class="btn-prev js-app-prev js-gf-prev gf-prev"><span class="custom--carret-left"></span></span><!--
+              --><span class="btn-next js-app-next js-gf-next gf-next js-app-rebel-next"><span class="custom--carret-right"></span></span><!--
+              --><a href="#get-fitted-app-results" class="js-get-fitted-cm-finish js-action-finish btn-finish js-register-gf-form" style="display: none;"><span class="custom--carret-right"></span></a>
+            </div>
+        </div>
+        <header class="app__header">
+          <ol class="app__progress app__steps" data-steps="6">
+            {% for i in (0..5) %}
+              <li class="step-item js-step" data-slide="{{i | plus: 1}}" data-go="{{i | plus: 1}}">
+                  <span class="step pointer"></span>
+              </li>
+            {% endfor %}
+          </ol>
+          <ol class="app__progress app__steps-labels" data-steps="6">
+            {% assign sections = "Body profile, Jacket, Jacket Fit, Pants, Pants Fit, Confirmation" | split: ", " %}
+            {% for section in sections %}
+              <li class="step-label js-step" data-go="{{ forloop.index }}" data-slide="{{ forloop.index }}">
+                {{ section }}
+              </li>
+            {% endfor %}
+          </ol>
+        </header>
+        <main class="app__content js-slide-count js-get-fitted-slider js-get-fitted-slick slide-0 js-gf-custom" data-current="">
+          <div class="app__instructions step-item">
+            <div class="instruction instruction__info">
+              <h1 class="title--20 title--20-primary--bold uppercase">Measurement instructions</h1>
+              <p class="text--regular">First, download and off the measurement PDF below. Watch our video about how to do it with yourself and a partner.  We strongly suggest that you DO NOT take this to a tailor. For best results do this at home.<br class="desktop--only">Remember, all measurements need to be taken in Inches!</p>
+              <div class="instructions__tutorials">
+                <article class="instructions-tutorials__item">
+                  <a href="https://site.snapsuits.com/static/pdfs/measurements_doc.pdf" target="_blank">
+                    <span class="icon--pdf instruction__icon"></span>
+                    <span class="instruction__type">GUIDE</span>
+                  </a>
+                </article>
+                <article class="instructions-tutorials__item">
+                  <a href="https://www.youtube.com/watch?v=4alfT7wwi2k" target="_blank">
+                    <span class="icon--video instruction__icon"></span>
+                    <span class="instruction__type">VIDEO</span>
+                  </a>
+                </article>
+              </div>
+              <span class="button button--red js-app-next-cm">Submit my measurements</span>
+            </div>
+            <div class="instruction instruction__pic">
+              <img src="{{ 'gt-cm-instructions.png' | asset_url }}" alt="">
+            </div>
+          </div>
+          <section class="step-slide step-item">
+            <h2 class="step-slide__heading left">BODY PROFILE</h2>
+            <p class="step-slide__subtitle"><strong>Note</strong>: Give us the basics! This will help us to ensure your measurements are entered correctly. If anything seems out of the ordinary, we will reach out.</p>
+            <div class="step-slide__wrapper">
+              <div class="app-form__wrapper">
+                <div class="app-form__row">
+                  <div class="app-form__label-wrapper">
+                    <label for="get-fitted__height" class="app-form__label">HEIGHT <span class="highlight">*</span></label>
+                  </div>
+                  <div class="app-form__select-wrapper">
+                    <select name="input_height" id="get-fitted__height" class="app-form__input app-form__select js-required">
+                      <option value="">Select Height</option>
+                      <option value="1">5'0</option>
+                      <option value="2">5'1</option>
+                      <option value="3">5'2</option>
+                      <option value="4">5'3</option>
+                      <option value="5">5'4</option>
+                      <option value="6">5'5</option>
+                      <option value="7">5'6</option>
+                      <option value="27">5'7</option>
+                      <option value="8">5'8</option>
+                      <option value="9">5'9</option>
+                      <option value="10">5'10</option>
+                      <option value="11">5'11</option>
+                      <option value="12">6'0</option>
+                      <option value="13">6'1</option>
+                      <option value="14">6'2</option>
+                      <option value="15">6'3</option>
+                      <option value="16">6'4</option>
+                      <option value="17">6'5</option>
+                      <option value="18">6'6</option>
+                      <option value="19">6'7</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="app-form__row">
+                  <div class="app-form__label-wrapper">
+                    <label for="get-fitted__weight" class="app-form__label">WEIGHT <span class="highlight">*</span></label>
+                  </div>
+                  <div class="app-form__select-wrapper">
+                    <select name="input_weight" id="get-fitted__weight" class="app-form__input app-form__select js-required">
+                      <option value="">Select Weight</option>
+                      <option value="100">100</option>
+                      <option value="105">105</option>
+                      <option value="110">110</option>
+                      <option value="115">115</option>
+                      <option value="120">120</option>
+                      <option value="125">125</option>
+                      <option value="130">130</option>
+                      <option value="135">135</option>
+                      <option value="140">140</option>
+                      <option value="145">145</option>
+                      <option value="150">150</option>
+                      <option value="155">155</option>
+                      <option value="160">160</option>
+                      <option value="165">165</option>
+                      <option value="170">170</option>
+                      <option value="175">175</option>
+                      <option value="180">180</option>
+                      <option value="185">185</option>
+                      <option value="190">190</option>
+                      <option value="195">195</option>
+                      <option value="200">200</option>
+                      <option value="205">205</option>
+                      <option value="210">210</option>
+                      <option value="215">215</option>
+                      <option value="220">220</option>
+                      <option value="225">225</option>
+                      <option value="230">230</option>
+                      <option value="235">235</option>
+                      <option value="240">240</option>
+                      <option value="245">245</option>
+                      <option value="250">250</option>
+                      <option value="255">255</option>
+                      <option value="260">260</option>
+                      <option value="265">265</option>
+                      <option value="270">270</option>
+                      <option value="275">275</option>
+                      <option value="280">280</option>
+                      <option value="285">285</option>
+                      <option value="290">290</option>
+                      <option value="295">295</option>
+                      <option value="300">300</option>
+                    </select>
+                  </div>
+                </div>
+                <!--<div class="app-form__row">
+                  <div class="app-form__label-wrapper">
+                    <label for="get-fitted__age" class="app-form__label">AGE <span class="highlight">*</span></label>
+                  </div>
+                  <div class="app-form__select-wrapper">
+                    <select name="input_age" id="get-fitted__age" class="app-form__input app-form__select js-required">
+                      <option value="">Select Age</option>
+                      <option>17</option>
+                      <option>18</option>
+                      <option>19</option>
+                      <option>20</option>
+                      <option>21</option>
+                      <option>22</option>
+                      <option>23</option>
+                      <option>24</option>
+                      <option>25</option>
+                      <option>26</option>
+                      <option>27</option>
+                      <option>28</option>
+                      <option>29</option>
+                      <option>30</option>
+                      <option>31</option>
+                      <option>32</option>
+                      <option>33</option>
+                      <option>34</option>
+                      <option>35</option>
+                      <option>36</option>
+                      <option>37</option>
+                      <option>38</option>
+                      <option>39</option>
+                      <option>40</option>
+                      <option>41</option>
+                      <option>42</option>
+                      <option>43</option>
+                      <option>44</option>
+                      <option>45</option>
+                      <option>46</option>
+                      <option>47</option>
+                      <option>48</option>
+                      <option>49</option>
+                      <option>50</option>
+                      <option>51</option>
+                      <option>52</option>
+                      <option>53</option>
+                      <option>54</option>
+                      <option>55</option>
+                      <option>56</option>
+                      <option>57</option>
+                      <option>58</option>
+                      <option>59</option>
+                      <option>60</option>
+                      <option>61</option>
+                      <option>62</option>
+                      <option>63</option>
+                      <option>64</option>
+                      <option>65</option>
+                      <option>66</option>
+                      <option>67</option>
+                      <option>68</option>
+                      <option>69</option>
+                      <option>70</option>
+                      <option>71</option>
+                      <option>72</option>
+                      <option>73</option>
+                      <option>74</option>
+                      <option>75</option>
+                      <option>76</option>
+                      <option>77</option>
+                      <option>78</option>
+                      <option>79</option>
+                    </select>
+                  </div>
+                </div>-->
+                <div class="app-form__row">
+                  <div class="app-form__label-wrapper">
+                    <label for="get-fitted__waist-size" class="app-form__label">RETAIL WAIST SIZE <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="This refers to the waist size of your favorite pair of pants, not the measured size of your waist."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper">
+                    <select name="input_waist_size" id="get-fitted__waist-size" class="app-form__input app-form__select js-required">
+                      <option value="">Select Waist size</option>
+                      <option>27</option>
+                      <option>27.5</option>
+                      <option>28</option>
+                      <option>28.5</option>
+                      <option>29</option>
+                      <option>29.5</option>
+                      <option>30</option>
+                      <option>30.5</option>
+                      <option>31</option>
+                      <option>31.5</option>
+                      <option>32</option>
+                      <option>32.5</option>
+                      <option>33</option>
+                      <option>33.5</option>
+                      <option>34</option>
+                      <option>34.5</option>
+                      <option>35</option>
+                      <option>35.5</option>
+                      <option>36</option>
+                      <option>36.5</option>
+                      <option>37</option>
+                      <option>37.5</option>
+                      <option>38</option>
+                      <option>38.5</option>
+                      <option>39</option>
+                      <option>39.5</option>
+                      <option>40</option>
+                      <option>40.5</option>
+                      <option>41</option>
+                      <option>41.5</option>
+                      <option>42</option>
+                      <option>42.5</option>
+                      <option>43</option>
+                      <option>43.5</option>
+                      <option>44</option>
+                      <option>44.5</option>
+                      <option>45</option>
+                      <option>45.5</option>
+                      <option>46</option>
+                      <option>46.5</option>
+                      <option>47</option>
+                      <option>47.5</option>
+                      <option>48</option>
+                      <option>48.5</option>
+                      <option>49</option>
+                      <option>49.5</option>
+                      <option>50</option>
+                      <option>50.5</option>
+                      <option>51</option>
+                      <option>51.5</option>
+                      <option>52</option>
+                      <option>52.5</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="app-form__row">
+                  <div class="app-form__label-wrapper">
+                    <label for="get-fitted__pants-length" class="app-form__label">PANTS LENGTH <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="We need the inseam from a standard pair of jeans you wear.  This will be the second number in the sequence."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper">
+                    <select name="input_pants_length_size" id="get-fitted__pants-length" class="app-form__input app-form__select js-required">
+                      <option value="">Select an option</option>
+                      <option value="26">26</option>
+                      <option value="27">27</option>
+                      <option value="28">28</option>
+                      <option value="29">29</option>
+                      <option value="30">30</option>
+                      <option value="31">31</option>
+                      <option value="32">32</option>
+                      <option value="33">33</option>
+                      <option value="34">34</option>
+                      <option value="35">35</option>
+                      <option value="36">36</option>
+                      <option value="37">37</option>
+                      <option value="38">38</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="app-form__row">
+                  <div class="app-form__label-wrapper">
+                    <label for="get-fitted__shoe-size" class="app-form__label">SHOE SIZE <span class="highlight">*</span></label>
+                  </div>
+                  <div class="app-form__select-wrapper">
+                    <select name="input_shoe_size" id="get-fitted__shoe-size" class="app-form__input app-form__select js-required">
+                      <option value="">Select Shoe size</option>
+                      <option>2</option>
+                      <option>2.5</option>
+                      <option>3</option>
+                      <option>3.5</option>
+                      <option>4</option>
+                      <option>4.5</option>
+                      <option>5</option>
+                      <option>5.5</option>
+                      <option>6</option>
+                      <option>6.5</option>
+                      <option>7</option>
+                      <option>7.5</option>
+                      <option>8</option>
+                      <option>8.5</option>
+                      <option>9</option>
+                      <option>9.5</option>
+                      <option>10</option>
+                      <option>10.5</option>
+                      <option>11</option>
+                      <option>11.5</option>
+                      <option>12</option>
+                      <option>12.5</option>
+                      <option>13</option>
+                      <option>13.5</option>
+                      <option>14</option>
+                      <option>14.5</option>
+                      <option>15</option>
+                      <option>15.5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="step-slide step-item">
+            <h2 class="step-slide__heading left">Jacket Measurements</h2>
+            <p class="step-slide__subtitle">The Jacket Measurements Below Are All Required to Create Your Custom Suit. All Measurements in Inches.</p>
+            <div class="step-slide__wrapper step-slide__form-w-chart m-y-md">
+              <div class="step-slide__60">
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-jacket__neck" class="app-form__label fix-label"><span class="color-ball color-ball--grey"></span> NECK <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Measure the circumference of your neck about 1 inch above the highest point of your shoulders. This should be around where your shirt collar normally sits."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-jacket__neck" name="input_jacket_neck_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your neck size" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-jacket__shoulder" class="app-form__label fix-label"><span class="color-ball color-ball--turquoise"></span> Shoulder Width <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Find edge of the shoulder bones and measure the exact width from left shoulder bone to right shoulder bone across the back."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-jacket__shoulder" name="input_jacket_shoulder_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your shoulder width" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-jacket__bicep" class="app-form__label fix-label"><span class="color-ball color-ball--green"></span> Bicep <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Measure around the fullest part of your bicep. Make sure it is snug leaving room for 1 finger."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-jacket__bicep" name="input_jacket_biceps_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your bicep size" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-jacket__jacket_length" class="app-form__label fix-label"><span class="color-ball color-ball--purple"></span> Jacket Length <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Measure from the highest point of your shoulder to the end of the thumb."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-jacket__jacket_length" name="input_jacket_length" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your jacket length" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-jacket__sleeve_length" class="app-form__label fix-label"><span class="color-ball color-ball--blue"></span> Sleeve Length <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Measure the exact size from the shoulder bone to the end of the wrist."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-jacket__sleeve_length" name="input_jacket_sleeve_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your sleeve length" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-jacket__chest" class="app-form__label fix-label"><span class="color-ball color-ball--fuccia"></span> Chest <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Pull the measuring tape level across the back to the front of the chest across the widest part, usually at the nipples. Make sure it is not too tight. Do not puff out your chest."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-jacket__chest" name="input_jacket_chest_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your chest size" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-jacket__jacket_waist" class="app-form__label fix-label"><span class="color-ball color-ball--orange"></span> Stomach <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Relax your stomach and measure around the fullest part, which is usually found around the belly button."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-jacket__jacket_waist" name="input_jacket_waist_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type you jacket waist" value="">
+                  </div>
+                </div>
+              </div>
+              <div class="step-slide__40">
+                <img src="{{ 'gf-cm-jacket.png' | asset_url }}" alt="">
+              </div>
+            </div>
+          </section>
+          <section class="step-slide step-item">
+            <h2 class="step-slide__heading">JACKET FIT</h2>
+            <div class="step-slide__wrapper" data-items="3">
+              <article class="step-slide__item">
+                <input type="radio" class="step-slide__input" name="input_jacket_fit" id="step-item__jacket-relaxed" value="relaxed" checked="checked" data-default="checked">
+                <label for="step-item__jacket-relaxed" class="step-slide__label has-tooltip">
+                  <span class="step-slide__icon custom--jacket-fit-relaxed"></span>
+                  <h3 class="step-slide__title">Classic Fit<span class="hint--bottom-right hint--large" aria-label="Our Classic Fit Jacket, while still contoured to our body measurements, will also provide a bit of extra materials around the chest and waist of the jacket, as well as through the arms."><span class="app__info custom--info"></span></span></h3>
+                </label>
+              </article>
+              <article class="step-slide__item">
+                <input type="radio" class="step-slide__input" name="input_jacket_fit" id="step-item__jacket-fit-tailored" value="tailored fit">
+                <label for="step-item__jacket-fit-tailored" class="step-slide__label has-tooltip">
+                  <span class="step-slide__icon custom--jacket-fit-tailored"></span>
+                  <h3 class="step-slide__title">Tailored Fit <span class="hint--bottom hint--large" aria-label="Our Tailored Fit Jacket will curve perfectly with your body create a slimming effect and have you looking your best at all times."><span class="app__info custom--info"></span></span></h3>
+                </label>
+              </article>
+              <article class="step-slide__item">
+                <input type="radio" class="step-slide__input" name="input_jacket_fit" id="step-item__jacket-fit-slim" value="super slim">
+                <label for="step-item__jacket-fit-slim" class="step-slide__label has-tooltip">
+                  <span class="step-slide__icon custom--jacket-fit-slim"></span>
+                  <h3 class="step-slide__title">Slim Fit<span class="hint--bottom-left hint--large" aria-label="Our super slim fit will hug your body tight allowing for maximum slimming, while limiting overall mobility. High arm holes, and no extra fabric around the chest and waist will keep your body looking as slim as possible, while losing some standard comfortability."><span class="app__info custom--info"></span></span></h3>
+                </label>
+              </article>
+              <div style="text-align:center"> <h4 class="step-slide__title""center"> <a href="https://site.snapsuits.com/static/pdfs/SnapSuitsSizeChart.pdf" target="_blank"><u> See our Size Chart</u> </a></h4>
+              </div>
+            </div>
+          </section>
+          <section class="step-slide step-item">
+            <h2 class="step-slide__heading left">Pants Measurements</h2>
+            <p class="step-slide__subtitle">The Measurements Below Are All Required to Create Your Custom Pants. All measurements in Inches.</p>
+            <div class="step-slide__wrapper step-slide__form-w-chart m-y-md">
+              <div class="step-slide__60">
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-pants__hips" class="app-form__label fix-label"><span class="color-ball color-ball--turquoise"></span> Pants Waist <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Relax your stomach measure the circumference at the top of waistband. Make sure the tape snug and level, but not too tight.This measurement should be about 2-3.5 inches bigger than your standard pants waist."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-pants__hips" name="input_pants_waist_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your pants waist" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-pants__hips" class="app-form__label fix-label"><span class="color-ball color-ball--green"></span> Hips  <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Measure the circumference of the hips around the fullest part. Make sure the tape snug and level, but not too tight."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-pants__hips" name="input_pants_hips_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your hips size" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-pants__hips" class="app-form__label fix-label"><span class="color-ball color-ball--orange"></span> Pants Length <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="With your shoes off, measure from the top of the waistband to the ground."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-pants__hips" name="input_pants_length" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your pants length" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-pants__crotch" class="app-form__label fix-label"><span class="color-ball color-ball--blue"></span> Crotch <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Measure from top of front waistband at your belt to top of back waistband, along the shape of Crotch. Make sure it is not too tight."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-pants__crotch" name="input_pants_crotch_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your crotch size" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-pants__thigh" class="app-form__label fix-label"><span class="color-ball color-ball--fuccia"></span> Thigh <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Measure the circumference below the crotch. Make sure it is snug and level, but not too tight."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-pants__thigh" name="input_pants_thigh_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your thigh size" value="">
+                  </div>
+                </div>
+                <div class="app-form__row m-b-0">
+                  <div class="app-form__label-wrapper fix-label__wrapper">
+                    <label for="gf-cm-pants__knee" class="app-form__label fix-label"><span class="color-ball color-ball--purple"></span> Knee <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="Measure the circumference of the knee at its widest part. Make sure it is snug and level but not to tight."> <span class="app__info custom--info"></span></span></label>
+                  </div>
+                  <div class="app-form__select-wrapper no-after">
+                    <input type="number" id="gf-cm-pants__knee" name="input_pants_knee_size" class="app-form__input app-form__select js-required p-b-0" placeholder="Type your knee size" value="">
+                  </div>
+                </div>
+              </div>
+              <div class="step-slide__40">
+                <img src="{{ 'gf-cm-pants.png' | asset_url }}" alt="">
+              </div>
+            </div>
+          </section>
+          <section class="step-slide step-item">
+            <h2 class="step-slide__heading">PANTS FIT</h2>
+            <div class="step-slide__wrapper" data-items="3">
+              <article class="step-slide__item">
+                <input type="radio" class="step-slide__input" name="input_pants_fit" id="step-item__pants-fit-straight" value="straight leg" checked="checked" data-default="checked">
+                <label for="step-item__pants-fit-straight" class="step-slide__label has-tooltip">
+                  <span class="step-slide__icon custom--pants-fit-straight"></span>
+                  <h3 class="step-slide__title">Straight Leg <span class="hint--bottom-right hint--large" aria-label="Our relaxed fit pants allow a bit of extra room in hips and thighs and lay straight from the knee down."><span class="app__info custom--info"></span></span></h3>
+                </label>
+              </article>
+              <article class="step-slide__item">
+                <input type="radio" class="step-slide__input" name="input_pants_fit" id="step-item__pants-fit-tailored" value="tailored fit">
+                <label for="step-item__pants-fit-tailored" class="step-slide__label has-tooltip">
+                  <span class="step-slide__icon custom--pants-fit-tailored"></span>
+                  <h3 class="step-slide__title">Tailored Fit <span class="hint--bottom hint--large" aria-label="Our tailored fit rooms excess fabric from the hips, and thighs while still give you room to move around. The pants will have a classic modern taper after the knee to conform to the size of your leg."><span class="app__info custom--info"></span></span></h3>
+                </label>
+              </article>
+              <article class="step-slide__item">
+                <input type="radio" class="step-slide__input" name="input_pants_fit" id="step-item__pants-fit-slim" value="super slim">
+                <label for="step-item__pants-fit-slim" class="step-slide__label has-tooltip">
+                  <span class="step-slide__icon custom--pants-fit-slim"></span>
+                  <h3 class="step-slide__title">Slim Fit<span class="hint--bottom-left hint--large" aria-label="Our tightest fitting pants to slim you up. Heavily tapered to the ankle after the knee, and snug fitting through the waist, hips and thighs. Don’t plan on doing much running in these."><span class="app__info custom--info"></span></span></h3>
+                </label>
+              </article>
+              <div style="text-align:center"> <h4 class="step-slide__title""center"> <a href="https://site.snapsuits.com/static/pdfs/SnapSuitsSizeChart.pdf" target="_blank"> <u> See our Size Chart </u> </a></h4>
+              </div>
+            </div>
+          </section>
+          <section class="step-slide step-item">
+            <div class="js-register-gf-form">
+              {% if customer %}
+                <h2 class="step-slide__heading left">CONFIRMATION</h2>
+              {% else %}
+                <h2 class="step-slide__heading left">REGISTER</h2>
+                <p class="step-slide__subtitle">Create an account with SnapSuits, and we will send a copy of your measurements via email. We save your measurements, so you only have to do this once!</p>
+              {% endif %}
+            </div>
+            <div class="step-slide__wrapper">
+              {% if customer %}
+                <div class="app-form__wrapper">
+                <div class="app-form__row">
+                  <div class="app-form__label-wrapper">
+                    <label for="get-fitted__register-name" class="app-form__label">name</label>
+                  </div>
+                  <div class="app-form__input-wrapper">
+                    <input name="input_name" type="text" id="get-fitted__register-name" value="{{ customer.name }}" readonly>
+                  </div>
+                </div>
+                <div class="app-form__row">
+                  <div class="app-form__label-wrapper">
+                    <label for="get-fitted__register-email" class="app-form__label">EMAIL ADDRESS</label>
+                  </div>
+                  <div class="app-form__input-wrapper">
+                    <input name="input_email" type="text" id="get-fitted__register-email" value="{{ customer.email }}" readonly>
+                  </div>
+                </div>
+              </div>
+              {% else %}
+                <div class="app-form__wrapper">
+                  <div id="errors" class="errors js-errors" style="display: none;">
+                    <ul></ul>
+                  </div>
+                  <div class="js-register-gf-form">
+                    <div class="app-form__row">
+                      <div class="app-form__label-wrapper">
+                        <label for="get-fitted__register-name" class="app-form__label">FULL NAME</label>
+                      </div>
+                      <div class="app-form__input-wrapper">
+                        <input type="text" type="text" name="input_name" required="required" class="js-register-first_name" id="first_name" placeholder="First Name">
+                      </div>
+                    </div>
+                    <div class="app-form__row">
+                      <div class="app-form__label-wrapper">
+                        <label for="get-fitted__register-name" class="app-form__label">EMAIL</label>
+                      </div>
+                      <div class="app-form__input-wrapper">
+                        <input type="text" type="text" name="input_email" required="required" class="js-register-email" id="email">
+                      </div>
+                    </div>
+                    <input type="submit" name="submit" value="register" class="hidden js-register-gt-form">
+                    <a href="/account/login" class="link-login highlight">If you have been measured by SnapSuits before, login here</a>
+                  </div>
+                  <div class="js-register-gf-success gf-register__success" style="display: none;">
+                    <span class="icon--checked gf-register__icon"></span>
+                    <p class="text--16--light gf-register__text">Check your email to activate your account in 24 hours, otherwise your measurements won’t be saved.</p>
+                  </div>
+                  <div class="js-register-fail-gf-success gf-register__success" style="display: none;">
+                    <span class="icon--user gf-register__icon"></span>
+                    <p class="text--14--light gf-register__text">Your email is registered with us and your measurements have been stored! We will review your measurements to ensure accuracy and email you if something doesn't look right.</p>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </section>
+        </main>
+        <footer class="app__footer">
+          <div class="actions-left js-actions">
+            <a href="#close-alert2" class="app__btn button js-popup mfp-close no-selection">cancel</a>
+          </div>
+          <div class="actions-right js-actions">
+            <span class="app__btn button no-selection js-app-prev btn-prev">prev</span>
+            <span class="app__btn btn-sp button button--primary no-selection m-r-0 js-app-next-cm btn-next">next</span>
+            <span class="app__btn btn-sp button button--success no-selection js-get-fitted-cm-finish js-action-finish btn-finish {% if customer %}mfp-close{% else %}js-register-gf-form{% endif %}">Submit</span>
+            <span class="app__btn btn-sp button button--success no-selection mfp-close js-register-gf-success" style="display: none;">Done</span>
+            <a href="#login_modal" class="app__btn btn-sp button button--success no-selection js-popup js-register-fail-gf-success" style="display: none;">LOGIN</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+    {% include 'get-fitted-app-size' %}
+  </form>
+</div>
+{% include 'close-alert2' with target: 'get-fitted-custom' with reset: 'js-reset-get-fitted' %}
+<script type="text/javascript">
+  $(document).on('ready', function(){
+    $('.js-get-fitted-cm-finish').on('click', function(){
+      var ser = $('.js-get-fitted-cm-form').serializeArray(),
+          protocol = window.location.protocol,
+          {% if settings.fm_api_url %}
+            api_url = "{{ settings.fm_api_url }}",
+          {% else %}
+            api_url = "https://site.snapsuits.com/api/v1/measurements",
+          {% endif %}
+          urlBase = api_url,
+          url = urlBase;
+
+      function getFitted() {
+        $.ajax({
+          dataType: 'json',
+          contentType: "application/x-www-form-urlencoded",
+          url : url,
+          headers : {
+            'Authorization' : 'Token bb8dd34ceaf3506a63ee3986d6ab0438becf19a1'
+          },
+          type: "POST",
+          data : ser,
+          success: function(data, textStatus, jqXHR){
+            {% if template contains 'cart' %}
+              $('.js-cart-measurement__yes').show();
+              $('.js-cart-measurement__no').hide();
+            {% endif %}
+          },
+          error: function (jqXHR, textStatus, errorThrown){
+          }
+        });
+      }
+
+      {% if customer %}
+        getFitted();
+      {% else %}
+        if ($("input[name='input_name']").val() != "" && theme.validateEmail($("input[name='input_email']").val())) {
+          theme.sendRegister({
+              first_name: $("input[name='input_name']").val(),
+              email: $("input[name='input_email']").val()
+            },
+            function(response, error) {
+              if (error) {
+                if (response == "email has already been taken") {
+                  $('.js-register-fail-gf-success').fadeIn('fast');
+                  $('.js-register-gf-form').fadeOut('fast');
+                  $('.js-register-gf-form').removeClass('btn-finish');
+                }else {
+                  $('.app .js-errors').append('<li>'+response+'</li>');
+                  $('.app .js-errors').show();
+                }
+              }else {
+                $('.js-register-gf-success').fadeIn('fast');
+                $('.js-register-gf-form').fadeOut('fast');
+                $('.js-register-gf-form').removeClass('btn-finish');
+              }
+            }
+          );
+          getFitted();
+        }
+      {% endif %}
+    });
+  });
+</script>

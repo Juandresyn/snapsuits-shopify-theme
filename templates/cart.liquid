@@ -1,0 +1,311 @@
+
+{% include 'red-title' with title: "Cart" with class: "desktop--title desktop-alt--only" %}
+<div id="account_main" class="cart">
+  <form action="/cart" method="post" class="cart__form desktop-alt--cart">
+    <div class="cart__count">
+      {% if cart.item_count > 0 %}
+        <table class="cart__items">
+          <thead>
+            <td>ITEM</td>
+            <td>PRICE</td>
+            <td>QUANTITY</td>
+            <td>TOTAL</td>
+            <td>ACTIONS</td>
+          </thead>
+          <tbody>
+            {% for item in cart.items %}
+              {% for p in item.properties %}
+                {% if p.first contains "For" or p.first contains "Type" or p.first contains "Color" or p.first contains "Label" %}
+                  {% assign addon = 'addon' %}
+                {% else %}
+                  {% assign addon = 'main' %}
+                {% endif %}
+                {% if p.first contains "For" or p.first contains "Ref" %}
+                  {% assign reference = p.last %}
+                {% endif %}
+              {% endfor %}
+              <tr class="cart-item js-d-item item-{{ forloop.index }} {{ addon }}" id="{{ item.id }}" data-vaiant-id="{{ item.variant.id }}" data-ref="{{ reference | remove: '(' | remove: ')' | split:' ' | last }}">
+                <td class="td--item">
+                  <div class="cart-item__image-wrapper">
+                    <a href="{{ item.product.url }}"><img src="{{ item | img_url: '116x' }}" alt="{{ item.title | escape }}" class="cart-item__image"></a>
+                  </div>
+                  <div class="cart-item__info">
+                    <h2 class="cart-item__title"><a href="{{ item.product.url }}">{{ item.product.title }}</a></h2>
+                    <!-- {% unless item.variant.title contains 'Default' %}
+                      <small>{{ item.variant.title }} </small>
+                    {% endunless %} -->
+                    {% for p in item.properties %}
+                      {% unless p.last == blank %}
+                        <p class="cart-item__properties"><strong>{{ p.first }}:</strong> {{ p.last }} </p>
+                      {% endunless %}
+                    {% endfor %}
+                  </div>
+                </td>
+                <td class="td--price">{{ item.price | money | remove: ".00" }}</td>
+                <td class="td--quantity"><p class="cart-item__quantity">{{ item.quantity }}</p></td>
+                <td class="td--total js-total-{{ forloop.index }} highlight">{{ item.line_price | money | remove: ".00" }}</td>
+                <td class="td--actions">
+                  <a class="js-remove highlight js-d-{{ item.id }}" href="/cart/change?line={{ forloop.index }}&quantity=0"><span class="icon--delete delete"></span> Delete</a>
+                  {% if addon == "main" %}
+                    {% unless item.product.tags contains 'Shirt' %}
+                      <a class="js-popup js-cart-edit cart-edit disable" data-delete="{{ reference | remove: '(' | remove: ')' | split:' ' | last }}" href="#edit-alert" data-href="{{ item.product.url }}?edit=true"><span class="icon--edit edit"></span> Edit <span class="hide-till--desktop">Customizations</span></a>
+                    {% endunless %}
+                  {% endif %}
+                </td>
+                {% if addon == "main" %}
+                  <script type="text/javascript">
+                    $(document).on('ready', function(){
+                      var suitProperties = {
+                          'variant': '{{ item.variant.id }}'
+                          {% for p in item.properties %}
+                            {% unless p.last == blank %}
+                              {% if forloop.last == true %}
+                                ,'{{ p.first }}':'{{ p.last }}'
+                              {% else %}
+                                ,'{{ p.first }}':'{{ p.last }}'
+                              {% endif %}
+                            {% endunless %}
+                          {% endfor %}
+                      }
+                      var suitObj = {
+                            'url': '{{ item.product.url }}',
+                            properties: suitProperties
+                      }
+                      Cookies.set('{{ item.product.id }}', suitObj, { expires: 5 });
+                      setTimeout(function() {
+                        if(Cookies.get('{{ item.product.id }}')){
+                          $('.js-cart-edit').removeClass('disable');
+                        }
+                      }, 2000);
+                      $('.js-cart-edit').on('click', function(e) {
+                        if($(this).hasClass('disable')){
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }
+                      });
+                    });
+                  </script>
+                {% endif %}
+              {% endfor %}
+              </tr>
+          </tbody>
+        </table>
+      {% else %}
+        <div class="cart__empty">
+          {{ 'cart_empty.svg' | asset_url | img_tag: 'Cart Empty', 'cart-empty__image' }}
+          <p class="text--regular">You haven't ordered anything yet! <a href="/collections" class="link highlight">Go back to the store</a> to buy an amazing custom suit.</p>
+          <a href="/collections" class="button button-white small">GO BACK TO THE STORE</a>
+        </div>
+      {% endif %}
+    </div><!--
+    --><div class="cart__options desktop--cart">
+      <div class="cart-option cart-options__measurement js-cart-measurement__no">
+        <h3 class="cart-option__title small"style="color:purple">MEASUREMENTS <span class="icon--delete delete"></span></h3>
+        <p class="text--regular" style="color:purple">You need to get fitted before checking out.</p>
+        <ul class="account-links space">
+          <li>
+            <a href="/account/login"style="color:purple">log in</a>
+          </li>
+        </ul>
+        <a href="#get-fitted-app-intro" class="button button-PURPLE small js-get-fitted-popup"style="color:purple">GET FITTED</a>
+      </div>
+      <div class="cart-option cart-options__measurement success js-cart-measurement__yes" style="display: none;">
+        <h3 class="cart-option__title small">MEASUREMENTS <span class="icon--checked success"></span></h3>
+        <p class="text--regular highlight caption">We have measurements for your profile saved on our data base.</p>
+        <ul class="account-links space">
+          <li>
+            <a href="/pages/my-measurement">View measurements</a>
+          </li>
+        </ul>
+        <a href="#get-fitted-app-intro" class="button button-white small js-get-fitted-popup">GET FITTED AGAIN</a>
+      </div>
+      <div class="cart-option cart-options__total">
+        <span class="text--regular cart-option--first">Order Total</span>
+        <span class="text--regular cart-option--last highlight">{{ cart.total_price | money | remove: ".00" }}</span>
+      </div>
+      <div class="cart-option cart-options__checkout">
+        <input type="submit" class="button button--red" name="checkout" value="Go to Check Out" />
+      </div>
+    </div>
+  </form>
+  </main> <!-- Close .main-wrapper to allow fullwidth -->
+  <form action="/cart" method="post" class="cart__form mobile-alt--cart mobile-cart">
+    <div class="js-accordion js-accordion--close  accordion cart__wrapper">
+      <h3 class="cart__total accordion__title">CART TOTAL ( {{ cart.item_count }} ):
+        <span class="highlight">{{ cart.total_price | money | remove: ".00" }}</span>
+        <span class="icon--carret-down carret"></span></h3>
+      <div class="cart-total__content">
+        <!-- <div class="cart-option cart-options__address">
+          <h3 class="cart-option__title" >SHIPPING ADDRESS</h3>
+          {% if customer %}
+            {% if customer.default_address != nil %}
+              <p class="account-info__email text--regular"><strong></strong> {{ customer.default_address.address1 }}</p>
+            {% else %}
+              <ul class="account-links">
+                <li>
+                  <a href="/account/addresses">add one</a>
+                </li>
+              </ul>
+            {% endif %}
+          {% else %}
+            <ul class="account-links">
+              <li>
+                <a href="/account/login">log in</a>
+              </li>
+            </ul>
+          {% endif %}
+        </div> -->
+        <div class="cart-option cart-options__measurement js-cart-measurement__no">
+          <h3 class="cart-option__title small">MEASUREMENTS <span class="icon--delete delete"></span></h3>
+          <p class="text--regular highlight caption">You need to get fitted before checking out.</p>
+          <ul class="account-links space">
+            <li>
+              <a href="/account/login">log in</a>
+            </li>
+          </ul>
+          <a href="#get-fitted-app-intro" class="button button-white small js-get-fitted-popup">GET FITTED</a>
+        </div>
+        <div class="cart-option cart-options__measurement js-cart-measurement__yes success" style="display: none;">
+          <h3 class="cart-option__title small">MEASUREMENTS <span class="icon--checked success"></span></h3>
+          <p class="text--regular highlight caption">We have measurements for your profile saved on our data base.</p>
+          <ul class="account-links space">
+            <li>
+              <a href="/pages/my-measurement">View measurements</a>
+            </li>
+          </ul>
+          <a href="#get-fitted-app-intro" class="button button-white small js-trigger-gf js-get-fitted-popup">GET FITTED AGAIN</a>
+        </div>
+        <div class="cart-option cart-options__total">
+          <span class="text--regular cart-option--first">Order Total</span>
+          <span class="text--regular cart-option--last highlight">{{ cart.total_price | money | remove: ".00" }}</span>
+        </div>
+      </div>
+    </div>
+    <main class="main-wrapper"> <!-- Open .main-wrapper to prevent fullwidth -->
+    <div class="cart__content js-mobile-cart">
+      {% if cart.item_count > 0 %}
+        {% for item in cart.items %}
+          {% for p in item.properties %}
+            {% if p.first contains "For" or p.first contains "Type" %}
+              {% assign addon = 'addon' %}
+            {% else %}
+              {% assign addon = 'main' %}
+            {% endif %}
+          {% endfor %}
+          <div class="cart-item {{ addon }} js-cart-item">
+            <div class="cart-item__content {{ addon }}">
+              <div class="cart-item__image-wrapper">
+                <a href="{{ item.product.url }}"><img src="{{ item | img_url: '116x' }}" alt="{{ item.title | escape }}" class="cart-item__image"></a>
+              </div>
+              <div class="cart-item__information">
+                <h2 class="cart-item__title"><a href="{{ item.product.url }}">{{ item.product.title }}</a></h2>
+                {% for p in item.properties %}
+                  {% unless p.last == blank %}
+                    <p class="cart-item__properties"><strong>{{ p.first }}:</strong> {{ p.last }} </p>
+                  {% endunless %}
+                {% endfor %}
+                <p class="cart-item__properties"><strong class="highlight">Price: {{ item.price | money | remove: ".00" }}</strong></p>
+              </div>
+            </div>
+            <div class="cart-item__option">
+              <p class="button button-white button-white--gray">QTY ( {{ item.quantity }} ) : <span class="highlight">{{ item.line_price | money | remove: ".00" }}</span></p><!--
+              --><a class="button button-white js-remove-mobile" data-target=".js-d-{{ item.id }}" href="#">Remove</a>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="cart__checkout-wrapper">
+          <input type="submit" class="button button--red" name="checkout" value="Go to Check Out" />
+        </div>
+      {% else %}
+        <div class="cart__empty">
+          {{ 'cart_empty.svg' | asset_url | img_tag: 'Cart Empty', 'cart-empty__image' }}
+          <p class="text--regular">You haven't ordered anything yet! <a href="/collections" class="link highlight">Go back to the store</a> to buy an amazing custom suit.</p>
+          <a href="/collections" class="button button-white small">GO BACK TO THE STORE</a>
+        </div>
+      {% endif %}
+    </div>
+  </form>
+</div>
+{% include 'get-fitted-app-intro' %}
+<script type="text/javascript">
+  $(document).on('ready', function(){
+    if (window.location.hash == '#fitme'){
+      setTimeout( function(){
+        $('.js-trigger-gf').trigger('click');
+      }, 1000);
+    }
+
+    if (theme.getParam('edit') == "true"){
+      setTimeout( function(){
+        $('[data-delete="' + theme.getParam('edit_id') + '"]').trigger('click');
+      }, 1000);
+    }
+
+    $('.js-remove-mobile').on('click', function(e){
+      var remover = $(this).data('target');
+      var removerLink = $(remover).attr('href');
+      window.location.replace(removerLink);
+    });
+
+    function editDelete(items, url) {
+      $.ajax({
+        method: "POST",
+        url: "/cart/update.js",
+        data: {
+          updates: items
+        },
+        complete: function(jqXHR, textStatus, errorThrown) {
+          window.location.href = url;
+        }
+     });
+    }
+
+    function cartOrderToDelete(el) {
+      var item = {};
+      $('[data-ref="'+ el +'"]').map(function() {
+        $(this).fadeOut(200, function() {
+          $(this).remove();
+         });
+        item[$(this).attr('id')] = 0;
+      });
+
+      return item;
+    }
+
+    $('.js-edit').on('click', function(e) {
+      var that = this;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      editDelete(cartOrderToDelete($('.js-cart-edit').data('delete')), $('.js-cart-edit').data('href'));
+    });
+  });
+</script>
+{% if customer %}
+  <script type="text/javascript">
+    $(document).on('ready', function(){
+      var urlBase = "https://site.snapsuits.com/api/v1/measurements?email={{ customer.email }}",
+          urlget = urlBase;
+      $.ajax({
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded",
+        url : urlget,
+        headers : {
+            'Authorization' : 'Token bb8dd34ceaf3506a63ee3986d6ab0438becf19a1'
+        },
+        type: "GET",
+        success: function(data, textStatus, jqXHR){
+          if (textStatus != "not found") {
+            $('.js-cart-measurement__yes').show();
+            $('.js-cart-measurement__no').hide();
+          }
+        },
+        error: function (data, jqXHR, textStatus, errorThrown){
+
+        }
+      });
+    });
+  </script>
+{% endif %}
+{% include 'edit-alert' %}

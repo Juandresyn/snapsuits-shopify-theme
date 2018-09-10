@@ -1,0 +1,20 @@
+<nav class="customer-nav main-header-nav">
+  <ul class="customer-nav__ul main-header-nav__ul">
+    <li class="customer-nav__li main-header-nav__li">
+      {% if template contains 'cart' %}
+        <a href="/cart" class="customer-nav__link main-header-nav__link is-active"><span class="nav-cart-icon icon--cart"></span> <span class="cart-name-remove">cart</span>(<span class="cart-count js-cart-count">{{ cart.item_count }}</span>)</a>
+      {% else %}
+        <span class="customer-nav__link main-header-nav__link js-inline-cart-show pointer cart-link-desktop"><span class="nav-cart-icon icon--cart"></span> <span class="cart-name-remove">cart</span>(<span class="cart-count js-cart-count">{{ cart.item_count }}</span>)</span>
+        <a href="/cart" class="customer-nav__link main-header-nav__link cart-link-mobile"><span class="nav-cart-icon icon--cart"></span> <span class="cart-name-remove">cart</span>(<span class="cart-count js-cart-count">{{ cart.item_count }}</span>)</a>
+      {% endif %}
+    </li>
+    <li class="customer-nav__li main-header-nav__li menu-trigger-mod">
+      <a class="menu-trigger customer-nav__link main-header-nav__link" href="#">
+          <span class="menu-name-remove">Menu</span>
+          <div class="hamburger-menu hamburger-menu--alternative">
+            <div class="bar"></div>
+          </div>
+      </a>
+    </li>
+  </ul>
+</nav>

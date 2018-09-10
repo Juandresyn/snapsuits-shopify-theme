@@ -1,0 +1,12 @@
+<div class="collection-show__image--wrapper">
+  <a href="{{ product_grid.url }}">
+    <div class="bg-center collection-show__image has-background-image" style="background-image: url('{{ product_grid.image.src | img_url: 'grande' }}')">
+      <div class="blackout blackout--soft"></div>
+      <div class="collection-show__info">
+        <h3 class="title--medium">{{ product_grid.title }}</h3>
+        <hr class="collection__hr"></hr>
+        <p class="text-second--regular">{{ product_grid.description }}</p>
+      </div>
+    </div>
+  </a>
+</div>

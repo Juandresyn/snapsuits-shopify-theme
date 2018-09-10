@@ -1,0 +1,744 @@
+<div id="customizer-app" class="app customizer customizer-app mfp-hide">
+  <div class="app__wrapper">
+    <span class="app__quit"><a href="#close-alert" class="mfp-close app__quit-icon custom--close js-popup no-iphone-safari"></a></span>
+    <div class="app__container">
+      <div class="app__mobile--header">
+          <span class="app-mobile--header__back mfp-close js-reset-customizer iphone-safari"><span class="back-icon custom--carret-left"></span> GO BACK / CANCEL</span>
+          <span class="app-mobile--header__back mfp-close js-reset-customizer no-iphone-safari"><span class="back-icon custom--carret-left"></span> GO BACK TO <span class="highlight">{{ product.title }}</span></span>
+          <div class="iphone-safari top-controls">
+            <span class="btn-prev js-app-prev js-gf-prev gf-prev"><span class="custom--carret-left"></span></span><!--
+            --><span class="btn-next js-app-next js-gf-next gf-next"><span class="custom--carret-right"></span></span><!--
+            --><a href="#bridge" class="btn-finish js-custom-finish js-action-finish js-popup mfp-close" style="display: none;"><span class="custom--carret-right"></span></a>
+          </div>
+      </div>
+      <header class="app__header">
+        {% if hasFabrics == "false" %}
+          {% assign heads = 7 %}
+        {% else %}
+          {% assign heads = 8 %}
+        {% endif %}
+        <ol class="app__progress app__steps" data-steps="{{ heads | plus: 1 }}">
+          {% for i in (0..heads) %}
+            <li class="{% if forloop.first %}done{% endif %} step-item js-step" data-slide="{{i}}" data-go="{{i}}">
+                <span class="step pointer"></span>
+            </li>
+          {% endfor %}
+        </ol>
+        <ol class="app__progress app__steps-labels" data-steps="{{ heads | plus: 1 }}">
+          {% assign sections = "Fabrics, Lapels, Buttons, Linings, Pockets, Vents, Stitching, Pants, Extra" | split: ", " %}
+          {% for section in sections %}
+            {% if hasFabrics == "false" %}
+              {% unless section == "Fabrics" %}
+                <li class="step-label js-step {% if forloop.index0 == 1 %}done{% endif %}" data-go="{{ forloop.index0 | minus: 1 }}" data-slide="{{ forloop.index0 | minus: 1 }}">
+                  {{ section }}
+                </li>
+              {% endunless %}
+            {% else %}
+              <li class="step-label js-step {% if forloop.first %}done{% endif %}" data-go="{{ forloop.index0 }}" data-slide="{{ forloop.index0 }}">
+                {{ section }}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ol>
+      </header>
+      <main class="app__content js-app-slider">
+        {% unless hasFabrics == "false" %}
+          <section class="step-slide">
+          <div class="js-palete">
+            <h2 class="step-slide__heading">FABRICS</h2>
+            <div class="step-slide__wrapper m-b-lg fabrics_slide" data-items="3">
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__navy" value="Navy" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__navy" class="step-slide__label square-label" data-height=".js-palete-navy" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-navy">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_navy.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">navy</p>
+                  </div>
+                </label>
+              </article>
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__black" value="Black / Dark Grey" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__black" class="step-slide__label square-label" data-height=".js-palete-black" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-black">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_black.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">Black/Dark Grey</p>
+                  </div>
+                </label>
+              </article>
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__light-grey" value="Light Grey" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__light-grey" class="step-slide__label square-label" data-height=".js-palete-light-grey" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-light-grey">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_grey.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">Light Grey</p>
+                  </div>
+                </label>
+              </article>
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__blue" value="Blue" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__blue" class="step-slide__label square-label" data-height=".js-palete-blue" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-blue">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_blue.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">Blue</p>
+                  </div>
+                </label>
+              </article>
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__brown" value="TAN / KHAKI / BROWN" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__brown" class="step-slide__label square-label" data-height=".js-palete-brown" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-brown">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_brown.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">TAN/KHAKI/BROWN</p>
+                  </div>
+                </label>
+              </article>
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__other" value="Other" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__other" class="step-slide__label square-label" data-height=".js-palete-other" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-other">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_other.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">Other</p>
+                  </div>
+                </label>
+              </article>
+            </div>
+          </div>
+          <div class="js-palete-detail fabric-detail" style="display: none;">
+            <div class="fabric-detail__wrapper">
+              <img src="" alt="" class="fabric-detail__image js-palete-detail--image">
+              <div class="fabric-detail__info">
+                <h2 class="step-slide__heading text--left js-palete-detail--go-back" data-show="" data-hide=".js-palete-detail"><span class="app__back custom--back"></span> <span class="js-palete-detail--title"></span></h2>
+                <p class="js-palete-detail--description text--left text--regular-14"></p>
+                <div class="fabric-detail__btn">
+                  <span class="js-app-next js-action-next button button-white mobile--only" data-toggle=".js-palete-actions, .js-palete" data-hide=".js-palete-detail, .js-palete-hide">Select Fabric</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="js-palete-navy js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+            {% include 'custom-basics-fabrics' with fabric: "fabric-navy" with self: ".js-palete-navy" with name: " Navy" %}
+          </div>
+          <div class="js-palete-black js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+            {% include 'custom-basics-fabrics' with fabric: "fabric-black" with self: ".js-palete-black" with name: " Black / Dark Grey" %}
+          </div>
+          <div class="js-palete-light-grey js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+            {% include 'custom-basics-fabrics' with fabric: "fabric-light-grey" with self: ".js-palete-light-grey" with name: " Light Grey" %}
+          </div>
+          <div class="js-palete-blue js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+              {% include 'custom-basics-fabrics' with fabric: "fabric-blue" with self: ".js-palete-blue" with name: " Blue" %}
+          </div>
+          <div class="js-palete-brown js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+            {% include 'custom-basics-fabrics' with fabric: "fabric-brown" with self: ".js-palete-brown" with name: " TAN / KHAKI / BROWN" %}
+          </div>
+          <div class="js-palete-other js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+            {% include 'custom-basics-fabrics' with fabric: "fabric-other" with self: ".js-palete-other" with name: " Other" %}
+          </div>
+        </section>
+        {% endunless %}
+        <section class="step-slide">
+          <h2 class="step-slide__heading">LAPEL STYLE</h2>
+          <div class="step-slide__wrapper" data-items="3">
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Lapel]" id="step-item__lapel-notch-slim" value="Notch Slim">
+              <label for="step-item__lapel-notch-slim" class="step-slide__label">
+                <span class="step-slide__icon custom--lapel-notch-slim"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Notch Slim</h3>
+                <p class="step-slide__description">Contemporary & Relaxed</p>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Lapel]" id="step-item__lapel-notch" checked="checked" data-default="checked" value="Notch">
+              <label for="step-item__lapel-notch" class="step-slide__label">
+                <span class="step-slide__icon custom--lapel-notch"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Notch</h3>
+                <p class="step-slide__description">Everyday Classic</p>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Lapel]" id="step-item__lapel-shawl" value="Shawl Lapel">
+              <label for="step-item__lapel-shawl" class="step-slide__label">
+                <span class="step-slide__icon custom--lapel-shawl"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Shawl Lapel</h3>
+                <p class="step-slide__description">Stylish Confidence</p>
+                </div>
+              </label>
+            </article>
+          </div>
+          <div class="step-slide__wrapper" data-items="2">
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Lapel]" id="step-item__lapel-peak" value="Peak">
+              <label for="step-item__lapel-peak" class="step-slide__label">
+                <span class="step-slide__icon custom--lapel-peak"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Peak</h3>
+                <p class="step-slide__description">Modern Sophistication</p>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Lapel]" id="step-item__lapel-peak-wide" value="Peak Wide">
+              <label for="step-item__lapel-peak-wide" class="step-slide__label">
+                <span class="step-slide__icon custom--lapel-peak-wide"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Peak Wide</h3>
+                <p class="step-slide__description">Bold & Conﬁdent</p>
+                </div>
+              </label>
+            </article>
+          </div>
+          <h2 class="step-slide__heading">ADDITIONALS</h2>
+          <div class="step-slide__wrapper" data-items="3">
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Lapel Additional]" id="step-item__lapel-satin-no" value="no satin" checked="checked" data-default="checked">
+              <label for="step-item__lapel-satin-no" class="step-slide__label">
+                <span class="step-slide__icon custom--lapel-satin-no"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">no satin</h3>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Lapel Additional]" id="step-item__lapel-satin-whole" value="Whole Lapel Satin">
+              <label for="step-item__lapel-satin-whole" class="step-slide__label">
+                <span class="step-slide__icon custom--lapel-satin-whole"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Whole Lapel Satin</h3>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item icon-with-price">
+              <input type="radio" class="step-slide__input js-addon" name="lapel-trim" id="step-item__lapel-satin-trim" value="35385624268" data-type="Lapel">
+              <label for="step-item__lapel-satin-trim" class="step-slide__label">
+                <span class="step-slide__icon custom--lapel-satin-strim"></span>
+                <span class="step-slide__price price-for-icon">+ $<span>15</span></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Just a Trim Satin</h3>
+                </div>
+              </label>
+            </article>
+          </div>
+        </section>
+        <section class="step-slide">
+          <h2 class="step-slide__heading">BUTTONS</h2>
+          <div class="step-slide__wrapper" data-items="4">
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Buttons]" id="step-item__buttons-double" value="Double Breasted">
+              <label for="step-item__buttons-double" class="step-slide__label">
+                <span class="step-slide__icon custom--buttons-double"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Double Breasted</h3>
+                <p class="step-slide__description">Bold & Conﬁdent</p>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Buttons]" id="step-item__buttons-one" value="One">
+              <label for="step-item__buttons-one" class="step-slide__label">
+                <span class="step-slide__icon custom--buttons-one"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">One</h3>
+                <p class="step-slide__description">Contemporany & Relaxed</p>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Buttons]" id="step-item__buttons-three" value="Three">
+              <label for="step-item__buttons-three" class="step-slide__label">
+                <span class="step-slide__icon custom--buttons-three"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Three</h3>
+                <p class="step-slide__description">Modern Sophistication</p>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Buttons]" id="step-item__buttons-two" checked="checked" data-default="checked" value="Two">
+              <label for="step-item__buttons-two" class="step-slide__label">
+                <span class="step-slide__icon custom--buttons-two"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Two</h3>
+                <p class="step-slide__description">Everyday Classic</p>
+                </div>
+              </label>
+            </article>
+          </div>
+          <h2 class="step-slide__heading">ADDITIONALS</h2>
+          <div class="step-slide__wrapper" data-items="1">
+            <article class="step-slide__item">
+              <input type="checkbox" class="step-slide__input" name="properties[Buttons Additional]" id="step-item__buttons-covered" value="Covered Buttons">
+              <label for="step-item__buttons-covered" class="step-slide__label">
+                <span class="step-slide__icon custom--buttons-covered"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Covered Buttons</h3>
+                </div>
+              </label>
+            </article>
+          </div>
+        </section>
+        <section class="step-slide">
+          <h2 class="step-slide__heading">LININGS</h2>
+          <div class="step-slide__wrapper" data-items="4">
+            <article class="step-slide__item step-with-image">
+              <input type="radio" class="step-slide__input" name="property-lining" id="step-item__tie" value="" checked="checked" data-default="checked">
+              <label for="step-item__tie" class="step-slide__label">
+                <span class="step-slide__icon custom--tie"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">No Lining Upgrade</h3>
+                </div>
+              </label>
+            </article>
+            {% for product in collections[linersVendor].products %}
+              {% for variant in product.variants %}
+                <article class="step-slide__item step-with-image">
+                  <input type="radio" class="step-slide__input js-addon" name="property-lining" id="step-item__{{ variant.id }}" value="{{ variant.id }}" data-type="Lining" data-name="{{ product.title }}" data-price="{{ product.price | remove: '00' }}" data-image="{{ product.featured_image | product_img_url: '116x' }}">
+                  <label for="step-item__{{ variant.id }}" class="step-slide__label" title="{{ product.title }}">
+                    <div class="step-slide__image" style="background-image: url({{ product.featured_image | product_img_url: '120x' }})"></div>
+                    <span class="step-slide__price">+ $<span>{{ variant.price | remove: '00' }}</span></span>
+                    <div class="step-slide__information">
+                      <h3 class="step-slide__title">{{ product.title }}</h3>
+                    </div>
+                  </label>
+                </article>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </section>
+        <section class="step-slide">
+          <h2 class="step-slide__heading">POCKETS</h2>
+          <div class="step-slide__wrapper" data-items="3">
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Pockets]" id="step-item__pockets-flaps-no" value="No Pocket Flaps">
+              <label for="step-item__pockets-flaps-no" class="step-slide__label">
+                <span class="step-slide__icon custom--pockets-flaps-no"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">No Pocket Flaps</h3>
+                <p class="step-slide__description">Bold & Conﬁdent</p>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Pockets]" id="step-item__pockets-flaps-slanted" value="Pocket Flaps Slanted">
+              <label for="step-item__pockets-flaps-slanted" class="step-slide__label">
+                <span class="step-slide__icon custom--pockets-flaps-slanted"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Pocket Flaps Slanted</h3>
+                <p class="step-slide__description">Contemporany & Relaxed</p>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Pockets]" id="step-item__pockets-flaps-no-slanted" value="No Pocket Flaps Slanted">
+              <label for="step-item__pockets-flaps-no-slanted" class="step-slide__label">
+                <span class="step-slide__icon custom--pockets-flaps-no-slanted"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">No Pocket Flaps Slan...</h3>
+                <p class="step-slide__description">Modern Sophistication</p>
+                </div>
+              </label>
+            </article>
+          </div>
+          <div class="step-slide__wrapper" data-items="2">
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Pockets]" id="step-item__pockets-flaps" value="Pocket Flaps" checked="checked" data-default="checked">
+              <label for="step-item__pockets-flaps" class="step-slide__label">
+                <span class="step-slide__icon custom--pockets-flaps"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Pocket Flaps</h3>
+                <p class="step-slide__description">Everyday Classic</p>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Pockets]" id="step-item__pockets-patch" value="Patch Pocket">
+              <label for="step-item__pockets-patch" class="step-slide__label">
+                <span class="step-slide__icon custom--pockets-patch"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Patch Pocket</h3>
+                <p class="step-slide__description">Modern Casual</p>
+                </div>
+              </label>
+            </article>
+          </div>
+          <h2 class="step-slide__heading">ADDITIONALS</h2>
+          <div class="step-slide__wrapper" data-items="2">
+            <article class="step-slide__item">
+              <input type="checkbox" class="step-slide__input" name="properties[Pockets Additional]" id="step-item__pockets-flapped-ticket" value="Add Flapped Ticket Pocket">
+              <label for="step-item__pockets-flapped-ticket" class="step-slide__label">
+                <span class="step-slide__icon custom--pockets-flapped-ticket"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Add Flapped Ticket</h3>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="checkbox" class="step-slide__input" name="properties[Pockets Additional]" id="step-item__pockets-unﬂapped-ticket" value="Add Unﬂapped Ticket Pocket">
+              <label for="step-item__pockets-unﬂapped-ticket" class="step-slide__label">
+                <span class="step-slide__icon custom--pockets-unﬂapped-ticket"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Add Unﬂapped Ticket</h3>
+                </div>
+              </label>
+            </article>
+          </div>
+        </section>
+        <section class="step-slide">
+          <h2 class="step-slide__heading">VENTS</h2>
+          <div class="step-slide__wrapper" data-items="3">
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Vents]" id="step-item__vents-single" value="Single Vent">
+              <label for="step-item__vents-single" class="step-slide__label">
+                <span class="step-slide__icon custom--vents-single"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Single Vent</h3>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Vents]" id="step-item__vents-double" value="Double Vent" checked="checked" data-default="checked">
+              <label for="step-item__vents-double" class="step-slide__label">
+                <span class="step-slide__icon custom--vents-double"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Double Vent</h3>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Vents]" id="step-item__vents-no" value="No Vent">
+              <label for="step-item__vents-no" class="step-slide__label">
+                <span class="step-slide__icon custom--vents-no"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">No Vent</h3>
+                </div>
+              </label>
+            </article>
+          </div>
+        </section>
+        <section class="step-slide">
+          <h2 class="step-slide__heading js-stitchings">STITCHING</h2>
+          <div class="step-slide__wrapper js-stitchings" data-items="3">
+          <article class="step-slide__item step-with-image">
+            <input type="radio" class="step-slide__input" name="property-stitching" id="step-item__stitching_tie" value="" checked="checked" data-default="checked">
+            <label for="step-item__stitching_tie" class="step-slide__label">
+              <span class="step-slide__icon custom--tie"></span>
+              <div class="step-slide__information">
+              <h3 class="step-slide__title">Non Stitching Adds</h3>
+            </label>
+          </article>
+          {% for product in collections.customize-stitching.products %}
+            {% if forloop.index <= 2 %}
+              {% for variant in product.variants %}
+                {% assign hide = "data-hide='.js-stitchings'" %}
+                {% if product.title contains "Lapel Button" %}
+                  {% assign show = "data-show='.js-stitching-lapel'" %}
+                  {% assign color = "data-color='.js-color-lapel'" %}
+                  {% assign label = "data-label=''" %}
+                {% elsif product.title contains "Sleeve Buttons" %}
+                  {% assign show = "data-show='.js-stitching-sleeve'" %}
+                  {% assign color = "data-color='.js-color-sleeve'" %}
+                  {% assign label = "data-label=''" %}
+                {% elsif product.title contains "Monogrammed" %}
+                  {% assign show = "data-show='.js-stitching-monogramed'" %}
+                  {% assign color = "data-color='.js-color-monogramed'" %}
+                  {% assign label = "data-label='.js-monogramed-input'" %}
+                {% elsif product.title contains "Pick Stitching" %}
+                  {% assign show = "data-show='.js-stitching-pick'" %}
+                  {% assign color = "data-color='.js-color-pick'" %}
+                  {% assign label = "data-label=''" %}
+                {% endif %}
+                <article class="step-slide__item step-with-image">
+                  <input type="checkbox" class="step-slide__input js-addon" name="property-stitching" id="step-item__{{ variant.id }}" value="{{ variant.id }}" data-type="Stitching" {{ color }} {{ label }} data-name="{{ product.title }}" data-price="{{ product.price | remove: '00' }}" data-image="{{ product.featured_image | product_img_url: '116x' }}">
+                  <label for="step-item__{{ variant.id }}" class="step-slide__label" title="{{ product.title }}" {{ show }} {{ hide }} data-input="#step-item__{{ variant.id }}">
+                    <div class="step-slide__image" style="background-image: url({{ product.featured_image | product_img_url: 'master' }})"></div>
+                    <span class="step-slide__price">+ $<span>{{ variant.price | remove: '00' }}</span></span>
+                    <h3 class="step-slide__title">{{ product.title }}</h3>
+                  </label>
+                </article>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+          </div>
+          <div class="step-slide__wrapper js-stitchings" data-items="2">
+            {% for product in collections.customize-stitching.products %}
+              {% if forloop.index > 2 %}
+                {% for variant in product.variants %}
+                {% assign hide = "data-hide='.js-stitchings'" %}
+                {% if product.title contains "Lapel Button" %}
+                  {% assign show = "data-show='.js-stitching-lapel'" %}
+                  {% assign color = "data-color='.js-color-lapel'" %}
+                  {% assign label = "data-label=''" %}
+                {% elsif product.title contains "Sleeve Buttons" %}
+                  {% assign show = "data-show='.js-stitching-sleeve'" %}
+                  {% assign color = "data-color='.js-color-sleeve'" %}
+                  {% assign label = "data-label=''" %}
+                {% elsif product.title contains "Monogrammed" %}
+                  {% assign show = "data-show='.js-stitching-monogramed'" %}
+                  {% assign color = "data-color='.js-color-monogramed'" %}
+                  {% assign label = "data-label='.js-monogramed-input'" %}
+                {% elsif product.title contains "Pick Stitching" %}
+                  {% assign show = "data-show='.js-stitching-pick'" %}
+                  {% assign color = "data-color='.js-color-pick'" %}
+                  {% assign label = "data-label=''" %}
+                {% endif %}
+                  <article class="step-slide__item step-with-image">
+                    <input type="checkbox" class="step-slide__input js-addon" name="property-stitching" id="step-item__{{ variant.id }}" value="{{ variant.id }}" data-type="Stitching" {{ color }} {{ label }} data-name="{{ product.title }}" data-price="{{ product.price | remove: '00' }}" data-image="{{ product.featured_image | product_img_url: '116x' }}">
+                    <label for="step-item__{{ variant.id }}" class="step-slide__label" title="{{ product.title }}" {{ show }} {{ hide }} data-input="#step-item__{{ variant.id }}">
+                      <div class="step-slide__image" style="background-image: url({{ product.featured_image | product_img_url: 'master' }})"></div>
+                      <span class="step-slide__price">+ $<span>{{ variant.price | remove: '00' }}</span></span>
+                      <h3 class="step-slide__title">{{ product.title }}</h3>
+                    </label>
+                  </article>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="wrapper-scroll__425 js-stitching-lapel" style="display: none;">
+            <h2 class="step-slide__heading" data-hide=".js-stitching-lapel" data-show=".js-stitchings" data-toggle=".js-actions"><span class="app__back custom--back"></span> COLORED LAPEL COLOR CHOOSE</h2>
+            <div class="step-slide__wrapper" data-items="4">
+              <article class="step-slide__item step-with-image">
+                <input type="radio" class="step-slide__input js-color-lapel" name="property-lapel-color" id="color-lapel_tie" value="Same as Suit" checked="checked" data-default="checked">
+                <label for="color-lapel_tie" class="step-slide__label">
+                  <span class="step-slide__icon custom--tie"></span>
+                  <div class="step-slide__information">
+                  <h3 class="step-slide__title">Same Color as Suit</h3>
+                </label>
+              </article>
+            {% for product in collections.customize-stitching-colored.products %}
+              {% for variant in product.variants %}
+                <article class="step-slide__item step-with-image">
+                  <input type="radio" class="step-slide__input js-color-lapel" name="property-lapel-color" id="lapel_{{ variant.id }}" value="{{ product.title | capitalize }}" data-type="Color">
+                  <label for="lapel_{{ variant.id }}" class="step-slide__label" title="{{ product.title }}">
+                    <div class="step-slide__image" style="background-image: url({{ product.featured_image | product_img_url: '120x' }})"></div>
+                    <h3 class="step-slide__title">{{ product.title }}</h3>
+                  </label>
+                </article>
+              {% endfor %}
+            {% endfor %}
+            </div>
+          </div>
+          <div class="wrapper-scroll__425 js-stitching-sleeve" style="display: none;">
+            <h2 class="step-slide__heading" data-hide=".js-stitching-sleeve" data-show=".js-stitchings" data-toggle=".js-actions"><span class="app__back custom--back"></span> COLORED SLEEVE COLOR CHOOSE</h2>
+            <div class="step-slide__wrapper" data-items="4">
+              <article class="step-slide__item step-with-image">
+                <input type="radio" class="step-slide__input js-color-sleeve" name="property-sleeve-color" id="color-sleeve_tie" value="Same as Suit" checked="checked" data-default="checked">
+                <label for="color-sleeve_tie" class="step-slide__label">
+                  <span class="step-slide__icon custom--tie"></span>
+                  <div class="step-slide__information">
+                  <h3 class="step-slide__title">Same Color as Suit</h3>
+                </label>
+              </article>
+            {% for product in collections.customize-stitching-colored.products %}
+              {% for variant in product.variants %}
+                <article class="step-slide__item step-with-image">
+                  <input type="radio" class="step-slide__input js-color-sleeve" name="property-sleeve-color" id="sleeve_{{ variant.id }}" value="{{ product.title | capitalize }}" data-type="Color">
+                  <label for="sleeve_{{ variant.id }}" class="step-slide__label" title="{{ product.title }}">
+                    <div class="step-slide__image" style="background-image: url({{ product.featured_image | product_img_url: '120x' }})"></div>
+                    <h3 class="step-slide__title">{{ product.title }}</h3>
+                  </label>
+                </article>
+              {% endfor %}
+            {% endfor %}
+            </div>
+          </div>
+          <div class="wrapper-scroll__425 js-stitching-monogramed" style="display: none;">
+            <div class="js-monogramed-label">
+              <h2 class="step-slide__heading" data-hide=".js-stitching-monogramed" data-show=".js-stitchings" data-toggle=".js-actions"><span class="app__back custom--back"></span> PERSONAL MONOGRAM</h2>
+              <div class="monogramed">
+                <div class="monogramed__item monogramed__icon--wrapper">
+                  <img src="{{ 'monogram.png' | asset_url }}" alt="" class="monogramed__icon">
+                </div>
+                <div class="monogramed__item monogramed__label--wrapper">
+                  <h3 class="monogramed__title">What should your monogram say?</h3>
+                  <label for="monogramed-text" class="monogramed__label">MONOGRAM TEXT <span class="highlight">*</span></label>
+                  <input type="text" name="mmonogramed-text" placeholder="50 Characters or Less" id="monogramed-text" class="monogramed__input js-monogramed-input">
+                  <span class="js-monogramed-count text--regular height">20</span>
+                  <div>
+                    <span class="monogramed__color-btn" data-show=".js-monogramed-color" data-hide=".js-monogramed-label">PICK COLOR</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="js-monogramed-color" style="display: none;">
+              <h2 class="step-slide__heading" data-hide=".js-monogramed-color" data-show=".js-monogramed-label" data-toggle=".js-actions"><span class="app__back custom--back"></span> STITCHING COLOR FOR YOUR MONOGRAM</h2>
+              <div class="step-slide__wrapper" data-items="4">
+                <article class="step-slide__item step-with-image">
+                  <input type="radio" class="step-slide__input js-color-monogramed" name="property-monogramed-color" id="color-monogramed_tie" value="Same as Suit" checked="checked" data-default="checked">
+                  <label for="color-monogramed_tie" class="step-slide__label">
+                    <span class="step-slide__icon custom--tie"></span>
+                    <div class="step-slide__information">
+                    <h3 class="step-slide__title">Same Color as Suit</h3>
+                  </label>
+                </article>
+              {% for product in collections.customize-stitching-colored.products %}
+                {% if product.tags contains 'c_monogram' %}
+                  {% for variant in product.variants %}
+                    <article class="step-slide__item step-with-image">
+                      <input type="radio" class="step-slide__input js-color-monogramed" name="property-monogramed-color" id="monogramed_{{ variant.id }}" value="{{ product.title | capitalize }}" data-type="Color">
+                      <label for="monogramed_{{ variant.id }}" class="step-slide__label" title="{{ product.title }}">
+                        <div class="step-slide__image" style="background-image: url({{ product.featured_image | product_img_url: '120x' }})"></div>
+                        <h3 class="step-slide__title">{{ product.title }}</h3>
+                      </label>
+                    </article>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="wrapper-scroll__425 js-stitching-pick" style="display: none;">
+            <h2 class="step-slide__heading" data-hide=".js-stitching-pick" data-show=".js-stitchings" data-toggle=".js-actions"><span class="app__back custom--back"></span> COLORED LAPEL COLOR CHOOSE</h2>
+            <div class="step-slide__wrapper" data-items="4">
+              <article class="step-slide__item step-with-image">
+                <input type="radio" class="step-slide__input js-color-pick" name="property-pick-color" id="color-pick_tie" value="Same as Suit" checked="checked" data-default="checked">
+                <label for="color-pick_tie" class="step-slide__label">
+                  <span class="step-slide__icon custom--tie"></span>
+                  <div class="step-slide__information">
+                  <h3 class="step-slide__title">Same Color as Suit</h3>
+                </label>
+              </article>
+            {% for product in collections.customize-stitching-colored.products %}
+              {% for variant in product.variants %}
+                <article class="step-slide__item step-with-image">
+                  <input type="radio" class="step-slide__input js-color-pick" name="property-pick-color" id="pick_{{ variant.id }}" value="{{ product.title | capitalize }}" data-type="Color">
+                  <label for="pick_{{ variant.id }}" class="step-slide__label" title="{{ product.title }}">
+                    <div class="step-slide__image" style="background-image: url({{ product.featured_image | product_img_url: '120x' }})"></div>
+                    <h3 class="step-slide__title">{{ product.title }}</h3>
+                  </label>
+                </article>
+              {% endfor %}
+            {% endfor %}
+            </div>
+          </div>
+        </section>
+        <section class="step-slide">
+          <h2 class="step-slide__heading">PANTS</h2>
+          <div class="step-slide__wrapper" data-items="2">
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Pants]" id="step-item__pants-flat-front" value="Standard Flat Front" checked="checked" data-default="checked">
+              <label for="step-item__pants-flat-front" class="step-slide__label">
+                <span class="step-slide__icon custom--pants-flat-front"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Standard Flat Front</h3>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Pants]" id="step-item__pants-pleated-front" value="Pleated Front">
+              <label for="step-item__pants-pleated-front" class="step-slide__label">
+                <span class="step-slide__icon custom--pants-pleated-front"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Pleated Front</h3>
+                </div>
+              </label>
+            </article>
+          </div>
+          <h2 class="step-slide__heading">WAIST CONFIGURATION</h2>
+          <div class="step-slide__wrapper" data-items="3">
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Pants Waist]" id="step-item__pants-regular" value="Regular" checked="checked" data-default="checked">
+              <label for="step-item__pants-regular" class="step-slide__label">
+                <span class="step-slide__icon custom--pants-regular"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Regular</h3>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Pants Waist]" id="step-item__pants-bealt-buttons-no" value="No Belt Loops">
+              <label for="step-item__pants-bealt-buttons-no" class="step-slide__label">
+                <span class="step-slide__icon custom--pants-bealt-buttons-no"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">No Belt Loops</h3>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="radio" class="step-slide__input" name="properties[Pants Waist]" id="step-item__pants-tuxedo-strap" value="Tuxedo Waist Strap">
+              <label for="step-item__pants-tuxedo-strap" class="step-slide__label">
+                <span class="step-slide__icon custom--pants-tuxedo-strap"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Tuxedo Waist Strap</h3>
+                </div>
+              </label>
+            </article>
+          </div>
+          <h2 class="step-slide__heading">ADDITIONALS</h2>
+          <div class="step-slide__wrapper" data-items="3">
+            <article class="step-slide__item">
+              <input type="checkbox" class="step-slide__input" name="properties[Pants Additionals]" id="step-item__pants-cuffed-bottoms" value="Cuffed Bottoms">
+              <label for="step-item__pants-cuffed-bottoms" class="step-slide__label">
+                <span class="step-slide__icon custom--pants-cuffed-bottoms"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Cuffed Bottoms</h3>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="checkbox" class="step-slide__input" name="properties[Pants Additionals ]" id="step-item__pants-suspender-buttons" value="Suspender Buttons">
+              <label for="step-item__pants-suspender-buttons" class="step-slide__label">
+                <span class="step-slide__icon custom--pants-suspender-buttons"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Suspender Buttons</h3>
+                </div>
+              </label>
+            </article>
+            <article class="step-slide__item">
+              <input type="checkbox" class="step-slide__input" name="properties[Pants Additionals  ]" id="step-item__pants-satin-stripe" value="Satin Pant Stripe">
+              <label for="step-item__pants-satin-stripe" class="step-slide__label">
+                <span class="step-slide__icon custom--pants-satin-stripe"></span>
+                <div class="step-slide__information">
+                <h3 class="step-slide__title">Satin Pant Stripe</h3>
+                </div>
+              </label>
+            </article>
+          </div>
+        </section>
+        <section class="step-slide">
+          <h2 class="step-slide__heading">EXTRA</h2>
+          {% for product in collections.customize-extras.products %}
+            {% assign grid_size = forloop.length %}
+          {% endfor %}
+          <div class="step-slide__wrapper" data-items="{{ grid_size }}">
+            {% for product in collections.customize-extras.products %}
+              {% for variant in product.variants %}
+                <article class="step-slide__item step-with-image">
+                  <input type="checkbox" class="step-slide__input js-addon" name="property-extra" id="step-item__{{ variant.id }}" value="{{ variant.id }}" data-type="Extra" data-name="{{ product.title }}" data-price="{{ product.price | remove: '00' }}" data-image="{{ product.featured_image | product_img_url: '116x' }}">
+                  <label for="step-item__{{ variant.id }}" class="step-slide__label" title="{{ product.title }}">
+                    <div class="step-slide__image no-border" style="background-image: url({{ product.featured_image | product_img_url: 'master' }})"></div>
+                    <span class="step-slide__price">+ $<span>{{ variant.price | remove: '00' }}</span></span>
+                    <h3 class="step-slide__title">{{ product.title }}</h3>
+                  </label>
+                </article>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </section>
+      </main>
+      <footer class="app__footer">
+        <div class="actions-left js-actions js-palete-actions">
+          <a href="#close-alert" class="app__btn button js-popup mfp-close no-selection">cancel</a>
+        </div>
+        <div class="actions-right js-actions js-palete-actions">
+          <span class="app__btn button no-selection js-app-prev btn-prev">prev</span>
+          <span class="app__btn btn-sp button button--primary no-selection m-r-0 js-app-next js-action-next btn-next">next</span>
+          <a href='#bridge' class="app__btn btn-sp button button--success no-selection js-custom-finish js-action-finish js-popup mfp-close btn-finish" >finish</a>
+        </div>
+        <div class="stitching-actions actions-right full-width js-actions" style="display: none;">
+          <span class="app__btn button no-selection js-stitching-cancel" data-show=".js-stitchings" data-hide="" data-toggle=".js-actions" data-input-reset="">Back</span>
+          <span class="app__btn btn-sp button button--primary no-selection js-stitching-choose" data-show=".js-stitchings" data-hide="" data-toggle=".js-actions">choose</span>
+        </div>
+        {% unless hasFabrics == "false" %}
+          <div class="stitching-actions actions-right full-width js-palete-actions" style="display: none;">
+            <span class="app__btn button no-selection js-stitching-cancel" data-height="default" data-show=".js-palete" data-hide=".js-palete-hide, .js-palete-detail" data-toggle=".js-palete-actions" data-input-reset="">Back</span>
+            <span class="app__btn btn-sp button button--primary no-selection js-stitching-choose js-app-next js-action-next" data-height="default" data-show=".js-palete" data-hide=".js-palete-hide, .js-palete-detail" data-toggle=".js-palete-actions">choose</span>
+          </div>
+        {% endunless %}
+      </footer>
+    </div>
+  </div>
+</div>
+{% include 'close-alert' with target: 'customizer-app' with reset: 'js-reset-customizer' %}

@@ -1,0 +1,9 @@
+{% if template contains 'index' %}
+<a href="/">
+  <img class="main-logo main-header-logo" src="{{ 'logo@2x.png' | asset_url }}" />
+</a>
+{% else %}
+<a href="/">
+  <img class="main-logo main-header-logo" src="{{ 'logo-grey.png' | asset_url }}" />
+</a>
+{% endif %}

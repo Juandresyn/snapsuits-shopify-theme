@@ -1,0 +1,115 @@
+{% include 'breadcrumb' with maincollect: 'Custom Suits' %}
+</main> <!-- Close .main-wrapper for full width effect -->
+<div class="has-background-image background-center page-banner--header" style="background-image: url({{ settings['cb-hero'].src | img_url: 'master' }})">
+  <div class="wrapper--560">
+    <h1 class="title--main">{{ page.title }}</h1>
+  </div>
+</div>
+<main class="main-wrapper"> <!-- Open again .main-wrapper for wrapper effect -->
+  <div class="popular-suits__wrapper">
+    {% for product in collections['popular-suits'].products %}
+      {% unless product.tags contains "nosearch" %}
+        {% for variant in product.variants %}
+          {% if forloop.first %}
+            {% assign suitPrice = variant.price | money | strip_html | remove: ".00" %}
+          {% endif %}
+        {% endfor %}
+          <article class="popular-suit-{{product.id}} popular-suits__item js-popular-suits-item js-suit-{{product.id}}">
+            <div class="popular-suits-item__head">
+              <h2 class="title--20">{{ product.title }}</h2>
+              <h3 class="popular-suits-item__price title--18 red">{{ suitPrice }}</h3>
+            </div>
+            <div class="popular-suits-item__body">
+              <div class="popular-suits-item__body-wrapper">
+                <div class="popular-suits-item__image" style="background-image: url({{ product.featured_image.src | product_img_url: 'grande' }})"></div>
+                <div class="popular-suits__fabric">
+                  {% if product.metafields.global['fabric'] == blank %}
+                    {% assign defaultFabricHandle = "almond" %}
+                  {% else %}
+                    {% assign defaultFabricHandle = product.metafields.global['fabric'] %}
+                  {% endif %}
+                  {% assign defaultFabric = all_products[defaultFabricHandle] %}
+                  {% for fabricVariant in defaultFabric.variants %}
+                    {% if forloop.first %}
+                      {% assign fabricId = fabricVariant.id %}
+                    {% endif %}
+                  {% endfor %}
+                  <h4 class="title--12 uppercase">Fabric Selected: <br class="desktop--only"> <span class="title--small uppercase js-fabric-title">{{ defaultFabric.title }}</span></h4>
+                  <div class="popular-suits-fabric__image js-fabric-image" style="background-image: url({{ defaultFabric.featured_image.src | product_img_url: 'grande' }})"></div>
+                </div>
+              </div>
+              <div class="popular-suits-item__footer">
+                <div class="popular-suits-item__buttons">
+                  <a href="{{product.url}}?openapp=true&fabric={{fabricId}}" data-href="{{product.url}}?openapp=true&fabric=" class="button button--primary js-fabric-url">Personalize & add to cart</a>
+                  <a href="#basics-personalizer-fabrics-app" class="button button-outline--blue js-app-popup js-cb-fabric-trigger" data-target=".js-suit-{{product.id}}">Change Fabric</a>
+                </div>
+                <div class="popular-suits-item__description">
+                  <h4 class="popular-suits-item-description__title title--12 js-open-description">Description <span class="icon--circle-arrow-up carret"></span></h4>
+                  <div class="popular-suits-item-description__content js-suits-item-description">
+                    <span class="login--modal-close js-close-description"><span class="ads__close-icon icon--menu-close"></span></span>
+                    <div class="popular-suits-item-description__content--wrapper">
+                      <h3 class="title--16">Description</h3>
+                      {{ product.description }}
+                    </div>
+                    <div class="popular-suits-item-description__footer">
+                      <div class="popular-suits-item__buttons">
+                        <a href="{{product.url}}?openapp=true&fabric={{fabricId}}" data-href="{{product.url}}?openapp=true&fabric=" class="button button--primary js-fabric-url">Personalize & add to cart</a>
+                        <a href="#basics-personalizer-fabrics-app" class="button button-outline--blue js-close-description js-app-popup js-cb-fabric-trigger" data-target=".js-suit-{{product.id}}">Change Fabric</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+      {% endunless %}
+    {% endfor %}
+  </div>
+  </main> <!-- Close .main-wrapper to allow full width -->
+    <section class="section bg--gray has-background-image collections__footer" style="background-image: url({{ 'collections-footer.jpg' | asset_url }})">
+      <div class="wrapper--770 p-y-md text--center">
+        <h3 class="title--medium white m-b-md">Want to design your own suit from top to bottom?</h3>
+        <p class="text--strong-regular white">Create a unique style that is truly your own. Design a fully custom suit,<br class="desktop--only">down to each and every detail, for just $300. Here's what is included.</p>
+        <div class="collections-footer__list">
+          <article class="collections-footer-list__item text--strong-regular white">
+            <span class="icon--checked collections-footer__icon"></span> 100+ Fabrics
+          </article>
+          <article class="collections-footer-list__item text--strong-regular white">
+            <span class="icon--checked collections-footer__icon"></span> Custom Liners
+          </article>
+          <article class="collections-footer-list__item text--strong-regular white">
+            <span class="icon--checked collections-footer__icon"></span> Custom Lapels
+          </article>
+          <article class="collections-footer-list__item text--strong-regular white">
+            <span class="icon--checked collections-footer__icon"></span> Custom Button Styles
+          </article>
+          <article class="collections-footer-list__item text--strong-regular white">
+            <span class="icon--checked collections-footer__icon"></span> Custom Vents
+          </article>
+          <article class="collections-footer-list__item text--strong-regular white">
+            <span class="icon--checked collections-footer__icon"></span> Custom Stitching Options
+          </article>
+          <article class="collections-footer-list__item text--strong-regular white">
+            <span class="icon--checked collections-footer__icon"></span> Custom Pants Styles
+          </article>
+          <article class="collections-footer-list__item text--strong-regular white">
+            <span class="icon--checked collections-footer__icon"></span> And more
+          </article>
+        </div>
+        <a href="/products/create-custom-suit?openapp=true" class="button button-outline-white">Design Your Own Custom Suit - $300</a>
+      </div>
+    </section>
+  <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+  {% include "custom-basics-fabrics-app" %}
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+      var desc = '.js-suits-item-description';
+      $('.js-cb-fabric-trigger').on('click', function() {
+        window.fabricTrigger = $(this).data('target');
+      });
+
+      $('.js-open-description, .js-close-description').on('click', function() {
+        $(this).parents('.js-popular-suits-item').find(desc).fadeToggle();
+      });
+    });
+  </script>

@@ -1,0 +1,13 @@
+.top-info{
+  // font-size: $size-minor;
+  color: $medium-gray;
+  text-transform: uppercase;
+  line-height: 15px;
+  text-align: center;
+  padding: 15px;
+  @include border-line("bottom");
+
+  & p {
+    font-size: 1em;
+  }
+}

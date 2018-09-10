@@ -1,0 +1,527 @@
+.product{
+  &-info{
+    padding: 30px 0 0 30px;
+    box-sizing: border-box;
+
+    &.mobile--only {
+      padding-left: 0;
+    }
+  }
+  &-title{
+    font-family: $font-primary--bold;
+    font-size: 20px;
+    line-height:24px;
+    color: $gray;
+    text-transform: uppercase;;
+    margin-top: 0;
+    padding-bottom: 15px;
+    @include border-line("bottom");
+  }
+  &-price__container{
+    @include border-line("bottom");
+    overflow: hidden;
+  }
+  &-price{
+    color: $brand-primary;
+    font-family: $font-primary--bold;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 24px;
+    padding: 5px 0;
+    margin: 20px 0;
+    padding-right: 10px;
+    float: left;
+  }
+  &-variant__container{
+    width: 45%;
+    float: left;
+    margin: 22px 0;
+    padding-left: 10px;
+    border-left: 1px solid $border-color-primary;
+
+    @media screen and (max-width: $tablet-large){
+      width: 60%;
+    }
+  }
+  &-variant{
+    width: 100%;
+    border: 0;
+    background-color: $white;
+    font-size: 14px;
+    color: $gray;
+    height: 30px;
+    @include border-line("bottom");
+  }
+  &-buttons{
+    box-sizing: border-box;
+    padding: 22px 0;
+    @include flexbox;
+    @include border-line("bottom");
+    .button{
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  &-options{
+    box-sizing: border-box;
+    padding-top: 22px;
+    overflow: hidden;
+    .btn-default{
+      text-transform: capitalize;
+    }
+    .btn-wrapper{
+      padding: 0 11px;
+      .btn{
+        color: $white;
+        font-size: 12px;
+      }
+      &:first-child{
+        padding-left: 0;
+      }
+      &:last-child{
+        padding-right: 0;
+      }
+    }
+    &__get-fitted{
+      padding: 10px 51px;
+    }
+    &__save-later{
+      padding: 10px 33px;
+    }
+    &__wedding-fave{
+      padding: 10px 38px;
+    }
+  }
+  &-description{
+    &__container{
+      .description-text{
+        padding: 20px 0;
+        max-width: 100%;
+        & > * {
+          width: 100% !important;
+          @extend .text--regular;
+        }
+        ul{
+          margin: 25px 0;
+          li{
+            list-style-type: square;
+            margin-left: 15px;
+          }
+        }
+
+        @media screen and (max-width: $mobile-large){
+          margin: 0 20px;
+          @include border-line("bottom");
+        }
+      }
+    }
+    &__headings{
+      @include border-line("bottom");
+      .title{
+        text-transform: uppercase;
+        font-size: 14px;
+        line-height: 24px;
+        color: $gray;
+        @extend .anchor-clean;
+      }
+    }
+    &__heading{
+      padding: 20px 0;
+      &.is-active, &:hover, &:focus{
+        cursor: pointer;
+        @include border-line("bottom", 2px, solid, $brand-primary);
+        & > .title{
+          color: $brand-primary;
+        }
+      }
+    }
+  }
+
+  &__feature{
+    @include border-line("bottom");
+  }
+
+  &-feature{
+    &__wrapper{
+      @include flexbox;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-bottom: 30px;
+
+      @media screen and (max-width: $mobile-large){
+        flex-direction: column;
+      }
+    }
+
+    &__item{
+      @media screen and (max-width: $mobile-large){
+        margin-bottom: 30px;
+      }
+      img{
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  &__shirts{
+    @include border-line("bottom");
+    padding-bottom: 130px;
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+
+    .button{
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+
+  &-shirts{
+    &__wrapper{
+      max-width: 80%;
+      margin: auto;
+      margin-bottom: 20px;
+    }
+  }
+
+  &-buttons__wrapper{
+    width: 100%;
+  }
+}
+
+.shirt--options{
+  margin: 20px 10px;
+  @include flexbox;
+
+  @media screen and (max-width: $mobile-large){
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  &__item{
+    background: white;
+    border: 2px solid #CCCCCC;
+    color: #666;
+    font-size: 13px;
+    width: 100%;
+    text-align-last: center;
+  }
+
+  &__wrapper{
+    width: 31%;
+    margin-left: 2.3%;
+    position: relative;
+
+    @media screen and (max-width: $mobile-large){
+      &:first-child{
+        margin-left: 0;
+      }
+    }
+
+    &:before{
+      content: "\e915";
+      font-family: "snapsuits";
+      color: #ccc;
+      position: absolute;
+      right: 10px;
+      top: 9px;
+      font-size: 11px;
+      @media screen and (max-width: $mobile-large){
+        right: 7px;
+        top: 13px;
+        font-size: 9px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product{
+    &-info{
+      padding: 20px 0 0 20px;
+      border-top: 1px solid #EBEBEB;
+    }
+    &-options, &-buttons{
+      .btn-wrapper{
+        &, &:first-child, &:last-child{
+          padding: 0;
+        }
+        .btn-customize{
+          width: 100%;
+          padding: 10px 0;
+          text-align: center;
+        }
+        .btn-add{
+          margin-right: 1px;
+          margin-top: 15px;
+          width: 100%;
+        }
+      }
+      .btn-default{
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px){
+  .btn-wrapper{
+    &, &:first-child, &:last-child{
+      padding: 0 !important;
+      margin-bottom: 10px;
+    }
+    .btn{
+      padding: 10px 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .product{
+    &-options{
+      &__get-fitted{
+        padding: 10px 36px;
+      }
+      &__save-later{
+        padding: 10px 19px;
+      }
+      &__wedding-fave{
+        padding: 10px 25px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-large){
+
+  .form-product{
+    position: relative;
+    padding-bottom: 46px;
+  }
+
+  .product-actions.bottom--buttons{
+    flex-direction: row;
+    display: flex !important;
+    padding: 0;
+    position: fixed;
+    bottom: -1px;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    margin: 0 -10px;
+  }
+
+  .absolute-buttons {
+    left: -10px !important;
+    right: -10px !important;
+    position: absolute !important;
+  }
+
+  .product-buttons__wrapper{
+    width: 50%;
+  }
+}
+
+.product-gallery{
+  @include border-line("right");
+  box-sizing: border-box;
+}
+.gallery{
+  &-image__full{
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    margin: 30px 30px 0 0;
+    text-align: center;
+    overflow: hidden;
+    img{
+      max-width: 100%;
+      width: 95%;
+      float: left;
+
+      @media screen and (max-width: $mobile-large){
+        width: 100%;
+      }
+    }
+  }
+  &-tumbnails__list{
+    @include border-line("bottom");
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    position: relative;
+  }
+  &-tumbnail__item{
+    width: 116px;
+    height: 133px;
+    background-size: cover;
+    background-position: center;
+    margin: 30px 15px;
+    display: inline-block;
+    cursor: pointer;
+    @include transitions(0.3s);
+    @include border-line("all", 1px, solid, $white);
+    &:hover, &:focus, &.is-active{
+      @include border-line("all", 1px, solid, $brand-primary);
+    }
+    &:first-child{
+      margin-left: 0;
+    }
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+}
+.tranparency-show__more{
+  background: -moz-linear-gradient(left,  rgba(30,87,153,0) 0%, rgba(39,94,157,0) 4%, rgba(255,255,255,0.98) 98%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba(30,87,153,0) 0%,rgba(39,94,157,0) 4%,rgba(255,255,255,0.98) 98%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba(30,87,153,0) 0%,rgba(39,94,157,0) 4%,rgba(255,255,255,0.98) 98%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5799', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+  position: absolute;
+  right: -1px;
+  top: 10px;
+  bottom: 10px;
+  width: 60px;
+}
+@media screen and (max-width: 1024px) {
+  .gallery{
+    &-image__full{
+      margin: auto;
+    }
+  }
+}
+@media screen and (max-width: 768px - 1px) {
+  .gallery{
+    &-tumbnail__item{
+      margin: 15px 5px;
+      width: 80px;
+      height: 91px;
+    }
+  }
+  .product-gallery{
+    border: 0;
+  }
+}
+
+.product-warranty{
+  margin: 30px 30px 0 0;
+}
+.warranty{
+  &-block{
+      width: 100%;
+      height: 400px;
+      position: relative;
+      margin-top: 30px;
+      margin-bottom: 60px;
+  }
+  &-image{
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+  }
+  &-content{
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 24%;
+    -webkit-transform: translate(-17%, -50%);
+    transform: translate(-17%, -50%);
+    text-align: center;
+  }
+  &-title{
+    font-family: $font-secondary;
+    color: $white;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &-text{
+    font-family: $font-primary--light;
+    color: $white;
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+  &-btn{
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .warranty{
+    &-image{
+      width: 100%;
+      height: 521px;
+    }
+    &-block{
+      width: 95%;
+      height: 521px;
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .warranty{
+    &-image, &-block{
+      width: 482px;
+      height: 521px;
+    }
+    &-btn{
+      width: 78%;
+    }
+  }
+}
+@media screen and (max-width: 1024px - 1px) {
+  .warranty{
+
+    &-content{
+      left: 7%;
+      -webkit-transform: translate(-4%, -50%);
+      transform: translate(-4%, -50%);
+    }
+
+    &-image, &-block{
+      width: 100%;
+      height: 290px;
+    }
+    &-btn{
+      width: 60%;
+    }
+  }
+}
+@media screen and ( min-width: 768px ) and ( max-width: 1024px - 1px ) {
+  .warranty{
+    &-image, &-block{
+      width: 100%;
+      height: 465px;
+    }
+    &-btn{
+      width: 65%;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .product-warranty{
+        margin: 30px 0 0 0;
+  }
+  .warranty{
+    &-block{
+      width: 100%;
+    }
+    &-image{
+      width: 100%;
+    }
+    &-btn{
+      width: 85%;
+    }
+  }
+}
+@media screen and (max-width: $mobile-large){
+  .warranty{
+    &-image, &-block{
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

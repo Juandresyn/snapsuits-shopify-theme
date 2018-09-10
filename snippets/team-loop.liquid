@@ -1,0 +1,20 @@
+<div class="team-wrapper">
+  <section class="team-type">
+    <h2 class="title--medium team-type--title">{{ team }}</h2>
+    <div class="team-members--wrapper">
+      {% for i in (1..10) %}
+          {% capture team_pic %}{{ type }}_member_{{ i }}_image.jpg{% endcapture %}
+          {% capture team_name %}{{ type }}_member_{{ i }}_name{% endcapture %}
+          {% capture team_roll %}{{ type }}_member_{{ i }}_roll{% endcapture %}
+
+          {% if settings[team_name] != blank %}
+            <article class="team-member">
+              <div class="team-member--img" style="background-image: url('{{ team_pic | asset_url }}')"></div>
+              <h3 class="team-member--name">{{ settings[team_name] }}</h3>
+              <p class="team-member--roll text--regular">{{ settings[team_roll] }}</p>
+            </article>
+          {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+</div>

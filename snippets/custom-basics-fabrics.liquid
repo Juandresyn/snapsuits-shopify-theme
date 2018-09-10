@@ -1,0 +1,15 @@
+<h2 class="step-slide__heading" data-hide="{{ self }}" data-height="default" data-show=".js-palete" data-toggle=".js-palete-actions"><span class="app__back custom--back"></span> {{ name }}</h2>
+{% for product in collections[fabric].products %}
+  {% for variant in product.variants %}	
+    <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+      {% capture liningDescription %}{{ product.description | replace: '"', "'"  }}{% endcapture %}
+      <input type="radio" class="step-slide__input js-addon js-palete-item" name="fabric-item" id="step-item__{{ variant.id }}" value="{{ variant.id }}" data-type="Fabric: {{ product.title }}" data-name="Fabric" data-price="{{ product.price | remove: '00' }}" data-image="{{ product.featured_image | product_img_url: 'grande' }}" data-handle="{{ product.handle }}" data-title="{{ product.title }}" data-parent="{{ parent }}">
+      <label for="step-item__{{ variant.id }}" class="step-slide__label square-label js-fabrick-detail" data-self="{{ self }}" data-hide=".js-palete-hide" data-image="{{ product.featured_image | product_img_url: 'master' }}" data-description="{{ liningDescription }}" data-title="{{ product.title }}">
+        <div class="color-palete__item color-palete__item--long box-icon box-icon__with-check">
+          <div class="color-palete__img has-background-image" style="background-image: url({{ product.featured_image | product_img_url: '130x' }});"></div>
+          <p class="color-palete__title uppercase">{{ product.title }}</p>
+        </div>
+      </label>
+    </article>	
+  {% endfor %}
+{% endfor %}

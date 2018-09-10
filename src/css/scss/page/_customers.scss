@@ -1,0 +1,37 @@
+.customer-template {
+  max-width: $global-max-width-container;
+  padding: 30px 30px 60px;
+}
+
+.customer-form {
+  .form-title {
+    margin-bottom: $global-spacing-unit;
+    font-weight: bold;
+  }
+  .form-subtitle {
+    margin-bottom: $global-spacing-unit-sm;
+  }
+  .form-submit {
+    font-weight: bold;
+  }
+}
+
+.form-note {
+  border-radius: $global-radius;
+  padding: $global-spacing-unit-xs $global-spacing-unit-sm;
+  margin-bottom: 15px;
+  border: 1px solid transparent;
+  font-size: $global-size-minor;
+  text-align: left;
+  width: 100%;
+  &.is-success {
+    color: $color-success;
+    background-color: $color-success-bkg;
+    border-color: $color-success;
+  }
+  &.is-error {
+    color: $color-error;
+    background-color: $color-error-bkg;
+    border-color: $color-error;
+  }
+}

@@ -1,0 +1,36 @@
+.saved-suits {
+  .mobile--cart {
+    .cart-item {
+      padding-top: 20px;
+
+      &__option {
+        clear: both;
+        margin: 20px 0;
+        justify-content: space-between;
+
+        @include flexbox;
+
+        .button {
+          width: 48%;
+          padding-left: 0;
+          padding-right: 0;
+          text-align: center;
+        }
+      }
+
+      &__properties {
+        @extend .text--regular;
+      }
+    }
+
+    .saved-suits__all {
+      width: 100%;
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__image {
+    max-width: 115px;
+  }
+}

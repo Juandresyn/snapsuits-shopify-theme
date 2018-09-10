@@ -1,0 +1,338 @@
+{% unless product.tags contains "gift_card" %}
+  {% unless product.tags contains "Shirt" %}
+    {% if product.tags contains "weddingsuit" %}
+      {% assign currentApp = "personalizer-app" %}
+      {% assign currentAppName = "Personalizer" %}
+    {% elsif product.tags contains "custombasics" %}
+      {% assign currentApp = "basics-personalizer-app" %}
+      {% assign currentAppName = "Personalizer" %}
+    {% else %}
+      {% assign currentApp = "customizer-app" %}
+      {% assign currentAppName = "Customizer" %}
+    {% endif %}
+  {% endunless %}
+{% endunless %}
+{% assign variant = product.selected_or_first_available_variant %}
+{% assign featured_image = product.selected_or_first_available_variant.featured_image | default:product.featured_image %}
+<span class="js-product-info" data-id="{{ product.id }}" data-name="{{ product.title }}" data-ref=""></span>
+<form action="/cart/add" method="post" enctype="multipart/form-data" class="form-product js-product-form">
+  <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
+    <select id="product-select" name="id" class="hidden">
+      {% for variant in product.variants %}
+      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% if product.tags contains "Shirt" %}
+    {% assign main_collection = "Custom Shirts" %}
+  {% elsif product.tags contains "custombasics" %}
+    {% assign main_collection = "Custom Basics" %}
+  {% else %}
+    {% assign main_collection = "Custom Suits" %}
+  {% endif %}
+  {% include 'breadcrumb' with maincollect: main_collection %}
+  <div class="full-width product-info mobile--only">
+    <h1 class="title product-title">{{ product.title }}</h1>
+    <div class="product-price__container">
+      <h2 class="product-price"><span class="js-product-price">{{ variant.price | money | strip_html | remove: "$ " }}</span></h2>
+    {% if product.tags contains "Shirt" %}
+        <input type="text" name="ref" value="" id="product-ref" class="hidden">
+       {% else %}
+          <input type="text" name="properties[Ref]" value="" id="product-ref" class="hidden">
+      {% endif %}
+      {% if product.tags contains "Shirt" %}
+        <div class="shirt--options">
+          <div class="shirt--options__wrapper btn-wrapper text--left float--left">
+            {% assign tags_collar = settings.shirts_collar_type | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+            <label for="shirt-collar" class="shirt-style-label"></label>
+            <select id="shirt-collar" name="properties[Collar type]" class="select-padding select-reset btn btn-default shirt--options__item js-shirt-type" data-input=".js-collar">
+              <option value="">Collar Type</option>
+              {% for tag in tags_collar %}
+                <option value="{{ tag | handle }}">{{ tag }}</option>
+              {% endfor %}
+            </select>
+          </div><!--
+          --><div class="shirt--options__wrapper btn-wrapper text--center float--left">
+            {% assign tags_sleeve = settings.shirts_sleeve_type | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+            <label for="shirt-sleeve" class="shirt-style-label"></label>
+            <select id="shirt-sleeve" name="properties[Sleeve type]" class="select-padding select-reset btn btn-default shirt--options__item js-shirt-type" data-input=".js-sleeve">
+              <option value="">Sleeve Type</option>
+              {% for tag in tags_sleeve %}
+                <option value="{{ tag | handle }}">{{ tag }}</option>
+              {% endfor %}
+            </select>
+          </div><!--
+          --><div class="shirt--options__wrapper btn-wrapper text--right float--left">
+            {% assign tags_cuff = settings.shirts_cuff_type | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+            <label for="shirt-cuff" class="shirt-style-label"></label>
+            <select id="shirt-cuff" name="properties[Cuff type]" class="select-padding select-reset btn btn-default shirt--options__item js-shirt-type" data-input=".js-cuff">
+              <option value="">Cuff Type</option>
+              {% for tag in tags_cuff %}
+                <option value="{{ tag | handle }}">{{ tag }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      {% else %}
+        {% include 'product-variant' %}
+      {% endif %}
+    </div>
+    {% unless product.tags contains "gift_card" %}
+    <!-- QuadPay Product Page Widget START -->
+  	<style type="text/css">
+    	#quadPayCalculatorWidgetLearn {
+          font-size: 11px !important;
+          color: #666 !important;
+        }
+  	</style>
+    <div id="quadPayCalculatorWidget" class="yui3-cssreset" style="min-height: 38px; margin: 5px auto 15px; padding: 7px 0; width: 100%; max-width: 330px; color: black; text-transform: none; box-sizing: inherit;">
+      <img id="quadPayCalculatorWidgetLogo" src="https://assets.quadpay.com/assets/images/quadpay-logo-actually-black-tight-200.png" style="width: 90px; float: right;">
+      <div id="quadPayCalculatorWidgetText" style="color: #666; font-size: 13px; position: relative; text-align: left;">or 4 Interest-Free Payments
+        <span id="quadPayCalculatorWidgetTextFromCopy" sytle="margin-right: 10px;">of <span style="font-weight: bold;">{{ variant.price | divided_by: 4.00 | money}}</span></span>
+      </div>
+      <script async src="https://widgets.quadpay.com/snapsuits/quadpay-widget-0.1.0.js?type=calculator&min=1&max=1500&amount={{ variant.price | divided_by: 100.00 }}" type="application/javascript"></script>
+    </div>
+    <!-- QuadPay Product Page Widget END -->
+    {% endunless %}
+  </div><!--
+  --><div class="pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2">
+    {% include 'gallery' %}
+    <div class="mobile--only">
+      <div class="product-description__container">
+        <div class="product-description__headings pure-g">
+          <div class="pure-u-md-1-1 product-description__heading text--center is-active">
+            <a href="#description" class="title">Description</a>
+          </div><!--
+          {% if product.tags contains 'create_your_own' %}
+        --><div class="pure-u-md-1-2 product-description__heading text--center fabric-input__wrapper">
+              <input id="fabric" type="text" name="properties[Fabric Number]" placeholder="Fabric Number" class="input__fabric-number">
+            </div>
+          {% else %}
+        -->
+          {% endif %}
+        </div>
+        <div class="pure-u-md-1-1 product__more-info description-text" id="description">
+          <p class="text">
+            {{ product.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% include 'features' %}
+    {% unless product.tags contains "Shirt" %}
+      {% include 'shirts' %}
+    {% endunless %}
+    {% include 'warranty' %}
+  </div><!--
+  -->{% include 'product-info' %}
+  {% if product.tags contains "nofabrics" %}
+    {% assign hasFabrics = "false" %}
+  {% endif %}
+
+  {% capture currentVendor %}{{ product.vendor | downcase }}{% endcapture %}
+  {% if currentVendor contains "newtimes" %}
+    {% assign linersVendor = "custom-basic-liners" %}
+    {% comment %}
+      Collection: custom-basic-liners
+      Has all fabrics which Vendor is equal to "NewTimes Group"
+    {% endcomment %}
+  {% elsif currentVendor contains "arco-asia" %}
+    {% assign linersVendor = "custom-linings" %}
+    {% comment %}
+      Collection: custom-linings
+      Has all fabrics which Vendor is not equal to "NewTimes Group"
+    {% endcomment %}
+  {% endif %}
+
+  {% unless product.tags contains "gift_card" %}
+    {% unless product.tags contains "Shirt" %}
+      {% include currentApp %}
+    {% endunless %}
+  {% endunless %}
+
+  <div class="product-buttons product-actions bottom--buttons mobile--only js-action-buttons">
+    {% unless product.tags contains "gift_card" %}
+      {% unless product.tags contains "Shirt" %}
+    <div class="product-buttons__wrapper">
+      {% if product.tags contains "weddingsuit" %}
+        <a href="#personalizer-app" class="button button--secondary btn-customize js-app-popup">Personalize me</a>
+      {% elsif product.tags contains "custombasics" %}
+        <a href="#basics-personalizer-app" class="button button--secondary btn-customize js-app-popup">Personalize me</a>
+      {% else %}
+        <a href="#customizer-app" class="button button--secondary btn-customize js-app-popup">customize me</a>
+      {% endif %}
+    </div>
+      {% endunless %}
+    {% endunless %}
+    <div class="{% if product.tags contains 'Shirt' %} full-width {% else %} product-buttons__wrapper {% endif %}">
+      <input type="submit" class="button button--primary btn-add {% if product.tags contains 'Shirt' %} full-width {% endif %}" id="add" value="Add to Cart">
+    </div>
+  </div>
+  <input type="text" name="properties[Ref]" class="hidden js-product-ref" value="">
+</form>
+{% include 'bridge' with app: currentApp with appName: currentAppName %}
+{% for image in product.images %}
+  {% if forloop.first == true %}
+    {% capture product__image %}{{ image | img_url: "116x" }}{% endcapture %}
+  {% endif %}
+{% endfor %}
+<script type="text/javascript">
+  $(document).on('ready', function () {
+    Shopify.product = {
+      "id": {{ product.id }},
+      "title": "{{ product.title }}",
+      "price": $('.js-product-price').eq(0).text(),
+      "image": "{{ product__image }}",
+      "url": "{{ product.url }}",
+      "ref": $('.js-product-ref').val()
+    }
+  });
+
+  {% if customer %}
+    Shopify.customer = {
+      "id": {{ customer.id }},
+      "name": "{{ customer.name }}",
+      "first_name": "{{ customer.first_name }}",
+      "last_name": "{{ customer.last_name }}",
+      "email": "{{ customer.email }}",
+      "has_account": {{ customer.has_account }}
+    }
+  {% else %}
+    Shopify.customer = false;
+  {% endif %}
+  var mainProduct = "{{ product.title }}";
+  $(document).scroll(function() {
+    if($(document).scrollTop() + window.innerHeight < $('#main-footer').position().top){
+      $('.js-action-buttons').css('position', 'fixed');
+    }else{
+      $('.js-action-buttons').css('position', 'absolute');
+    }
+  });
+  $(document).on('ready', function(){
+    $('.js-variant-price').on('change', function(){
+      var newPrice = $(this).find(':selected').data('price');
+      Shopify.product.price = newPrice;
+      $('.js-product-price').text(newPrice);
+      $('.js-product-info').attr('data-variant', $(this).find(':selected').val());
+    });
+    theme.gallery();
+    Cookies.get('{{ product.id }}');
+
+    function modalController(modal) {
+      $.magnificPopup.open({
+        items: {src: '#'+modal},
+        type: 'inline',
+        callbacks: {
+          beforeOpen: function() {
+            $('html, body').addClass('no-scroll');
+            setTimeout(function(){
+              $('.js-app-slider').slick({
+                draggable: false,
+                arrows: false,
+                infinite: false,
+                touchMove: false,
+                adaptiveHeight: true
+              });
+            }, 200);
+          },
+          afterClose: function() {
+            $('html, body').removeClass('no-scroll');
+            Cookies.remove('{{ product.id }}')
+          }
+        }
+      });
+    }
+
+    if (theme.getParam('edit') == "true") {
+      var suitObj = Cookies.get('{{ product.id }}');
+      if (suitObj){
+        suitObj = JSON.parse(Cookies.get('{{ product.id }}'));
+        if (theme.isJson(suitObj.properties)){
+          var objProperties = suitObj.properties;
+        }else {
+          var objProperties = JSON.parse(suitObj.properties);
+        }
+        if ($('.js-variant-price')[0]) {
+          $('.js-variant-price').val(objProperties.variant);
+          setTimeout(function(){
+            var newPrice = $('.js-variant-price').find(':selected').data('price');
+            $('.js-product-price').text(newPrice);
+          }, 200);
+        }
+        for (i = 0; i < Object.keys(objProperties).length; i++){
+          var key = Object.keys(objProperties)[i];
+          var value = objProperties[key];
+          $('[value="'+ value +'"]').prop('checked', true);
+        }
+
+        if (suitObj.addons) {
+          for (i = 0; i < Object.keys(suitObj.addons).length; i++){
+            var key = Object.keys(suitObj.addons)[i];
+            var value = suitObj.addons[key];
+            if (key.toLowerCase() === "property-lining") {
+              $('[value="'+ value +'"]').prop('checked', true);
+            }else if (key.toLowerCase() === "property-extra") {
+              for (j = 0; j < value.length; j++) {
+                $('[value="'+ value[j] +'"]').prop('checked', true);
+              }
+            }else if (key.toLowerCase() === "property-stitching") {
+              for (j = 0; j < value.length; j++) {
+
+                $('[name="property-stitching"][data-default="checked"]').prop('checked', false);
+
+                for (k = 0; k < Object.keys(value[j]).length; k++) {
+
+                  var sKey = Object.keys(value[j])[k];
+                  var sValue = value[j][sKey];
+                  var $saveStitching = $('[value="'+ sKey +'"]');
+
+                  $saveStitching.prop('checked', true);
+
+                  $($saveStitching.data('color')+'[value="' + sValue.color + '"]').prop('checked', true);
+                  if (sValue.label) {
+                    $($saveStitching.data('label')).val(sValue.label);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        if (suitObj.saved_status) {
+          setTimeout(function() {
+            $('.js-save-for-later').eq(0).trigger('click');
+          }, 500);
+          Cookies.remove('{{ product.id }}');
+        }else {
+          modalController('{{ currentApp }}');
+        }
+      }else {
+        window.location.replace(window.location.pathname);
+      }
+    }else if (theme.getParam('openapp') == "true") {
+      modalController('{{ currentApp }}');
+    }
+    {% unless hasFabrics == "false" %}
+      if (theme.getParam('fabric')) {
+        if (theme.getParam('fabric').length > 0) {
+          var $item = $('.js-palete-item[value="'+theme.getParam('fabric')+'"]');
+          $item.prop('checked', true);
+          $($item.data('parent')).prop('checked', true);
+
+          function fabricDetails() {
+            if($('.slick-initialized')){
+              setTimeout(function(){
+                $($item.data('parent')).siblings('label').trigger('click');
+                $item.siblings('label').trigger('click');
+              },200);
+              return false;
+            }else{
+              fabricDetails();
+            }
+          }
+          setTimeout(fabricDetails,300);
+        }
+      }
+    {% endunless %}
+  });
+</script>

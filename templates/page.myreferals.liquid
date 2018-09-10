@@ -1,0 +1,123 @@
+{% if customer %}
+  {% include 'red-title' with title: "Refer a Wedding" with class: "no-gap" %}
+  {% include 'account-breadcrumb' with current_title: 'My Referals'  with current_url: '#' %}
+  <div class="desktop--only referal_page">
+    <section class="referal-section referal-metrics">
+      <h2 class="title--small uppercase">Metrics</h2>
+      <div class="referal-section__content js-referal-metrics">
+        <article class="referal-metrics__item">
+          <p class="text--regular">Clicks on your link</p>
+          <span class="referal-metrics__value js-refer-hits">0</span>
+        </article>
+        <article class="referal-metrics__item">
+          <p class="text--regular">Successful Referrals</p>
+          <span class="referal-metrics__value js-refer-success">0</span>
+        </article>
+        <article class="referal-metrics__item referal-metrics__total">
+          <h2 class="title--small uppercase">Total Earned</h2>
+          <span class="referal-metrics__value bold js-refer-total">$0</span>
+        </article>
+        <div class="referal-social">
+          <h2 class="title--small uppercase">BOOST YOUR EARNINGS</h2>
+           <div class="referal-social__buttons">
+             <a href="#" target="_blank" class="referal-social__button social__button fb js-fb"><span class="icon icon--fb-clean"></span> SHARE WITH FACEBOOK</a>
+             <a href="#" target="_blank" class="referal-social__button social__button tw js-tw"><span class="icon icon--tw-clean"></span> SHARE WITH TWITTER</a>
+           </div>
+        </div>
+      </div>
+    </section>
+    <section class="referal-section referal-how-it-works">
+      <h2 class="title--small uppercase">How It Works</h2>
+      <div class="referal-section__content js-referal-how-it-works">
+        <img src="{{ 'referal-figure.png' | asset_url }}" alt="Referal Figure" class="referal-how-it-works__img">
+        <p class="text--regular referal-how-it-works__text">Send this link to your friends who are getting married, and receive $20 for each suit or tuxedo purchased -- up to <strong class="highlight">$100!</strong> Once their wedding is locked in, you'll receive a Amazon Giftcard for the amount owed to you!</p>
+        <div class="js-referal-options referal-options">
+          <input class="js-referal-code referal-code" value="Referal.snapsuits.com/?code=" readonly="">
+          <span class=" referal-hint hint--right hint--md desktop--only" aria-label="Copy Code!"><span class="js-copy-referalcode icon--copy referal-copy"></span></span>
+          <span class="js-copy-referalcode icon--copy referal-copy mobile--only"></span>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="mobile--only referal_page">
+    <div class="js-tabs">
+      <ul class="tab-header">
+        <li><a href="#metrics" class="tab-title">Metrics</a></li>
+        <li><a href="#how-it-woks" class="tab-title">How It Works</a></li>
+      </ul>
+      <div id="metrics" class="referal-section__content--mobile">
+        <article class="referal-metrics__item">
+          <p class="text--regular">Clicks on your link</p>
+          <span class="referal-metrics__value js-refer-hits">0</span>
+        </article>
+        <article class="referal-metrics__item">
+          <p class="text--regular">Successful Referrals</p>
+          <span class="referal-metrics__value js-refer-success">0</span>
+        </article>
+        <article class="referal-metrics__item referal-metrics__total">
+          <h2 class="title--small uppercase">Total Earned</h2>
+          <span class="referal-metrics__value bold js-refer-total">$0</span>
+        </article>
+        <div class="referal-social">
+          <h2 class="title--small uppercase">BOOST YOUR EARNINGS</h2>
+           <div class="referal-social__buttons">
+             <a href="#" target="_blank" class="referal-social__button social__button fb js-fb"><span class="icon icon--fb-clean"></span> SHARE WITH FACEBOOK</a>
+             <a href="#" target="_blank" class="referal-social__button social__button tw js-tw"><span class="icon icon--tw-clean"></span> SHARE WITH TWITTER</a>
+           </div>
+        </div>
+      </div>
+      <div id="how-it-woks" class="referal-section__content--mobile">
+        <img src="{{ 'referal-figure.png' | asset_url }}" alt="Referal Figure" class="referal-how-it-works__img">
+        <p class="text--regular referal-how-it-works__text">Send this link to your friends who are getting married, and receive $20 for each suit or tuxedo purchased -- up to <strong class="highlight">$100!</strong> Once their wedding is locked in, you'll receive a Amazon Giftcard for the amount owed to you!</p>
+        <div class="js-referal-options referal-options">
+          <input class="js-referal-code referal-code" value="Referal.snapsuits.com/?code=" readonly="">
+          <span class="referal-hint hint--right hint--md desktop--only" aria-label="Copy Code!"><span class="js-copy-referalcode icon--copy referal-copy"></span></span>
+          <span class="js-copy-referalcode icon--copy referal-copy mobile--only"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+      var referalUrl = "referal.snapsuits.com/?code=";
+      var referalCode = btoa('{{ customer.email }}');
+
+      $('.js-referal-code').val(referalUrl + referalCode);
+      $('.js-fb').attr('href', 'https://www.facebook.com/sharer/sharer.php?title=Get%20Married%20with%20SnapSuits!&caption=Never%20Rent%20Again&description=%24250%20custom%20wedding%20suits%20and%20tuxedos&picture=https://referal.snapsuits.com/metaimg.jpg&u=' + referalUrl + referalCode);
+      $('.js-tw').attr('href', 'https://twitter.com/intent/tweet?text=Get%20Married%20with%20SnapSuits!%20%24250%20custom%20wedding%20suits%20and%20tuxedos%20%23NeverRentAgain%20pic.twitter.com/RgKxSkTb8b&url=https://' + referalUrl + referalCode);
+
+      $('.js-copy-referalcode').on('click', function() {
+        $('.js-referal-code').select();
+        document.execCommand("copy");
+      });
+
+      $.ajax({
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded",
+        url : "{{ settings['referal_api_url'] }}{{ customer.email }}/total-hits",
+        headers : {
+            'Authorization' : 'Token bb8dd34ceaf3506a63ee3986d6ab0438becf19a1'
+        },
+        type: "GET",
+        success: function(data, textStatus, jqXHR){
+          if (textStatus != "not found") {
+            $('.js-refer-hits').text(data.total_hits)
+            $('.js-refer-success').text(data.total_successful)
+            $('.js-refer-total').text(data.total_earned)
+          }
+        },
+        error: function (data, jqXHR, textStatus, errorThrown){
+
+        }
+      });
+
+      $(function() {
+        $( ".js-tabs" ).tabs();
+      });
+    });
+  </script>
+{% else %}
+  <script type="text/javascript">
+    window.location.href = "/account/login";
+  </script>
+{% endif %}

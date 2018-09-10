@@ -1,0 +1,53 @@
+<div id="register_modal" class="mfp-hide login--modal">
+  <div class="register-form js-register-form--wrapper">
+    <img src="{{ 'logo-white.svg' | asset_url }}" alt="Snapsuits logo" class="login--modal-logo">
+    <h2 class="login--modal-title">Register</h2>
+    <div class="form-wrapper">
+      <span class="login--modal-close js-modal-close"><span class="ads__close-icon icon--menu-close"></span></span>
+      <form class="form js-register-form" action="">
+        <div id="errors" class="errors js-errors" style="display: none;">
+          <ul></ul>
+        </div>
+        <div class="input-control">
+          <input type="text" type="text" name="first_name" required="required" class="js-register-first_name" id="first_name">
+          <label for="first_name" class="form-label">first name</label>
+        </div>
+        <div class="input-control">
+          <input type="text" type="text" name="last_name" required="required" class="js-register-last_name" id="last_name">
+          <label for="last_name" class="form-label">last name</label>
+        </div>
+        <div class="input-control">
+          <input type="text" type="text" name="email" required="required" class="js-register-email" id="email">
+          <label for="email" class="form-label">email address</label>
+        </div>
+        <input type="text" name="imacat" class="js-cat_trap hidden" id="cat">
+        <div class="form-actions center">
+          <input type="submit" class="button button--primary cta" value="Register">
+          <p class="text--regular">Already have an account, <a href="#login_modal" class="highlight js-popup">Log In</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="register-success js-register-form--success" style="display: none;">
+    <div class="register-success__wrapper icon-wrapper">
+      <span class="icon--checked register-success__icon"></span>
+    </div>
+    <p class="register-success__text text--regular text--center">Check your email! Activate your account to complete the registration process.</p>
+    <div class="form-actions center">
+      <span class="button button--primary cta js-modal-close js-reset-register-modal" value="Register">DONE</span>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).on('ready', function() {
+    // $('.js-form-redirect').val(window.location.pathname);
+  });
+  $('.js-modal-close').on('click', function() {
+    $.magnificPopup.close();
+  });
+
+  $('.js-reset-register-modal').on('click', function() {
+    $('.js-register-form--wrapper').fadeIn();
+    $('.js-register-form--success').fadeOut();
+  });
+</script>

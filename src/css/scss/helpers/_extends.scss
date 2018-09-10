@@ -1,0 +1,33 @@
+// link list inline witn no :before
+.inline-list{
+	list-style-type: none;
+	display: inline;
+}
+
+// <a> clean with no text decoration even on :hover and : focus
+// and $color-primary as color
+.anchor-clean{
+  text-decoration: none;
+  color: $brand-primary;
+  &:hover, &:focus{
+    text-decoration: none;
+		outline: none;
+    // color: darken($brand-primary, 30%);
+		color: $brand-primary;
+		font-weight: bolder;
+  }
+}
+
+// Backout semi-transparent over images
+.blackout{
+  background: rgba(0,0,0,0.65);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &--soft{
+    background: rgba(0,0,0,0.4);
+  }
+}

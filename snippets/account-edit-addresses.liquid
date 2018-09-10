@@ -1,0 +1,91 @@
+{% for address in customer.addresses %}
+  <h3 class="accordion__title uppercase {% if address.id == customer.default_address.id %} address--default {% endif %}" id="{{ address.id }}">
+    {{ address.name }} - {{ address.city }}{% if address.province %}, {{ address.province }}{% endif %}{% if address.country %}, {{ address.country }}{% endif %}
+    {% comment %}<span class="icon--carret-down carret"></span>{% endcomment %}
+  </h3>
+  <div class="address_details accordion__content">
+    <h4 class="title--small capitalize address__title">{{ address.first_name }} {{ address.last_name }}</h4>
+    <div class="address__info--wrapper">
+      <div class="address__info">
+        <p class="address__data text--regular">{{ address.address1 }}</p>
+        {% if address.address2 %}
+          <p class="address__data text--regular">{{ address.address2 }}</p>
+        {% endif %}
+        <p class="address__data text--regular">{{ address.city }} {% if address.province %} - {{ address.province }} {% endif %}</p>
+        <p class="address__data text--regular">{{ address.zip }}</p>
+      </div>
+      <div class="address__info">
+        <p class="address__data text--regular">{{ address.country }}</p>
+        <p class="address__data text--regular"><strong>Phone:</strong> {{ address.phone }}</p>
+      </div>
+    </div>
+    <div class="address__actions">
+      <span class="button button-white js-footer-free" onclick="Shopify.CustomerAddress.toggleForm('{{ address.id }}');return false;">Edit</span>
+      <span class="button button-white" onclick="Shopify.CustomerAddress.destroy({{ address.id }}, 'Are you sure you wish to delete this address?');return false">Delete</span>
+      {% comment %}{% if address.id != customer.default_address.id %}
+        <span class="button button--red">Set as default</span>
+      {% endif %}{% endcomment %}
+    </div>
+    <div id="EditAddress_{{ address.id }}" style="display: none;">
+      <div class="form-wrapper">
+        {% form 'customer_address', address %}
+          <div id="errors" class="js-errors">{{ form.errors | default_errors }}</div>
+          <div class="input-control">
+            <input type="text" name="address[first_name]" id="first_name" required="required" value="{{ address.first_name }}">
+            <label for="first_name" class="form-label">First name</label>
+          </div>
+          <div class="input-control">
+            <input type="text" name="address[last_name]" id="last_name" required="required" value="{{ address.last_name }}">
+            <label for="last_name" class="form-label">Last name</label>
+          </div>
+          <div class="input-control">
+            <input type="text" name="address[company]" id="company" required="required" value="{{ address.company }}">
+            <label for="company" class="form-label">Company</label>
+          </div>
+          <div class="input-control">
+            <input type="text" name="address[address1]" id="address_1" required="required" value="{{ address.address1 }}">
+            <label for="address_1" class="form-label">Address 1</label>
+          </div>
+          <div class="input-control">
+            <input type="text" name="address[address2]" id="address_2" required="required" value="{{ address.address2 }}">
+            <label for="address_2" class="form-label">Address 2</label>
+          </div>
+          <div class="input-control">
+            <select id="country" class="select-like-input input" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+            <label for="country" class="form-label">Country</label>
+          </div>
+          <div class="input-control">
+            <input type="text" id="province" name="address[province]" data-default="{{ form.province }}" required="required" value="{{ address.province }}">
+            <label for="province" class="form-label">province</label>
+          </div>
+          <div class="input-control">
+            <input type="text" name="address[city]" id="city" required="required" value="{{ address.city }}">
+            <label for="city" class="form-label">City</label>
+          </div>
+          <div class="input-control">
+            <input type="text" name="address[zip]" id="zip_code" required="required" value="{{ address.zip }}">
+            <label for="zip_code" class="form-label">ZIP/Postal Code</label>
+          </div>
+          <div class="input-control">
+            <input type="text" name="address[phone]" id="phone_number" required="required" value="{{ address.phone }}">
+            <label for="phone_number" class="form-label">Phone Number</label>
+          </div>
+          <div class="input-control">
+            <label for="phone_number" class="">set as default</label>
+            <input type="checkbox"
+              id="address_default_address_{{ address.id }}"
+              name="address[default]"
+              value="1"
+              {% if address.id == customer.default_address.id %}
+                checked="checked"
+              {% endif %}>
+          </div>
+          <div class="form-actions center">
+            <span class="cancel js-footer-free" onclick="Shopify.CustomerAddress.toggleForm({{ address.id }});return false;">cancel</span>
+            <input type="submit" class="button button--primary cta" value="Submit">
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>
+{% endfor %}

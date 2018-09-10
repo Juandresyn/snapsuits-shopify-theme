@@ -1,0 +1,46 @@
+<div class="main-wrapper search">
+  <div class="search--head">
+    <form action="/search" method="get" class="search-form" role="search">
+      <input type="text" name="q" value="{{ search.terms | escape }}" class="search-input">
+      <span class="icon--search search-icon"></span>
+      <input type="submit" value="search" class="search-submit button button--red">
+    </form>
+  </div>
+
+    {% paginate search.results by 50 %}
+      {% if search.results_count > 0 %}
+        <div class="collection collection--search">
+          {% unless collection.title contains "customize" %}
+            {% for item in search.results %}
+              {% unless item.tags contains "nosearch" or item.tags contains "weddingsuit"%}
+                {% if item.featured_image %}
+                  {% assign product = item %}
+                  <div class="collection-show__item">
+                    <a href="{{ product.url }}">
+                      <div class="product__image--wrapper">
+                        <div class="product__image has-background-image" style="background-image: url('{{ product.featured_image.src | product_img_url: 'grande' }}')"></div>
+                      </div>
+                    </a>
+                    <a href="{{ product.url }}">
+                      <h4 class="product__title">{{ product.title }}</h4>
+                    </a>
+                    {% for variant in product.variants %}
+                      {% if forloop.first %}
+                        <p class="product__price highlight">{{ variant.price | money | strip_html | remove: ",00" }}</p>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              {% endunless %}
+            {% endfor %}
+          {% endunless %}
+        </div>
+      {% endif %}
+      {% if paginate.pages > 1 %}
+        <div class="pagination">
+          {{ paginate | default_pagination }}
+        </div>
+      {% endif %}
+    {% endpaginate %}
+
+</div>

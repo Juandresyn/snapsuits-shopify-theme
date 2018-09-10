@@ -1,0 +1,56 @@
+$total-columns: $global-total-columns;
+
+$grid-sizing: (
+  '-xs': $global-size-xs,
+  '-sm': $global-size-sm,
+  '-md': $global-size-md,
+  '-lg': $global-size-lg,
+  '-xl': $global-size-xl
+);
+
+.flex {
+  display: flex;
+  > * {
+    flex: 1;
+  }
+}
+
+@mixin viewport-specific-sizes($width) {
+  flex-grow: 0;
+  flex-basis: $width;
+  width: $width;
+  @each $size, $value in $grid-sizing {
+    &#{$size} {
+      flex-basis: 100%;
+      width: 100%;
+      @include mq($value) {
+        flex-grow: 0;
+        flex-basis: $width;
+        width: $width;
+      }
+    }
+  }
+}
+
+@mixin viewport-specific-offsets($width) {
+  margin-left: $width;
+  @each $size, $value in $grid-sizing {
+    &#{$size} {
+      margin-left: 0;
+      @include mq($value) {
+        margin-left: $width;
+      }
+    }
+  }
+}
+
+@for $i from 1 through $total-columns {
+  $width: (($i / $total-columns) * 100) + %;
+  .flex-#{$i} {
+    @include viewport-specific-sizes($width);
+  }
+  .flex-offset-#{$i} {
+    @include viewport-specific-offsets($width);
+  }
+}
+
