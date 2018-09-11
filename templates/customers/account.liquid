@@ -55,7 +55,7 @@ if (Shopify.theme.name === 'SanpSuits Theme [PROD]') {
 
 $.ajax({
   // url: "https://demo.snapsuits.com/api/v1/groomsmen-checker/ryan@snapsuits.com/groomsmen",
-  url: "https://site.snapsuits.com/api/v1/groomsmen-checker/jake.freeman@bubbiesicecream.com/groomsmen/",
+  url: "https://site.snapsuits.com/api/v1/groomsmen-checker/{{ customer.email }}/groomsmen/",
   type: 'GET',
   headers : {
     'Authorization' : 'Token bb8dd34ceaf3506a63ee3986d6ab0438becf19a1'
