@@ -1,0 +1,142 @@
+</main> <!-- Close .main-wrapper to allow full width -->
+<section class="hero-slider no-mobile-dots js-hero-slider js-slider custom-slick--dots" data-slick='{"dots": true}'>
+  <article class="hero-slide hero-slider-item js-hero-slider-item has-background-image banner" style="background-image: url({{ 'weddings-slide-1.jpg' | asset_url }})">
+    <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+      <div class="hero-slide__content hero-slide__content--ie">
+        <h1 class="title--28 title--main-bold">Get Married with SnapSuits</h1>
+        <h2 class="title--22 title--22-white">Custom Suits and Tuxedos for $275</h2>
+        <span class="icon--diamond-ring weddings-ring-icon"></span>
+        <div class="hero-slide__wrapper m-t-lg">
+          <a href="https://groomshop.snapsuits.com/" target="_blank" class="button button--red">Request a Swatch Kit</a>
+        </div>
+      </div>
+    </main> <!-- Close .main-wrapper to allow full width -->
+  </article>
+  <article class="hero-slide hero-slider-item js-hero-slider-item has-background-image banner" style="background-image: url({{ 'weddings-slide-2.jpg' | asset_url }})">
+    <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+      <div class="hero-slide__content--alt hero-slide__content--ie">
+        <img src="{{ 'box-decoration-left.png' | asset_url }}" alt="" class="box-decoration">
+        <div class="hero-slide__content">
+          <h1 class="title--28 title--28-bold">Why Rent When You Can Own</h1>
+          <p class="hero-slider-weddings--text desktop--only">1. Fully custom suits that you can keep. Delivered to you in 14 days</p>
+          <p class="hero-slider-weddings--text desktop--only">2. Dont even leave your house - get fitted at home</p>
+          <p class="hero-slider-weddings--text desktop--only">3. We call, text, and email groomsmen to make sure they follow through</p>
+          <p class="hero-slider-weddings--text desktop--only">4. 100% satisfaction, we got your back</p>
+          <p class="hero-slider-weddings--text desktop--only">5. Family owned business, started by two brothers. #America</p>
+        </div>
+        <img src="{{ 'box-decoration-right.png' | asset_url }}" alt="" class="box-decoration">
+      </div>
+    </main> <!-- Close .main-wrapper to allow full width -->
+  </article>
+</section>
+<div class="hero-slider--relative">
+  <a href="#weddings-hiw" class="js-scroll hero-slider-learn-more">
+    <span>LEARN MORE</span><br>
+    <span class="icon--carret-down hero-slider-learn-more__icon"></span>
+  </a>
+</div>
+<main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+  <section id="weddings-hiw" class="section weddings__hiw">
+    <h1 class="title--medium">Before your Wedding Timeline</h1>
+    <div class="section__content weddings-hiw__content flexbox--row">
+      <article class="weddings-hiw__item">
+        <h2 class="title--14"><span class="highlight">*</span> 5 Months + <span class="highlight">*</span></h2>
+        <img src="{{ 'weddings-hiw-1.png' | asset_url }}" alt="" class="weddings-hiw__imagen">
+        <p class="weddings-hiw__text text text--regular">Request our special wedding swatch kit and see fabrics in person.</p>
+      </article>
+      <article class="weddings-hiw__item">
+        <h2 class="title--14"><span class="highlight">*</span> 4 Months <span class="highlight">*</span></h2>
+        <img src="{{ 'weddings-hiw-2.png' | asset_url }}" alt="" class="weddings-hiw__imagen">
+        <p class="weddings-hiw__text text text--regular">Select a fabric & style to create your custom wedding package.</p>
+      </article>
+      <article class="weddings-hiw__item">
+        <h2 class="title--14"><span class="highlight">*</span> 3 Months <span class="highlight">*</span></h2>
+        <img src="{{ 'weddings-hiw-3.png' | asset_url }}" alt="" class="weddings-hiw__imagen">
+        <p class="weddings-hiw__text text text--regular">Send the package to your wedding party and let us wrangle them for you!</p>
+      </article>
+      <article class="weddings-hiw__item">
+        <h2 class="title--14"><span class="highlight">*</span> 10 Weeks <span class="highlight">*</span></h2>
+        <img src="{{ 'weddings-hiw-4.png' | asset_url }}" alt="" class="weddings-hiw__imagen">
+        <p class="weddings-hiw__text text text--regular">Garments arrive. Have an awesome wedding! <span class="highlight">#NeverRentAgain</span></p>
+      </article>
+    </div>
+    <br>
+    <div class="flex-center-full">
+     <h4 class="title--small">Off our timeline? Request a swatch and call us at 980-505-7627 and we'll help get you on track.</h4>
+    </div>
+  </section>
+</main> <!-- Close .main-wrapper to allow full width -->
+<main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+  <section class="section styles">
+    <h2 class="title--medium">Our Popular Wedding Styles</h2>
+    {% include 'suits-slide' with slidersTabs: false with collectionsList: "wedding-styles"  %}
+  </section>
+</main> <!-- Close .main-wrapper to allow full width -->
+<section id="weddings-service" class="section hero-slide weddings__service has-background-image banner" style="background-image: url({{ 'weddings-service.jpg' | asset_url }})">
+  <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+    <div class="hero-slide__content--ie">
+      <div class="flex-center-full">
+        <img src="{{ 'box-decoration-left.png' | asset_url }}" alt="" class="box-decoration box-decoration--small desktop--only">
+        <div class="hero-slide__content">
+          <h1 class="title--28 title--28-bold">SnapSuits as a Service</h1>
+          <p class="hero-slider-weddings--text">More than just a suit or tux for your wedding.</p>
+          <p class="hero-slider-weddings--text">We take care of everything to make the groomsman<br>experience as smooth as possible.</p>
+        </div>
+        <img src="{{ 'box-decoration-right.png' | asset_url }}" alt="" class="box-decoration box-decoration--small desktop--only">
+      </div>
+      <div class="flex-center-full">
+        <div class="service-items">
+          <article class="service-item">
+            <span class="icon--free service-item-icon"></span>
+            <p class="hero-slider-weddings--text">Groom Suit Up Free*</p>
+          </article>
+          <article class="service-item">
+            <span class="icon--clock service-item-icon"></span>
+            <p class="hero-slider-weddings--text">Groomsmen<br>Reminder Tools</p>
+          </article>
+          <article class="service-item">
+            <span class="icon--fabric-bold service-item-icon"></span>
+            <p class="hero-slider-weddings--text">Personalized<br>Wedding Swatches</p>
+          </article>
+          <article class="service-item">
+            <span class="icon--star service-item-icon"></span>
+            <p class="hero-slider-weddings--text">100% Guarantee</p>
+          </article>
+        </div>
+      </div>
+      <div class="flex-center-full">
+        <a href="https://groomshop.snapsuits.com/" target="_blank" class="button button--red">Request a Swatch Kit</a>
+      </div>
+    </div>
+  </main> <!-- Close .main-wrapper to allow full width -->
+</section>
+<section class="section testimonials has-background-image" style="background-image: url({{ 'testimonials-bg.jpg' | asset_url }})">
+  <main class="main-wrapper"> <!-- open .main-wrapper to finish full width -->
+    <h2 class="title--medium">Testimonial</h2>
+      <div class="testimonials__item">
+        <img src="{{ 'testimonial1.jpg' | asset_url }}" alt="" class="testimonials__image">
+        <div class="testimonials__info">
+          <h2 class="title--16">James Reeves & Christine Myers</h2>
+          <p class="text--regular"><strong>Location:</strong> Michigan</p>
+          <p class="text--regular"><strong>Suit:</strong> The Equestrian</p>
+        </div>
+        <div class="testimonials__text">
+          <p class="text--regular">SnapSuits made the experience of choosing a suit for my wedding a cinch. My representative, Paty, helped me to choose the appropriate suit style and color for my big day. Then my representative took over all the heavy lifting of getting my wedding party to order their custom fitted suits.</p>
+          <p class="text--regular">They were even able to fit a custom suit for my 9-year-old step-son! A big plus for my groomsmen was the fact they were able to keep their suits from the big day to use again. Overall, the ease of the ordering process and overall look of the suits helped to make our wedding day perfect. Thanks SnapSuits!</p>
+        </div>
+      </div>
+    </div>
+  </main> <!-- Close .main-wrapper to allow full width -->
+</section>
+</main> <!-- Close .main-wrapper to allow full width -->
+<section class="section swatch">
+  <div class="swatch__img-wrapper">
+    <img src="{{ 'swatch-box.png' | asset_url }}" alt="swatch kit" class="swatch__img"/>
+  </div>
+  <div class="swatch__info">
+    <h2 class="title--medium swatch__title">Swatch Kit Request</h2>
+    <p class="text--regular">Get all the perks by requesting free swatches. Let us know a few details about your wedding, and a wedding stylist will reach out to you ASAP!</p>
+    <a href="http://groomshop.snapsuits.com/" target="_BLANK" class="button button-white swatch__button">Request a Swatch Kit</a>
+  </div>
+  <div class="cf"></div>
+</section>

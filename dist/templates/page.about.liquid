@@ -1,0 +1,53 @@
+</main>
+<div class="has-background-image background-center page-banner--header" style="background-image: url({{ settings['about-img-hero'].src | img_url: 'master' }})">
+  <div class="main-wrapper">
+    <h1 class="title--main">{{ page.title }}</h1>
+    <h2 class="title--medium white">Have you ever wondered why suits are so expensive?</h2>
+  </div>
+</div>
+<main class="main-wrapper">
+  <div class="page-container">
+    <div class="page-content">
+      {{ page.content }}
+    </div>
+    <div class="page-figure">
+      <img src="{{ 'about-figure.jpg' | asset_url }}" alt="" class="">
+    </div>
+  </div>
+  <section class="team">
+    {% include 'team-loop' with type: 'x' with team: "Executive Team" %}
+    {% include 'team-loop' with type: 'd' with team: "Design" %}
+    {% include 'team-loop' with type: 's' with team: "Sales" %}
+    {% include 'team-loop' with type: 't' with team: "Technology" %}
+    {% include 'team-loop' with type: 'a' with team: "Advisors" %}
+  </section>
+  <section class="careers">
+    <h2 class="title--medium careers-title">We’re hiring</h2>
+    <hr class="separator--main">
+    <p class="text--regular careers-description">SnapSuits is looking for talented individuals across many departments. Check out our listings below, and apply to join the team! <strong class="highlight">#NeverRentAgain</strong></p>
+    <hr class="separator--light">
+    <section class="careers-list js-careers-list"></section>
+  </section>
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+      $.get('https://site.snapsuits.com/workable/', function(data) {
+          for (var i = 0; i < data.jobs.length; i++) {
+            $('.js-careers-list').loadTemplate("#job-template", {
+            title: data.jobs[i].title,
+            city: data.jobs[i].location.city,
+            region: data.jobs[i].location.region,
+            link: data.jobs[i].url
+          }, { append: true, elemPerPage: 9 });
+          }
+      });
+    })
+  </script>
+  <div class="hidden">
+    <script type="text/html" id="job-template">
+      <article class="career">
+        <h3 class="career-title" data-content="title"></h3>
+        <p class="career-location"><strong>Location:</strong> <span data-content="city"></span> - <span data-content="region"></span></p>
+        <a data-href="link" target="_blank" class="button button--red career-apply">Apply</a>
+      </article>
+    </script>
+  </div>

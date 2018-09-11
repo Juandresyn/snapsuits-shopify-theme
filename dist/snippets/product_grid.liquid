@@ -1,0 +1,28 @@
+{% unless product_grid.title contains "customize" %}
+  {% if product_grid.image %}
+    {% if current_tags %}
+
+    {% else %}
+      {% unless collection.handle == "suits" %}
+        {% include 'product_grid-head' %}
+      {% endunless %}
+    {% endif %}
+    {% if current_tags %}
+      {% for product in product_grid.products %}
+        {% unless product.tags contains "nosearch"
+              or product.tags contains "weddingsuit" %}
+          {% include 'product_grid-item' %}
+        {% endunless %}
+      {% endfor %}
+    {% else %}
+      {% unless collection.handle == "suits" %}
+        {% for product in product_grid.products %}
+        {% unless product.tags contains "nosearch"
+              or product.tags contains "weddingsuit" %}
+          {% include 'product_grid-item' %}
+        {% endunless %}
+        {% endfor %}
+      {% endunless %}
+    {% endif %}
+  {% endif %}
+{% endunless %}

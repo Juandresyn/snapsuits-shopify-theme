@@ -1,0 +1,31 @@
+<div id="ads" class="ads">
+  <div class="ads__wrapper has-background-image" style="background-image: url({{ 'ads.jpg' | asset_url }})">
+    <div class="ads__content">
+      <span class="ads__close js-ads-close"><span class="ads__close-icon icon--menu-close"></span></span>
+      <h1 class="ads__title">ATTENTION <span class="ads__title--strong">SNAPSUITS CUSTOMERS</span></h1>
+      <p class="ads__text">In observance of Chinese New Year,  SnapSuits production teams will be taking time to be with their families. <br>
+        <span class="ads__highlight">Orders after Friday, January 13th will arrive in early February,</span> extending our normal delivery time by about 12 days. After February 3rd, all items will once again arrive within 14 days of ordering.</p>
+      <p class="ads__text">We do apologize for this delay. Our entire US based team will be here to assist you with any questions you have during this brief slow down in production.  We look forward to making you many great new suits in the Year of the Rooster!</p>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(window).load(function(){
+    $('html, body').addClass('no-scroll');
+    $('body').addClass('ads-modal');
+    $('.js-ads-modal')
+    $.magnificPopup.open({
+      items: {src: '#ads'},
+      type: 'inline',
+      callbacks: {
+        beforeClose: function() {
+          $('html, body').removeClass('no-scroll');
+          $('body').removeClass('ads-modal');
+        }
+      }
+    }, 0);
+    $('.js-ads-close').on('click', function() {
+      $.magnificPopup.close();
+    });
+  });
+</script>

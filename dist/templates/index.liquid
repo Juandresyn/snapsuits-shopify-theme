@@ -1,0 +1,166 @@
+<section class="homepage-slider">
+  <ul class="homepage-slides">
+    {% for i in (1..4) %}
+      {% capture cta_title %}tite-{{ i }}{% endcapture %}
+      {% capture cta_subtitle %}subtitle-{{ i }}{% endcapture %}
+      {% capture cta_button_text %}button-text-{{ i }}{% endcapture %}
+      {% capture cta_button_link %}page-link-{{ i }}{% endcapture %}
+      {% capture cta_image %}slide-img-{{ i }}.jpg{% endcapture %}
+      {% capture cta_video_id %}video-url-{{ i }}{% endcapture %}
+      {% capture cta_bg_position %}background-position-{{ i }}{% endcapture %}
+      <li class="single-slide" style="background-image: url('{{ cta_image | asset_url }}'); {% if cta_bg_position != "" %}background-position: {{settings[cta_bg_position]}};{% endif %}">
+        <div class="slide-content">
+          <h2>{{ settings[cta_title] }}</h2>
+          {% unless settings[cta_video_id] != blank %}
+            <h3>{{ settings[cta_subtitle] }}</h3>
+          {% else %}
+            <a class="js-popup-iframe" href="{{ settings[cta_video_id] }}">
+              <snap class="icon--play play-video-img"></snap>
+            </a>
+          {% endunless %}
+          <a {% if settings[cta_button_text] == 'Watch Video' %}href="{{ settings[cta_video_id] }}"{% else %}href="{{ settings[cta_button_link] }}"{% endif %} class="button button--red {% if settings[cta_button_text] == 'Watch Video' %}js-popup-iframe{% endif %} {% if settings[cta_button_text] contains 'Get Fitted' %}js-get-fitted-popup{% endif %}">{{ settings[cta_button_text] }}</a>
+        </div>
+        <div class="slide-overlay"></div>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="#scroll" class="learn-more-link">
+    <span>SEE WHAT'S NEXT</span>
+    <span>
+      <span class="icon--carret-down"></span>
+    </span>
+  </a>
+</section>
+<pre></pre>
+<h2 class="title--medium">How it Works</h2>
+  <section class="section hiw__content">
+    {% for i in (1..4) %}
+      <article class="hiw__item">
+        {% capture hiw_image %}hiw-image-content-{{ i }}{% endcapture %}
+        {% capture hiw_title %}hiw-title-{{ i }}{% endcapture %}
+        {% capture hiw_content %}hiw-content-{{ i }}{% endcapture %}
+        {% if settings[hiw_title] != "" %}
+          <img src="{{ settings[hiw_image].src | img_url: 'master' }}" alt="{{ settings[hiw_title] }}" class="m-b-md">
+          <h2 class="title--14">{{ settings[hiw_title] }}</h2>
+          <p class="text--regular">{{ settings[hiw_content] }}</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </section>
+<section class="customer-testominals">
+  <h2 class="title--medium">What do Customers Think</h2>
+  <ul class="testimonial-list">
+    {% for i in (1..3) %}
+      {% capture testimonial_image %}testimonial-img-{{ i }}.png{% endcapture %}
+      {% capture testimonial_name %}testimonial-name-{{ i }}{% endcapture %}
+      {% capture testimonial_age %}testimonial-age-{{ i }}{% endcapture %}
+      {% capture testimonial_date %}testimonial-date-{{ i }}{% endcapture %}
+      {% capture testimonial_occupation %}testimonial-occupation-{{ i }}{% endcapture %}
+      {% capture testimonial_location %}testimonial-location-{{ i }}{% endcapture %}
+      {% capture testimonial_suit %}testimonial-suit-{{ i }}{% endcapture %}
+      {% capture testimonial_quote %}testimonial-quote-{{ i }}{% endcapture %}
+      <li>
+        <img class="testimonial-img" src="{{ testimonial_image | asset_url }}" alt="" />
+        <div class="testimonial-name">{{ settings[testimonial_name] }}</div>
+        <ul class="testimonial-info">
+          {% if settings[testimonial_date] != blank %}
+            <li><span>Date of Wedding: </span>{{ settings[testimonial_date] }}</li>
+          {% else %}
+            <li><span>Age: </span>{{ settings[testimonial_age] }}</li>
+          {% endif %}
+          {% if settings[testimonial_location] != blank %}
+            <li><span>Location: </span>{{ settings[testimonial_location] }}</li>
+          {% else %}
+            <li><span>Occupation: </span>{{ settings[testimonial_occupation] }}</li>
+          {% endif %}
+          <li><span>Suit: </span><a href="/products/{{ settings[testimonial_suit] }}">{{ settings[testimonial_suit] | replace: '-', ' ' }}</a></li>
+        </ul>
+        <quote class="testimonial-quote">{{ settings[testimonial_quote] }}</quote>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+<section id="scroll" class="section">
+  <h2 class="title--medium">Our Styles</h2>
+ {% include 'suits-slide' with slidersTabs: true with collectionsList: "wedding-styles, suits-for-work, shirts, tuxedo-collection"  %}
+</section>
+<pre></pre>
+<section id="weddings-service" class="section hero-slide weddings__service has-background-image banner" style="background-image: url({{ 'weddings-service.jpg' | asset_url }})">
+    <div class="hero-slide__content--ie">
+      <div class="flex-center-full">
+        <img src="{{ 'box-decoration-left.png' | asset_url }}" alt="" class="box-decoration box-decoration--small desktop--only">
+        <div class="hero-slide__content">
+          <h1 class="title--28 title--28-bold">SnapSuits Wedding Service</h1>
+          <p class="hero-slider-weddings--text">More than just a suit or tux for your wedding.</p>
+          <p class="hero-slider-weddings--text">We take care of everything to make the <br>experience as smooth as possible.</p>
+        </div>
+        <img src="{{ 'box-decoration-right.png' | asset_url }}" alt="" class="box-decoration box-decoration--small desktop--only">
+      </div>
+      <div class="flex-center-full">
+        <div class="service-items">
+          <article class="service-item">
+            <span class="icon--free service-item-icon"></span>
+            <p class="hero-slider-weddings--text">Groom Suit Up Free*</p>
+          </article>
+          <article class="service-item">
+            <span class="icon--clock service-item-icon"></span>
+            <p class="hero-slider-weddings--text">Groomsmen<br>Reminder Tools</p>
+          </article>
+          <article class="service-item">
+            <span class="icon--fabric-bold service-item-icon"></span>
+            <p class="hero-slider-weddings--text">Personalized<br>Wedding Swatches</p>
+          </article>
+          <article class="service-item">
+            <span class="icon--star service-item-icon"></span>
+            <p class="hero-slider-weddings--text">100% Guarantee</p>
+          </article>
+        </div>
+      </div>
+      <div class="flex-center-full">
+        <a href="https://groomshop.snapsuits.com/" target="_blank" class="button button--red">Request a Swatch Kit</a>
+      </div>
+    </div>
+</section>
+
+<section class="affordable-custom-shirts">
+  <h2 class="title--medium">Affordable Custom Shirts</h2>
+  <p class="text--regular">$75 custom shirts, delivered about just 14 days. Try them out for yourself! From oxfords to prints, short sleeve or long sleeve, our cotton shirts can take you from the office to the ocean.</p>
+  <a class="button button-white" href="/collections/shirts">shop custom shirts</a>
+  <div class="affordable-shirt-img">
+    <img src="{{ 'affordable-shirt-img.png' | asset_url }}" alt="" />
+  </div>
+</section>
+<section class="philanthropic--home" style="background-image: url({{ settings['philanthropy_home_image'].src | img_url: 'master' }})">
+  <p class="text--regular white">{{ settings['philanthropy-home-text'] }}</p>
+  <a href="/pages/{{ settings['philanthropy-home-button-link'] }}" class="button button-outline--red m-t-md">{{ settings['philanthropy-home-button-text'] }}</a>
+</section>
+<pre></pre>
+<p>
+</p><br><br>
+<section class="snapsuit-blogs">
+  <h2 class="title--medium">The SnapSuits Blog</h2>
+  <ul class="blog-list">
+    {% for article in blogs["news"].articles limit: 3 %}
+      <li class="single-post">
+        <a href="{{ article.url }}">
+          <div class="indexblog__img" style="background-image: url('{% if article.image %}{{ article | img_url: 'grande' }}{% endif %}');"></div>
+        </a>
+        <h3 class="article-title"><span>{{ article.title }}</span></h3>
+        <p class="text--regular">
+          {% if article.excerpt.size > 0 %}
+            {{ article.excerpt }}
+          {% else %}
+            {{ article.content | strip_html | truncatewords: 30 }}
+          {% endif %}
+        </p>
+        <a href="{{ article.url }}" class="button button-white">Read More</a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+{% comment %}
+{% endcomment %}
+<!-- Get Fitted home -->
+  {% include 'get-fitted-app-intro' %}
+<!-- end Get Fitted home -->

@@ -1,0 +1,75 @@
+<section class="js-main-footer">
+  <footer id="main-footer" class="main-footer">
+    <div class="footer-centered">
+      <div class="footer-left footer-block">
+        <h4 class="footer-title">Connect With SnapSuits</h4>
+        <div class="footer-newsletter">
+          <p class="newslettter-cta">Sign up for email tips, deals & more</p>
+          <form id="email_signup" class="footer-signup klaviyo_bare_embed_Jn3Dxt" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+            <input type="hidden" name="g" value="Jn3Dxt">
+            <input type="email" value="" name="email" class="footer-signup-field" id="k_id_email" placeholder="E.g john@castleblack.com">
+            <input type="submit" value="Subscribe" name="subscribe" class="footer-signup-submit desktop--only">
+            <input type="submit" value="Go" name="subscribe" class="footer-signup-submit mobile--only">
+          </form>
+          <ul class="footer__list footer__social">
+            {% if settings.twitter_icon %}
+              <li class="footer__list__item"><a target="_blank" href="{{ settings.twitter_icon }}"><i class="social-icon icon--tw"></i></a></li>
+            {% endif %}
+            {% if settings.fb_icon %}
+              <li class="footer__list__item"><a target="_blank" href="{{ settings.fb_icon }}"><i class="social-icon icon--fb"></i></a></li>
+            {% endif %}
+            {% if settings.instagram_icon %}
+              <li class="footer__list__item"><a target="_blank" href="{{ settings.instagram_icon }}"><i class="social-icon icon--ig"></i></a></li>
+            {% endif %}
+            {% if settings.pinterest_icon %}
+              <li class="footer__list__item"><a target="_blank" href="{{ settings.pinterest_ico }}"><i class="social-icon icon--pt"></i></a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      <div class="footer-right footer-block">
+        <h4 class="footer-title">Are You Lost?</h4>
+        <div class="footer-list-items">
+          <ul class="footer-list">
+            <li><a href="/collections/our-standard-styles">Custom Suits</a></li>
+            <li><a href="/collections/shirts">Custom Shirts</a></li>
+            <li><a href="/products/gift-card">Gift Cards</a></li>
+          </ul>
+          <ul class="footer-list">
+            <li><a href="/account">My Account</a></li>
+            <li><a href="/pages/wedding">Weddings</a></li>
+            <li><a href="/pages/wedding-planners">Affiliates</a></li>
+          </ul>
+          <ul class="footer-list">
+            <li><a href="/pages/our-quality">Our Quality</a></li>
+            <li><a href="/pages/how-it-works-1">How it Works</a></li>
+            <li><a href="/pages/contact-us">Contact &amp; FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+  </footer>
+  <div class="footer-btm">
+    <p>© <script>new Date().getFullYear()>2010&&document.write(new Date().getFullYear());</script> SnapSuits.com </p>
+  </div>
+</section>
+<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+
+<script type="text/javascript">
+  KlaviyoSubscribe.attachToForms('#email_signup', {
+    hide_form_on_success: true
+  });
+</script>
+
+{% unless template contains 'customers/account' %}
+  {{ template }}
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+      if (($(".js-main-footer").offset().top + $(".js-main-footer").height()) >= $(window).height()) {
+      }else {
+        $('.js-main-footer').addClass('sticky');
+      }
+    });
+  </script>
+{% endunless %}

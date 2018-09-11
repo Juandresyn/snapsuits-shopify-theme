@@ -1,0 +1,143 @@
+<div id="basics-personalizer-fabrics-app" class="app customizer customizer-app basics-personalizer-fabrics-app mfp-hide">
+  <div class="app__wrapper">
+    <span class="app__quit"><a href="#close-alert" class="mfp-close app__quit-icon custom--close js-popup no-iphone-safari"></a></span>
+    <div class="app__container">
+      <div class="app__mobile--header">
+        <span class="app-mobile--header__back mfp-close js-reset-customizer iphone-safari"><span class="back-icon custom--carret-left"></span> GO BACK / CANCEL</span>
+        <span class="app-mobile--header__back mfp-close js-reset-customizer no-iphone-safari"><span class="back-icon custom--carret-left"></span> GO BACK TO <span class="highlight">{{ product.title }}</span></span>
+        <div class="iphone-safari top-controls">
+          <span class="btn-prev js-app-prev js-gf-prev gf-prev"><span class="custom--carret-left"></span></span><!--
+          --><span class="btn-next js-app-next js-gf-next gf-next"><span class="custom--carret-right"></span></span><!--
+          --><a href="#bridge" class="btn-finish js-custom-finish js-action-finish js-popup mfp-close" style="display: none;"><span class="custom--carret-right"></span></a>
+        </div>
+      </div>
+      <main class="app__content js-app-slider">
+        <section class="step-slide">
+          <div class="js-palete">
+            <h2 class="step-slide__heading">Select a Fabric!</h2>
+            <p class="text--regular-14 text--center">All fabrics are included for $250, and feature a high quality wool blend fabrics.</p>
+            <div class="step-slide__wrapper m-b-lg fabrics_slide" data-items="3">
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__navy" value="Navy" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__navy" class="step-slide__label square-label" data-height=".js-palete-navy" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-navy">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_navy.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">navy</p>
+                  </div>
+                </label>
+              </article>
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__black" value="Black / Dark Grey" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__black" class="step-slide__label square-label" data-height=".js-palete-black" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-black">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_black.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">Black/Dark Grey</p>
+                  </div>
+                </label>
+              </article>
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__light-grey" value="Light Grey" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__light-grey" class="step-slide__label square-label" data-height=".js-palete-light-grey" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-light-grey">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_grey.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">Light Grey</p>
+                  </div>
+                </label>
+              </article>
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__blue" value="Blue" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__blue" class="step-slide__label square-label" data-height=".js-palete-blue" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-blue">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_blue.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">Blue</p>
+                  </div>
+                </label>
+              </article>
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__brown" value="TAN / KHAKI / BROWN" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__brown" class="step-slide__label square-label" data-height=".js-palete-brown" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-brown">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_brown.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">TAN/KHAKI/BROWN</p>
+                  </div>
+                </label>
+              </article>
+              <article class="step-slide__item step-square" data-scrolltop=".js-app-slider">
+                <input type="radio" class="step-slide__input js-addon js-palete-item" name="property-fabric" id="step-item__other" value="Other" data-type="Fabric" data-name="Fabric">
+                <label for="step-item__other" class="step-slide__label square-label" data-height=".js-palete-other" data-toggle=".js-palete-actions" data-hide=".js-palete" data-show=".js-palete-other">
+                  <div class="color-palete__item box-icon box-icon__with-check">
+                    <div class="color-palete__img has-background-image" style="background-image: url({{ 'palete_other.png' | asset_url }});"></div>
+                    <p class="color-palete__title uppercase">Other</p>
+                  </div>
+                </label>
+              </article>
+            </div>
+          </div>
+          <div class="js-palete-detail fabric-detail" style="display: none;">
+            <div class="fabric-detail__wrapper">
+              <img src="" alt="" class="fabric-detail__image js-palete-detail--image">
+              <div class="fabric-detail__info">
+                <h2 class="step-slide__heading text--left js-palete-detail--go-back" data-show="" data-hide=".js-palete-detail"><span class="app__back custom--back"></span> <span class="js-palete-detail--title"></span></h2>
+                <p class="js-palete-detail--description palete-detail--description text--left text--regular-14"></p>
+                <div class="fabric-detail__btn">
+                  <span class="js-app-next js-action-next button button-white mobile--only" data-toggle=".js-palete-actions, .js-palete" data-hide=".js-palete-detail, .js-palete-hide">Select Fabric</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="js-palete-navy js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+            {% include 'custom-basics-fabrics' with fabric: "fabric-navy" with self: ".js-palete-navy" with name: " Navy" %}
+          </div>
+          <div class="js-palete-black js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+            {% include 'custom-basics-fabrics' with fabric: "fabric-black" with self: ".js-palete-black" with name: " Black / Dark Grey" %}
+          </div>
+          <div class="js-palete-light-grey js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+            {% include 'custom-basics-fabrics' with fabric: "fabric-light-grey" with self: ".js-palete-light-grey" with name: " Light Grey" %}
+          </div>
+          <div class="js-palete-blue js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+              {% include 'custom-basics-fabrics' with fabric: "fabric-blue" with self: ".js-palete-blue" with name: " Blue" %}
+          </div>
+          <div class="js-palete-brown js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+            {% include 'custom-basics-fabrics' with fabric: "fabric-brown" with self: ".js-palete-brown" with name: " TAN / KHAKI / BROWN" %}
+          </div>
+          <div class="js-palete-other js-palete-hide step-slide__wrapper fabrics_slide" data-items="3" style="display: none;">
+            {% include 'custom-basics-fabrics' with fabric: "fabric-other" with self: ".js-palete-other" with name: " Other" %}
+          </div>
+        </section>
+      </main>
+      <footer class="app__footer">
+        <div class="actions-left js-actions js-palete-actions">
+          <a href="#close-alert" class="app__btn button js-popup mfp-close no-selection">cancel</a>
+        </div>
+        <div class="stitching-actions actions-right full-width js-palete-actions" style="display: none;">
+          <span class="app__btn button no-selection js-stitching-cancel" data-height="default" data-show=".js-palete" data-hide=".js-palete-hide, .js-palete-detail" data-toggle=".js-palete-actions" data-input-reset="">Back</span>
+          <span class="app__btn btn-sp button button--primary no-selection js-stitching-choose mfp-close js-cb-fabric-choose" data-height="default" data-show=".js-palete" data-hide=".js-palete-hide, .js-palete-detail" data-toggle=".js-palete-actions">choose</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+
+{% include 'close-alert' with target: 'basics-personalizer-fabrics-app' with reset: 'js-reset-customizer' %}
+<script type="text/javascript">
+  $('.js-cb-fabric-choose').on('click', function(){
+    var $target = $(window.fabricTrigger);
+    var $fabric = $('.js-palete-item:checked[name="fabric-item"]');
+    var $fTitle = $fabric.data('title');
+    var $fHandle = $fabric.data('handle');
+    var $fId = $fabric.val();
+    var $fImage = $fabric.data('image');
+    var $fParent = $fabric.data('parent');
+
+    var fabricURL = $target.find('.js-fabric-url').data('href');
+    $target.find('.js-fabric-title').text($fTitle);
+    $target.find('.js-fabric-image').css('background-image', 'url('+$fImage+')');
+    $target.find('.js-fabric-url').attr('href', fabricURL + $fId);
+
+    setTimeout(function() {
+      $(window).scrollTop($target.offset().top);
+      $('.js-palete-item:checked').prop('checked', false);
+      window.fabricTrigger = "";
+    }, 50);
+  });
+</script>

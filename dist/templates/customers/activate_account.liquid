@@ -1,0 +1,23 @@
+<div id ="activate_main">
+  {% include 'red-title' with title: "Activate Account" %}
+  <div class="form-wrapper">
+    {% form 'activate_customer_password' %}
+      <div id="errors" class="js-errors">{{ form.errors | default_errors }}</div>
+      <div class="input-control">
+        <input type="password" name="customer[password]" required="required" id="password" class="input" autocomplete="new-password">
+        <label for="password" class="form-label">Password</label>
+      </div>
+      <div class="input-control">
+        <input type="password" name="customer[password_confirmation]" required="required" id="password_confirmation" class="input" autocomplete="new-password">
+        <label for="password_confirmation" class="form-label">Password Confirmation</label>
+      </div>
+      <div class="form-actions center">
+        <input type="submit" class="button button--primary cta" value="Activate Account">
+        <div class="cf">
+          <hr class="form-separator">
+        </div>
+        <a class="link--regular color-main" href="/">Decline Invitation</a>
+      </div>
+    {% endform %}
+  </div>
+</div>

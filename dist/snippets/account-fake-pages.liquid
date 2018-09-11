@@ -1,0 +1,63 @@
+<div class="account-main--fake-page" style="display:none;">
+	<div class="fake-page-content fake-page--our-guarntee" style="display:none;">
+		<div class="overlay"></div>
+		<div class="fake-page--our-guarntee-content">
+			<h3 class="fake-page-title">Our 100% Worry Free Guarantee</h3>
+			<p class="fake-page-contents">Your satisfaction is our top priority. Should your garment require fit adjustments, visit a tailoring service near you to receive an alteration credit of up to $50 per suit/tuxedo. On the rare occasion your garment cannot be altered, we will work with you to initiate a remake for you.</p>
+		</div>
+	</div>
+
+	<div class="fake-page-content fake-page--my-orders" style="display:none;">
+		{% include 'account-orders' %}
+	</div>
+
+	<div class="fake-page-content fake-page--my-wedding" style="display:none;">
+		
+		<div class="empty-wedding">
+			<h3 class="empty-wedding-title">Welcome To The {{ customer.name }} Wedding</h3>
+			<img class="empty-wedding-img" src="{{ 'empty-wedding.jpg' | asset_url }}" alt="" />
+			<p class="empty-wedding-content">you haven’t submitted any groomsmen yet</p>
+			<a class="groomsman-btn button button--red" href="#add-groomsman">Add Groomsman</a>
+		</div>
+
+		<div class="populated-wedding">
+			<div class="populated-row-titles">
+				<div class="populated-title">Name</div>
+				<div class="populated-title">Email</div>
+				<div class="populated-title">Phone</div> 
+				<div class="populated-title">Order Status</div>
+			</div>
+			<div class="populated-wedding-table">
+				<div class="populated-row"></div>
+			</div>
+		</div>
+
+<!-- 		<div id="add-groomsman" class="add-groomsman">
+			<h4 class="add-groomsman-title">{{ customer.name }} Wedding.</h4>
+			<p class="add-groomsman-content">Use the form below to register your party members.</p>
+			  <form method="post" action="https://site.snapsuits.com/api/v1/groomsmen-checker/{{ customer.email }}/groomsmen/create/" id="add-groomsman-form" accept-charset="UTF-8">
+			    <div id="errors" class="js-errors">{{ form.errors | default_errors }}</div>
+			    <div class="input-control">
+			      <input type="text" name="name" class="form-name" required="required" value="">
+			      <label for="name" class="form-label">Full Name (First Name, Last Name) *</label>
+			    </div>
+			    <div class="input-control">
+			      <input type="text" name="email" class="form-email" required="required" value="">
+			      <label for="email" class="form-label">Email *</label>
+			    </div>
+			    <div class="input-control">
+			      <input type="text" name="phone" class="form-phone" required="required" value="">
+			      <label for="phone" class="form-label">Phone *</label>
+			    </div>
+			    <div class="input-control">
+			      <input type="text" name="designation" class="form-designation" required="required" value="">
+			      <label for="designation" class="form-label">Designation *</label>
+			    </div>
+			    <div class="form-actions center">
+			      <input type="submit" class="button button--primary cta" value="Submit">
+			  </div>
+			</form>
+		</div> -->
+
+	</div>
+</div>

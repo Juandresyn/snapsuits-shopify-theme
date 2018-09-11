@@ -1,0 +1,83 @@
+{% layout none %}
+
+  <div class="inline-cart-header">
+    <h1 class="inline-cart-title"><a href="/cart">YOUR CART</a></h1>
+    <span class="inline-cart-count js-inline-cart-show" title="Close">
+      <span class="icon--cart inline-cart-icon"></span> <span class="js-cart-count">{{ cart.item_count }}</span>
+    </span>
+  </div>
+  <div class="inline-cart-content js-ic-content">
+    {% if cart.item_count > 0 %}
+      {% for item in cart.items %}
+        {% for p in item.properties %}
+          {% if p.first contains "For" or p.first contains "Type" or p.first contains "Color" or p.first contains "Label" %}
+            {% assign addon = 'addon' %}
+          {% else %}
+            {% assign addon = 'main' %}
+          {% endif %}
+          {% if p.first contains "For" or p.first contains "Ref" %}
+            {% assign reference = p.last %}
+          {% endif %}
+        {% endfor %}
+        <div class="inline-cart-item item-{{ forloop.index }} {{ addon }} js-item" id="{{ item.id }}" data-vaiant-id="{{ item.variant.id }}" data-ref="{{ reference | remove: '(' | remove: ')' | split:' ' | last }}">
+          <span class="pointer js-ic-remove inline-cart-item__delete js-p-{{ item.id }}" ><span class="icon--delete delete"></span></span>
+          <div class="inline-cart-item__details">
+            <div class="inline-cart-item__image-wrapper">
+              <a href="{{ item.product.url }}"><img src="{{ item | img_url: '90x' }}" alt="{{ item.title | escape }}" class="inline-cart-item__image"></a>
+            </div>
+            <div class="inline-cart-item__info">
+              <h2 class="inline-cart-item__title"><a href="{{ item.product.url }}">{{ item.product.title }}</a></h2></h2>
+              {% for p in item.properties %}
+                {% unless p.last == blank %}
+                  {% if p.first contains "Ref" %}
+                    <p class="text--regular"><strong>{{ p.first }}:</strong> {{ p.last }}</p>
+                  {% endif %}
+                {% endunless %}
+              {% endfor %}
+              <p class="inline-cart-item__price">{{ item.price | money | remove: ".00" }}</p>
+              {% if addon == "addon" %}
+                {% for p in item.properties %}
+                  {% unless p.last == blank %}
+                    <p class="text--regular"><strong>{{ p.first }}:</strong> {{ p.last }}</p>
+                  {% endunless %}
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+		  {% assign productType = item.product.type | downcase  %}
+          {% unless item.product.tags contains 'weddingsuit' or productType contains 'accessories' %}
+                <div class="inline-cart-item__customizations">
+                  {% if addon == 'main' %}
+                    <div class="js-accordion">
+                      <h3 class="customizations-title">Customizations <span class="icon--carret-down carret"></span> </h3>
+                      <div class="customizations">
+                        <a class="inline-cart-edit" href="/cart?edit=true&edit_id={{ reference | remove: '(' | remove: ')' | split:' ' | last }}"><span class="icon--edit edit"></span></a>
+                        {% for p in item.properties %}
+                          {% unless p.last == blank %}
+                            {% unless p.first contains "Ref" %}
+                              <p class="text--regular"><strong>{{ p.first }}:</strong> {{ p.last }}</p>
+                            {% endunless %}
+                          {% endunless %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+          {% endunless %}
+        </div>
+      {% endfor %}
+    {% endif %}
+    <div class="js-ic-empty inline-cart-empty" style="display: none;">
+      {{ 'cart_empty.svg' | asset_url | img_tag: 'Cart Empty', 'cart-empty__image' }}
+      <p class="text--regular">You haven't ordered anything yet! <a href="/collections" class="link highlight">Go back to the shop</a> to buy an amazing custom suit.</p>
+    </div>
+  </div>
+  <div class="inline-cart-footer">
+    <div class="inline-cart-total">
+      <p class="text--regular">TOTAL:</p>
+      <p class="text--regular highlight">{{ cart.total_price | money | remove: ".00" }}</p>
+    </div>
+    <div class="inline-cart-checkout">
+      <a href="/cart" class="button button--red">CHECKOUT</a>
+    </div>
+  </div>

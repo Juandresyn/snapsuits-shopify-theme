@@ -1,0 +1,15 @@
+<nav class="main-breadcrumb desktop--only">
+  <ul class="main-breadcrumb__ul">
+    <li class="main-breadcrumb__li">
+      <a href="#" class="main-breadcrumb__link">Home</a>
+    </li>
+    {% if maincollect %}
+      <li class="main-breadcrumb__li"> /
+        <a href="/collections" class="main-breadcrumb__link">{{ maincollect }}</a>
+      </li>
+    {% endif %}
+    <li class="main-breadcrumb__li is-active"> /
+      <span class="main-breadcrumb__link">{{ product.title }}{{page.title}}</span>
+    </li>
+  </ul>
+</nav>

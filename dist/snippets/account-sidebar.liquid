@@ -1,0 +1,10 @@
+<div class="account-sidebar">
+  <ul class="account-sidebar--list">
+    {% for link in linklists.account-menu.links %}
+    	{% assign iconImage = 'link-' | append: link.handle | append: '.png' %}
+      <li class="account-sidebar--list-item link--{{ link.handle }}" style="background-image: url('{{ iconImage | asset_url }}');">
+        <a class="account-sidebar--list-item-link" {% if link.url contains 'inside-page' %}data-open-fake-page{% endif %} href="{{ link.url }}" title="{{ link.title }}" data-link-handle="{{ link.handle }}">{{ link.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

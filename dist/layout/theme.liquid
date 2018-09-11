@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="{{ canonical_url }}" />
+    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+
+    <!-- Title and Description ================================ -->
+    <title>
+      {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}" />
+    {% endif %}
+
+    <!-- Product Meta ================================ -->
+    {% include 'open-graph-tags' %}
+    {% include 'twitter-card' %}
+
+    <!-- Header Content ================================ -->
+    {{ content_for_header }}
+
+    <!-- Stylesheets ================================ -->
+{% comment %}<!--     <link rel="stylesheet" href="https://i.icomoon.io/public/8cbf3a41dc/snapsuits/style.css"> -->{% endcomment %}
+    {{ 'icons.css' | asset_url | stylesheet_tag }}
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    {{ 'vendor.css' | asset_url | stylesheet_tag }}
+    {% comment %}{{ 'shop.css' | asset_url | stylesheet_tag }}{% endcomment %}
+    {{ 'shame.css' | asset_url | stylesheet_tag }}
+    {{ 'snap-suits.css' | asset_url | stylesheet_tag }}
+    {{ 'snapsuits.css' | asset_url | stylesheet_tag }}
+
+    <!-- Object API ================================ -->
+    <script>
+      window.shop = {
+        template: {{ template | json }},
+        currentPage: {{ current_page }},
+        customerIsLogged: {% if customer %}true{% else %}false{% endif %},
+        shopCurrency: {{ shop.currency | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        moneyWithCurrencyFormat: {{ shop.money_with_currency_format | json }},
+        collectionSortBy: {{ collection.sort_by | default: collection.default_sort_by | json }}
+      }
+    </script>
+
+    <!-- jQuery ================================ -->
+    {{ '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' | script_tag }}
+  </head>
+  <body id="{{ page_title | handle }}" class="{% if customer %}customer-template-block customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {{ page.handle }}">
+    {% include 'inline-navigation' %}
+    {% include 'inline-cart' %}
+    <div class="menu-overlay js-overlay"></div>
+    <div class="main-wrapper">
+      {% include 'top-info' %}
+      {% unless template contains 'index' or template contains '404' %}
+        <header class="main-header">
+          {% include 'logo' %}
+          <div class="main-navigation">
+            {% include 'nav' %}
+            {% include 'customer-nav' %}
+          </div>
+        </header>
+      {% endunless %}
+    </div>
+
+      <main id="main" role="main" class="{% unless template contains 'index' %}main-wrapper{% endunless %}">
+        {{ content_for_layout }}
+      </main> <!-- wrapper -->
+
+    {% unless template contains '404' %}
+      {% include 'footer' %}
+    {% endunless %}
+    {% include 'modal-account' %}
+    <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:569845,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Footer Scripts ================================ -->
+    {{ 'vendor.js'  | asset_url | script_tag }}
+    {{ 'scripts.js'  | asset_url | script_tag }}
+    {% include 'ajaxify-cart' %}
+
+    <script type="text/javascript">
+        $(document).on('ready', function(){
+          theme.buttonContinue(".js-continue", ".js-continue__parent");
+          theme.popup('.js-popup, .js-modal');
+
+          //Custom
+          Homepage.init();
+          Global.init();
+          
+        });
+        $(window).on('load', theme.init());
+      
+      var addItem = function (link) {
+          var oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
+
+          var newItem = {
+          	'link': link,
+          };
+
+          oldItems.push(newItem);
+
+          localStorage.setItem('itemsArray', JSON.stringify(oldItems));
+      };
+      
+      function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+
+      $('[data-open-fake-page]').on('click', function() {
+        var linkHandle = $(this).attr('data-link-handle');
+        var titleText = $(this).text();
+
+        addItem(linkHandle);
+
+        var insidePageLink = JSON.parse(localStorage.getItem('itemsArray'))[0].link;
+
+        $('.account-main--page, .fake-page-content, .no-wedding .account-title--actions').hide();
+        $('.account-title--header').text(titleText);
+        $('.account-main--fake-page, .fake-page--' + linkHandle).show();
+
+        if (window.location.pathname === '/account/addresses') {
+          window.location = '/account?inside-page=' + insidePageLink;
+
+          $('.populated-row-titles').hide();
+        }
+      });
+      
+      if (localStorage.getItem('itemsArray') !== null && window.location.search.indexOf('?inside-page') > -1) {
+		$('.account-sidebar--list li a').each(function() {
+          var insidePage = $(this).attr('data-link-handle');
+
+          if (getParameterByName('inside-page') === insidePage) {
+            $(this).trigger('click');
+              console.log($(this), 'okkkkk');
+            localStorage.removeItem('itemsArray');
+          }
+        });
+      }
+     
+      
+      console.log(getParameterByName('inside-page'));
+
+      </script>
+      <!-- Tracking ================================ -->
+      {% include 'third-party' %}
+      <!-- Shopify ================================ -->
+      {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+      {% comment %}
+        Needed when shopify_common.js is used.
+        {% endcomment %}
+        <!--[if lt IE 8]>
+        {{ 'json2.js' | shopify_asset_url | script_tag }}
+      <![endif]-->
+
+      {% if template contains 'customers' %}
+        {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+        {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+	    {% comment %}{{ 'accountPages.js'  | asset_url | script_tag }}{% endcomment %}
+      {% endif %}
+  </body>
+</html>

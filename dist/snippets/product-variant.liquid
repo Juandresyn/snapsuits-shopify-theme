@@ -1,0 +1,10 @@
+{% if product.variants.size > 1 %}<!--
+--><div class="product-variant__container app-form__select-wrapper">
+    <select name="id" id="product-select" class="product-variant js-variant-price app-form__input app-form__select">
+      {% for variant in product.variants %}
+        {% capture variant_price %}{{ variant.price | money }}{% endcapture %}
+          <option value="{{ variant.id }}" data-price="{{ variant_price }}">{% if forloop.first %} {{ product.title }} {% else %} {{ variant.title }} {% endif %} {{ variant_price }}</option>
+      {% endfor %}
+    </select>
+  </div><!--
+-->{% endif %}

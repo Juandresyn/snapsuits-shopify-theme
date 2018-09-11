@@ -1,0 +1,101 @@
+<div class="pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 product-info desktop--only">
+  <h1 class="title product-title">{{ product.title }}</h1>
+  <div class="product-price__container">
+    <h2 class="product-price"><span class="js-product-price">{{ variant.price | money | strip_html }}</span></h2>
+	{% if product.tags contains "Shirt" %}
+	    <input type="text" name="ref" value="" id="product-ref" class="hidden"><!--
+   	{% else %}
+        <input type="text" name="properties[Ref]" value="" id="product-ref" class="hidden"><!--
+  	{% endif %}
+    {% if product.tags contains "Shirt" %}
+  --><div class="shirt--options">
+        <div class="shirt--options__wrapper btn-wrapper text--left float--left">
+          {% assign tags_collar = settings.shirts_collar_type | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+          <select id="shirt-collar" name="properties[Collar type]" class="select-padding select-reset btn btn-default shirt--options__item js-shirt-type" data-input=".js-collar">
+            <option value="">Collar Type</option>
+            {% for tag in tags_collar %}
+              <option value="{{ tag | handle }}">{{ tag }}</option>
+            {% endfor %}
+          </select>
+        </div><!--
+        --><div class="shirt--options__wrapper btn-wrapper text--center float--left">
+          {% assign tags_sleeve = settings.shirts_sleeve_type | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+          <select id="shirt-sleeve" name="properties[Sleeve type]" class="select-padding select-reset btn btn-default shirt--options__item js-shirt-type" data-input=".js-sleeve">
+            <option value="">Sleeve Type</option>
+            {% for tag in tags_sleeve %}
+              <option value="{{ tag | handle }}">{{ tag }}</option>
+            {% endfor %}
+          </select>
+        </div><!--
+        --><div class="shirt--options__wrapper btn-wrapper text--right float--left">
+          {% assign tags_cuff = settings.shirts_cuff_type | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+          <select id="shirt-cuff" name="properties[Cuff type]" class="select-padding select-reset btn btn-default shirt--options__item js-shirt-type" data-input=".js-cuff">
+            <option value="">Cuff Type</option>
+            {% for tag in tags_cuff %}
+              <option value="{{ tag | handle }}">{{ tag }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    {% else %}
+  {% include 'product-variant' %}<!--
+    {% endif %}
+   {% unless product.tags contains "Shirt" %}-->{% endunless %}</div>
+
+  {% unless product.tags contains "gift_card" %}
+  <!-- QuadPay Product Page Widget START -->
+  	<style type="text/css">
+    	#quadPayCalculatorWidgetLearn {
+          font-size: 11px !important;
+          color: #666 !important;
+        }
+  	</style>
+    <div id="quadPayCalculatorWidget" class="yui3-cssreset" style="min-height: 38px; margin-top: 15px; margin-bottom: 0px; padding: 7px 0; width: 100%; max-width: 330px; color: black; text-transform: none; box-sizing: inherit;">
+      <img id="quadPayCalculatorWidgetLogo" src="https://assets.quadpay.com/assets/images/quadpay-logo-actually-black-tight-200.png" style="width: 90px; float: right;">
+      <div id="quadPayCalculatorWidgetText" style="color: #666; font-size: 13px; position: relative; text-align: left;">or 4 Interest-Free Payments
+        <span id="quadPayCalculatorWidgetTextFromCopy" sytle="margin-right: 10px;">of <span style="font-weight: bold;">{{ variant.price | divided_by: 4.00 | money}}</span></span>
+      </div>
+      <script async src="https://widgets.quadpay.com/snapsuits/quadpay-widget-0.1.0.js?type=calculator&min=1&max=1500&amount={{ variant.price | divided_by: 100.00 }}" type="application/javascript"></script>
+    </div>
+    <!-- QuadPay Product Page Widget END -->
+  {% endunless %}
+  <div class="product-buttons product-actions">
+    {% unless product.tags contains "gift_card" %}
+       {% unless product.tags contains "accessories" %}
+      {% unless product.tags contains "Shirt" %}
+    <div class="button-wrapper product-buttons__wrapper">
+      {% if product.tags contains "weddingsuit" %}
+        <a href="#personalizer-app" class="button button--blue btn-customize js-app-popup">Personalize me</a>
+      {% elsif product.tags contains "custombasics" %}
+        <a href="#basics-personalizer-app" class="button button--blue btn-customize js-app-popup">Personalize me</a>
+      {% else %}
+        <a href="#customizer-app" class="button button--secondary btn-customize js-app-popup">customize me</a>
+      {% endif %}
+    </div>
+      {% endunless %}
+	  {% endunless %}
+     {% endunless %}
+    <div class="button-wrapper product-buttons__wrapper text--right" {% if product.tags contains "custom_basics" %} style="display: none;" {% endif %}>
+      <input type="submit" class="button button--primary btn-add" id="add" value="Add to Cart">
+    </div>
+  </div>
+  <div class="product-description__container desktop--only">
+    <div class="product-description__headings pure-g">
+      <div class="pure-u-md-1-1 product-description__heading text--center is-active">
+        <a href="#description" class="title">Description</a>
+      </div><!--
+      {% if product.tags contains 'create_your_own' %}
+    --><div class="pure-u-md-1-2 product-description__heading text--center fabric-input__wrapper">
+          <input id="fabric" type="text" name="properties[Fabric Number]" placeholder="Fabric Number" class="input__fabric-number">
+        </div>
+      {% else %}
+    -->
+      {% endif %}
+    </div>
+    <div class="pure-u-md-1-1 product__more-info description-text" id="description">
+      <p class="text">
+        {{ product.description }}
+      </p>
+    </div>
+  </div>
+</div>

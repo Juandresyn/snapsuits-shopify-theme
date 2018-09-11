@@ -1,0 +1,142 @@
+{% include 'red-title' with title: "Manage My Sizes" with class: "no-gap" %}
+{% include 'account-breadcrumb' with current_title: "Manage my Sizes" with current_url: '#' %}
+<div class="page-wrapper m-t-lg m-b-lg">
+  <div class="page-content page-content--full">
+    {% if customer  %}
+      <div class="app__container measurement-view js-measurement" style="display: none;">
+        <div class="app__content no-slide">
+          <section class="step-slide">
+            <div class="js-accordion accordion js-results-loop">
+            </div>
+          </section>
+          <div class="my-measurement__footer">
+            <p class="step-slide__subtitle highlight">All measurements are in <strong>INCHES</strong>.</p>
+            <div class="btn-container">
+              <a class="cancel" href="/account" style="color: #666; text-decoration: none;">Back</a>
+              {% comment %}js-get-fitted-popup{% endcomment %}
+              <a href="/pages/get-fitted" class="my-measurement__btn button button--primary">add new size</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(document).on('ready', function(){
+          var urlBase = "{{ settings.fm_api_url }}/{{ customer.email }}/my-measurements";
+          $.ajax({
+            dataType: 'json',
+            contentType: "application/x-www-form-urlencoded",
+            url : urlBase,
+            headers : {
+                'Authorization' : 'Token bb8dd34ceaf3506a63ee3986d6ab0438becf19a1'
+            },
+            type: "GET",
+            success: function(data, textStatus, jqXHR){
+              if (textStatus == "not found") {
+                $('.js-measurement').hide();
+                $('.js-no-measurement').show();
+              }else{
+                $('.js-measurement').show();
+                $('.js-no-measurement').hide();
+                $('.js-results-loop').loadTemplate("#get-fitted-result", data);
+              }
+            },
+            error: function (data, jqXHR, textStatus, errorThrown){
+              $('.js-measurement').hide();
+              $('.js-no-measurement').show();
+            },
+            complete: function () {
+              $( ".js-accordion" ).accordion( "refresh" );
+              $( ".js-accordion" ).accordion({
+                  collapsible: true,
+                  beforeActivate: function(event, ui) {
+                    if (ui.newHeader[0]) {
+                        var currHeader  = ui.newHeader;
+                        var currContent = currHeader.next('.ui-accordion-content');
+                    } else {
+                        var currHeader  = ui.oldHeader;
+                        var currContent = currHeader.next('.ui-accordion-content');
+                    }
+                    var isPanelSelected = currHeader.attr('aria-selected') == 'true';
+
+                    currHeader.toggleClass('ui-corner-all',isPanelSelected).toggleClass('accordion-header-active ui-state-active ui-corner-top',!isPanelSelected).attr('aria-selected',((!isPanelSelected).toString()));
+
+                    currHeader.children('.ui-icon').toggleClass('ui-icon-triangle-1-e',isPanelSelected).toggleClass('ui-icon-triangle-1-s',!isPanelSelected);
+
+                    currContent.toggleClass('accordion-content-active',!isPanelSelected)
+                    if (isPanelSelected) { currContent.slideUp(); }  else { currContent.slideDown(); }
+
+                    return false;
+                  }
+              });
+              $( '.default_true.js-result-default' ).trigger('click');
+              measurementaActions();
+            }
+          });
+
+          function measurementaActions() {
+            var urlBase = "{{ settings.fm_api_url }}/{{ customer.email }}";
+            $('.js-measure-action').on('click', function(){
+              var _this = this;
+              var action = $(_this).data('action');
+              var mId = $(_this).parents('.js-result-parent').attr('id');
+              var path;
+              var info = {};
+
+              if (action == 'set') {
+                path = "/set-default"
+                info = {
+                  id: mId,
+                  default: true
+                }
+              }else if (action == 'delete') {
+                path = "/delete"
+                info = {
+                  id: mId
+                }
+              }
+
+              var actionUrl = urlBase + path;
+
+              $.ajax({
+                dataType: 'json',
+                contentType: "application/x-www-form-urlencoded",
+                url : actionUrl,
+                data: info,
+                headers : {
+                    'Authorization' : 'Token bb8dd34ceaf3506a63ee3986d6ab0438becf19a1'
+                },
+                type: "POST",
+                success: function(data, textStatus, jqXHR){
+                  if(action == 'set'){
+                    $(_this).fadeOut('fast');
+                    setTimeout(function() {
+                      location.reload();
+                    }, 500 );
+                  }else if(action == 'delete'){
+                    if(data.status){
+                      $('#' + mId).fadeOut('fast');
+                      $('[aria-controls="' + mId + '"]').fadeOut('fast');
+                    }
+                  }
+                },
+                error: function(data, textStatus, jqXHR){
+                }
+              });
+            });
+          }
+        });
+      </script>
+    </div>
+  {% endif %}
+  <div class="js-no-measurement empty-state text--center">
+      <img src="{{ 'measurements_empty.png' | asset_url }}" alt="" class="empty-state__image">
+      <p class="title--16 uppercase">you haven’t submitted any measurements yet</p>
+      <a href="#get-fitted-app-intro" class="result__btn button button--primary js-get-fitted-popup empty-state__btn">get fitted</a>
+      <p class="text--regular">Did you submit custom measurements? If so, <a href="{{ settings.custom_measurement_url }}" class="uppercase link link--u highlight">click here</a> to view them!</span>
+    </h3>
+  </div>
+</div>
+{% include 'get-fitted-app' %}
+<div class="hidden">
+  {% include 'results'%}
+</div>

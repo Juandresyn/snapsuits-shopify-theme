@@ -1,0 +1,34 @@
+</main>
+<div class="has-background-image background-center background-left page-banner--header" style="background-image: url({{ 'phillantropy-bg.jpg' | asset_url }})">
+  <div class="main-wrapper">
+    <h1 class="title--main">{{ page.title }}</h1>
+    <h2 class="title--medium white">Every SnapSuit purchased benefits local<br class="desktop--only">communities in need.</h2>
+  </div>
+</div>
+<main class="main-wrapper">
+  <div class="page-container">
+    <div class="page-content page-content--phillantropy">
+      {{ page.content }}
+    </div>
+    <div class="page-form">
+      <h2 class="title--16">GET INVOLVED</h2>
+      <form class="form js-send-email" action="">
+        <input type="text" type="text" name="kitty" class="hidden" id="cat">
+        <div class="input-control">
+          <input type="text" type="text" name="full_name" required="required" id="first_name">
+          <label for="first_name" class="form-label">FULL NAME (First and Last Name)</label>
+        </div>
+        <div class="input-control">
+          <input type="email" name="email" required="required" id="email" class="input">
+          <label for="email" class="form-label">email address</label>
+        </div>
+        <div class="input-control">
+          <input type="text" type="text" name="text" required="required" id="last_name">
+          <label for="last_name" class="form-label">message</label>
+        </div>
+        <div class="form-actions left">
+          <input type="submit" name="submit" class="button button--primary cta" value="submit">
+        </div>
+      </form>
+    </div>
+  </div>

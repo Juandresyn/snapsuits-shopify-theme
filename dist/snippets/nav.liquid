@@ -1,0 +1,14 @@
+<nav class="main-nav main-header-nav">
+  <ul class="main-nav__ul main-header-nav__ul">
+    {% for link in linklists.new-user-menu.links %}
+      <li class="main-nav__li main-header-nav__li {% if link.active %}is-active {% endif %}">
+        <a href="{{ link.url }}" class="main-nav__link main-header-nav__link">
+          {% if link.title contains 'Weddings' %}
+            <span class="nav-weddings-icon icon--ring"></span>
+          {% endif %}
+          {{ link.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

@@ -1,0 +1,36 @@
+{% include 'red-title' with title: "Blog" with class: "desktop--title desktop-alt--only" %}
+<div id="blog" class="blog">
+  {% paginate blog.articles by 10 %}
+    <div class="blog-listing blog-articles">
+     {% for article in blogs[blog.handle].articles limit: 10 %}
+     <article class="blog__article blog__item article{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}">
+        <h3 class="blog-article__title">{{ article.title }}</h3>
+        <p class="blog-time"><time pubdate datetime="{{ article.published_at | date: "%a, %b %d, %y" }}">Date: {{ article.published_at | date: "%b %d, %y" }}</time>, By: {{ article.author }}</p>
+        <a href="{{ article.url }}">
+          <div class="has-background-image blog-article__image" style="background-image: url({% if article.image %}{{ article | img_url: 'grande' }}{% endif %})">
+            <div class="blog-article__image--overlay"></div>
+          </div>
+        </a>
+        <p class="blog-article__excerpt">
+          {% if article.excerpt.size > 0 %}
+            {{ article.excerpt | strip_html | truncatewords: 50 }}
+          {% else %}
+            {{ article.content | strip_html | truncatewords: 50 }}
+          {% endif %}
+        </p>
+        <a href="{{ article.url }}" class="blog-article__readmore">Read More</a>
+      </article>
+      {% endfor %}
+    </div>
+    {% if paginate.pages > 1 %}
+      <div class="pagination">
+        {% comment %}
+        When paginating blog articles, a previous article is actually a newer article, not an older one,
+        because blog articles are shown and paginated in a reversed chronological order.
+        The word 'previous' can be confusing, hence we'll change it.
+        {% endcomment %}
+        {{ paginate | default_pagination | replace: 'Previous', 'Newer articles' | replace: 'Next', 'Older articles' }}
+      </div>
+    {% endif %}
+  {% endpaginate %}
+</div>

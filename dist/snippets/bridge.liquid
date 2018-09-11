@@ -1,0 +1,81 @@
+{% include 'customize-alert3' %}
+<div id="bridge" class="bridge bridge-app mfp-hide">
+  <span class="app__quit"><span class="mfp-close app__quit-icon custom--close"></span></span>
+  <div class="bridge__wrapper desktop--bridge">
+    <h1 class="bridge__title">Almost ready to checkout!</h1>
+    <div class="bridge__content">
+      <div class="bridge__item js-bridge-fitted">
+        <h3 class="above-item">First Time?</h3>
+        <h3 class="bridge__description">Get fitted before checkout</h3>
+        <div class="bridge__image">
+          <a href="/cart#fitme">
+            <div class="item-image" style="background-image: url({{ 'bridge-fit.png' | asset_url}})"></div>
+          </a>
+        </div>
+        <h4 class="bridge-item__title">Get fitted</h4>
+      </div>
+      <div class="bridge__item">
+        <h3 class="above-item">Already a Customer?</h3>
+        <h3 class="bridge__description">{% if customer  %}Go see your measurements{% else %}Log in to retrieve your measurements{% endif %}</h3>
+        <div class="bridge__image">
+          <a href="{% if customer  %}/checkout{% else %}/cart#fitme{% endif %}" class="js-close-modal" data-open="login" aria-controls="login" id="qhekmt-reveal" aria-haspopup="true" tabindex="0">
+            <div class="item-image" style="background-image: url({{ 'bridge-measurement.png' | asset_url}})"></div>
+          </a>
+        </div>
+        <h4 class="bridge-item__title">VIEW MEASUREMENTS</h4>
+      </div>
+      <div class="bridge__item">
+        <h3 class="above-item">Don’t Stop me Now!</h3>
+        <h3 class="bridge__description">Keep shopping!</h3>
+        <div class="bridge__image">
+          <a href="/collections">
+            <div class="item-image" style="background-image: url({{ 'bridge-shop.png' | asset_url}})"></div>
+          </a>
+        </div>
+        <h4 class="bridge-item__title">KEEP SHOPPING</h4>
+      </div>
+    </div>
+    <footer class="bridge__footer">
+      <a href="#{{ app }}" class="button button-white button-white--gray js-app-popup">Go back to the {{ appName }}</a>
+      <span class="button button-white button-white--gray js-save-for-later"><span class="js-save-for-later-text js-close" data-default="Save for Later">Save for Later</span></span>
+      <a href="{% if customer  %}/checkout{% else %}/cart#fitme{% endif %}" class="button button-white button-white--gray bridge__link">Just take me to checkout</a>
+    </footer>
+  </div>
+   <div class="bridge__wrapper mobile--bridge">
+     <img src="{{ 'bridge-shop.png' | asset_url}}" alt="" class="bridge__image">
+     <h1 class="bridge__title">Almost ready to checkout!</h1>
+     <div class="bridge__content">
+       <a href="/cart#fitme" class="bridge__link">Get fitted before checkout</a>
+       <a href="/account/login" class="bridge__link">Log in to retrieve your measurements</a>
+       <span class="bridge__link js-save-for-later"><span class="js-save-for-later-text">Save For Later</span></span>
+     </div>
+   </div>
+</div>
+{% include 'close-alert' %}
+<script type="text/javascript">
+  var $bridge = $('.js-bridge'),
+      $finish = $('.js-cust-finish');
+  {% if customer  %}
+  $bridge.hide();
+  var urlBase = "{{ settings.fm_api_url }}?email={{ customer.email }}",
+      urlget = urlBase;
+      $.ajax({
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded",
+        url : urlget,
+        headers : {
+          'Authorization' : 'Token bb8dd34ceaf3506a63ee3986d6ab0438becf19a1'
+        },
+        type: "GET",
+        success: function(data, textStatus, jqXHR){
+          $('.js-bridge-fitted').find('a').addClass('js-prevent');
+        },
+        error: function (data, jqXHR, textStatus, errorThrown){
+        }
+      });
+  {% else %}
+  $(document).on('click', '.js-cust-finish', function (e) {
+    $.magnificPopup.close();
+  });
+  {% endif %}
+</script>

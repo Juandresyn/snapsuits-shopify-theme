@@ -1,0 +1,12 @@
+<div class="team-wrapper">
+  <section class="team-type">
+    <div class="flex-center-full team-members--wrapper-alt">
+      {% for i in (1..5) %}
+          {% capture team_pic %}{{ type }}_member_{{ i }}_image.jpg{% endcapture %}
+          <article class="team-member team-member--alt">
+            <div class="team-member--img" style="background-image: url('{{ team_pic | asset_url }}')"></div>
+          </article>
+      {% endfor %}
+    </div>
+  </section>
+</div>

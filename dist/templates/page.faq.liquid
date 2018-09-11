@@ -1,0 +1,65 @@
+</main> <!-- Close .main-wrapper for full width effect -->
+<div class="has-background-image background-center page-banner--header" style="background-image: url({{ settings['faq-img-hero'].src | img_url: 'master' }})">
+  <div class="wrapper--560">
+    <h1 class="title--main">{{ page.title }}</h1>
+    <h2 class="title--medium white">Have you ever wondered why suits are so expensive?</h2>
+  </div>
+</div>
+<main class="main-wrapper"> <!-- Open again .main-wrapper for wrapper effect -->
+<div class="page-banner--header-info">
+  <p>Need to get a hold of us? Email us at <a href="emailto:{{ settings.email_support }}">{{ settings.email_support }}</a> and we will get back to you within one business day.</p>
+  <h3>Frequently Asked Questions</h3>
+</div>
+
+<div class="page-faq--items">
+  {% for i in (1..20) %}
+    <div class="page-faq--item js-accordion js-accordion--close">
+      {% capture faq_question %}faq-question-{{ i }}{% endcapture %}
+      {% capture faq_answer %}faq-answer-{{ i }}{% endcapture %}
+
+      {% if settings[faq_question] != "" %}
+        <div class="accordion__title">
+          {{ settings[faq_question] }}
+          <span class="icon--carret-down carret"></span>
+        </div>
+        <div class="text--regular m-l-md">
+          {{ settings[faq_answer] }}
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+<script type="text/javascript">
+  (function(Accordions, $, undefined) {
+
+    var accordionSelectors = {
+      singleAccordion: '[data-accordion-block]',
+      question: '[data-accordion-question]',
+      answer: '[data-accordion-answer]'
+    };
+
+    var bindUIActions = function() {
+      $(accordionSelectors.question).on('click', function() {
+        $(this)
+          .closest(accordionSelectors.singleAccordion)
+          .find(accordionSelectors.answer)
+          .slideToggle(300);
+
+        $(this)
+          .closest(accordionSelectors.singleAccordion)
+          .find(accordionSelectors.question)
+          .toggleClass('is-active');
+      });
+    };
+
+    Accordions.init = function() {
+      bindUIActions();
+    };
+
+  }(window.Accordions = window.Accordions || {}, jQuery));
+
+  $(document).ready(function() {
+    Accordions.init();
+  });
+</script>
