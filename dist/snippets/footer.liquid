@@ -63,6 +63,7 @@
 </script>
 
 {% unless template contains 'customers/account' %}
+  {{ template }}
   <script type="text/javascript">
     $(document).on('ready', function() {
       if (($(".js-main-footer").offset().top + $(".js-main-footer").height()) >= $(window).height()) {
