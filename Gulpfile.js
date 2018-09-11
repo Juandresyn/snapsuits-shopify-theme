@@ -26,25 +26,24 @@ const shell = require('gulp-shell');
 // --------------------------------
 // 			Setup
 // --------------------------------
-var storeName = 'SnapSuits',
-	projectName = storeName.toLowerCase().replace(/\s/g, '-'),
-	url = 'https://suitssuits.myshopify.com/', // Note: Url must be the actual shop url for BrowserSync to work properly
-	jsfiles = [
-			'src/js/libs/jquery-2.2.4.min.js',
-			'src/js/libs/*.js',
-			'src/js/modules/*.js'
-		],
-    devProcessors = [
-	        autoprefixer(),
-	        pxToRem({ rootValue: 16, replace: true, mediaQuery: true }),
-	        cacheBuster({cssPath: '/assets', type:'mtime'})
-		],
-	prodProcessors = [
-			pxToRem({rootValue: 16, replace: true, mediaQuery: true}),
-			mqPacker({sort: true}),
-	        cacheBuster({cssPath: '/assets', type:'mtime'})
-		];
-
+const storeName = 'SnapSuits';
+const projectName = storeName.toLowerCase().replace(/\s/g, '-');
+const url = 'suitssuits.myshopify.com'; // Note: Url must be the actual shop url for BrowserSync to work properly
+const jsfiles = [
+	'src/js/libs/jquery-2.2.4.min.js',
+	'src/js/libs/*.js',
+	'src/js/modules/*.js'
+];
+const devProcessors = [
+	autoprefixer(),
+	pxToRem({ rootValue: 16, replace: true, mediaQuery: true }),
+	cacheBuster({cssPath: '/assets', type:'mtime'})
+];
+const prodProcessors = [
+	pxToRem({rootValue: 16, replace: true, mediaQuery: true}),
+	mqPacker({sort: true}),
+	cacheBuster({cssPath: '/assets', type:'mtime'})
+];
 
 // --------------------------------
 // 			Tasks
@@ -100,7 +99,7 @@ gulp.task('css:post_build', function(){
 		.pipe(cssNano({autoprefixer: { add: true }}))
 		.pipe(rename(projectName + '.css'))
 		.pipe(gulp.dest('assets/'))
-		.pipe(notify({ title: clientName + ' CSS', message: 'CSS Refreshed' }));
+		.pipe(notify({ title: storeName + ' CSS', message: 'CSS Refreshed' }));
 });
 
 // --------------------------------

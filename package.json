@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Theme Development packages for Gulpfile.js",
   "repository": "https://github.com/RocketCodeHQ/Shopify-Theme-Development",
+  "scripts": {
+    "pre-commit": [ "gulp build", "copyfiles [./assets, ./config, ./layout, ./sections, ./snippets, ./templates] ./dist" ]
+  },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "browser-sync": "^2.10.1",
@@ -25,6 +28,7 @@
     "postcss-pxtorem": "^3.3.1"
   },
   "dependencies": {
-    "gulp-shell": "^0.6.5"
+    "gulp-shell": "^0.6.5",
+    "pre-commit": "^1.2.2"
   }
 }
