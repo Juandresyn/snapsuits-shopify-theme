@@ -4,8 +4,9 @@
   "description": "Theme Development packages for Gulpfile.js",
   "repository": "https://github.com/RocketCodeHQ/Shopify-Theme-Development",
   "scripts": {
-    "pre-commit": [ "gulp build", "copyfiles [./assets, ./config, ./layout, ./sections, ./snippets, ./templates] ./dist" ]
+    "beforecommit": "gulp build"
   },
+  "pre-commit": ["beforecommit"],
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "browser-sync": "^2.10.1",

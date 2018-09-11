@@ -146,6 +146,15 @@ gulp.task('default', ['js:hint','js:concat','css:postsass',], function() {
 
 // Command: `gulp build`
 gulp.task('build', ['js:uglify', 'css:post_build'], function(){
+	gulp.src([
+		'assets',
+		'config',
+		'layout',
+		'sections',
+		'snippets',
+		'templates',
+	])
+	.pipe(gulp.dest('./dist'));
 	gulp.src('gulpfile.js').pipe(notify({
 		title: 'Build Scripts',
 		message: 'Finished!'
