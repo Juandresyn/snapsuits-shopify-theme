@@ -147,6 +147,7 @@ $color-icon: #888;
         }
       }
 
+      &.is-done .step,
       &.done .step{
         background-color: $brand-primary;
         border: 3px solid $brand-primary;
@@ -193,7 +194,8 @@ $color-icon: #888;
         padding-top: 5px;
         cursor: pointer;
 
-        &.done{
+        &.is-done,
+        &.done {
           color: $brand-primary;
         }
       }
@@ -443,7 +445,7 @@ $color-icon: #888;
           &:checked + .step-slide__label{
             &:after{
               content: "\e902";
-              padding: 5px;
+              padding: 4px;
             }
           }
         }
@@ -1130,6 +1132,7 @@ $color-icon: #888;
 
   .step-slide{
     @include flexbox(!important);
+    min-height: 350px;
     flex-direction: column;
     align-items: center;
     justify-content: center;

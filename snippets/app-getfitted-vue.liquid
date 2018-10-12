@@ -1,0 +1,620 @@
+<div id="get-fitted-app" class="app get-fitted get-fitted-app">
+    <div class="app__wrapper">
+        <span class="app__quit"><a href="#close-alert" class="mfp-close app__quit-icon custom--close js-popup no-iphone-safari"></a></span>
+        <div class="app__container">
+            <section id="app__get-fitted">
+                <header class="app__header">
+                    <progress-bar
+                        :list="steps"
+                        :current="currentStep">
+                    </progress-bar>
+                </header>
+                <form action="" class="app__form" ref="get-gitted__form">
+                    <main class="app__content">
+                        <section v-if="currentStep === 1" class="step-slide step-item">
+                            <h2 class="step-slide__heading left">BODY PROFILE</h2>
+                            <p class="step-slide__subtitle"><strong>Note</strong>: This information is required to generate your custom body measurements.</p>
+                            <div class="step-slide__wrapper">
+                                <div class="app-form__wrapper">
+                                    <div class="app-form__row">
+                                        <div class="app-form__label-wrapper">
+                                            <label for="get-fitted__height" class="app-form__label">HEIGHT <span class="highlight">*</span></label>
+                                        </div>
+                                        <div class="app-form__select-wrapper">
+                                            <select name="input_height" id="get-fitted__height" class="app-form__input app-form__select" v-model="userData.input_height">
+                                                <option value="">Select Height</option>
+                                                <option value="1">5'0</option>
+                                                <option value="2">5'1</option>
+                                                <option value="3">5'2</option>
+                                                <option value="4">5'3</option>
+                                                <option value="5">5'4</option>
+                                                <option value="6">5'5</option>
+                                                <option value="7">5'6</option>
+                                                <option value="27">5'7</option>
+                                                <option value="8">5'8</option>
+                                                <option value="9">5'9</option>
+                                                <option value="10">5'10</option>
+                                                <option value="11">5'11</option>
+                                                <option value="12">6'0</option>
+                                                <option value="13">6'1</option>
+                                                <option value="14">6'2</option>
+                                                <option value="15">6'3</option>
+                                                <option value="16">6'4</option>
+                                                <option value="17">6'5</option>
+                                                <option value="18">6'6</option>
+                                                <option value="19">6'7</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="app-form__row">
+                                        <div class="app-form__label-wrapper">
+                                            <label for="get-fitted__weight" class="app-form__label">WEIGHT <span class="highlight">*</span></label>
+                                        </div>
+                                        <div class="app-form__select-wrapper">
+                                            <select name="input_weight" id="get-fitted__weight" class="app-form__input app-form__select" v-model="userData.input_weight">
+                                                <option value="">Select Weight</option>
+                                                <option value="100">100</option>
+                                                <option value="105">105</option>
+                                                <option value="110">110</option>
+                                                <option value="115">115</option>
+                                                <option value="120">120</option>
+                                                <option value="125">125</option>
+                                                <option value="130">130</option>
+                                                <option value="135">135</option>
+                                                <option value="140">140</option>
+                                                <option value="145">145</option>
+                                                <option value="150">150</option>
+                                                <option value="155">155</option>
+                                                <option value="160">160</option>
+                                                <option value="165">165</option>
+                                                <option value="170">170</option>
+                                                <option value="175">175</option>
+                                                <option value="180">180</option>
+                                                <option value="185">185</option>
+                                                <option value="190">190</option>
+                                                <option value="195">195</option>
+                                                <option value="200">200</option>
+                                                <option value="205">205</option>
+                                                <option value="210">210</option>
+                                                <option value="215">215</option>
+                                                <option value="220">220</option>
+                                                <option value="225">225</option>
+                                                <option value="230">230</option>
+                                                <option value="235">235</option>
+                                                <option value="240">240</option>
+                                                <option value="245">245</option>
+                                                <option value="250">250</option>
+                                                <option value="255">255</option>
+                                                <option value="260">260</option>
+                                                <option value="265">265</option>
+                                                <option value="270">270</option>
+                                                <option value="275">275</option>
+                                                <option value="280">280</option>
+                                                <option value="285">285</option>
+                                                <option value="290">290</option>
+                                                <option value="295">295</option>
+                                                <option value="300">300</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="app-form__row">
+                                        <div class="app-form__label-wrapper">
+                                            <label for="get-fitted__waist-size" class="app-form__label">WAIST SIZE <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="This refers to the waist size of your favorite pair of pants, not the measured size of your waist."> <span class="app__info custom--info"></span></span></label>
+                                        </div>
+                                        <div class="app-form__select-wrapper">
+                                            <select name="input_waist_size" id="get-fitted__waist-size" class="app-form__input app-form__select" v-model="userData.input_waist_size">
+                                                <option value="">Select Waist size</option>
+                                                <option>27</option>
+                                                <option>27.5</option>
+                                                <option>28</option>
+                                                <option>28.5</option>
+                                                <option>29</option>
+                                                <option>29.5</option>
+                                                <option>30</option>
+                                                <option>30.5</option>
+                                                <option>31</option>
+                                                <option>31.5</option>
+                                                <option>32</option>
+                                                <option>32.5</option>
+                                                <option>33</option>
+                                                <option>33.5</option>
+                                                <option>34</option>
+                                                <option>34.5</option>
+                                                <option>35</option>
+                                                <option>35.5</option>
+                                                <option>36</option>
+                                                <option>36.5</option>
+                                                <option>37</option>
+                                                <option>37.5</option>
+                                                <option>38</option>
+                                                <option>38.5</option>
+                                                <option>39</option>
+                                                <option>39.5</option>
+                                                <option>40</option>
+                                                <option>40.5</option>
+                                                <option>41</option>
+                                                <option>41.5</option>
+                                                <option>42</option>
+                                                <option>42.5</option>
+                                                <option>43</option>
+                                                <option>43.5</option>
+                                                <option>44</option>
+                                                <option>44.5</option>
+                                                <option>45</option>
+                                                <option>45.5</option>
+                                                <option>46</option>
+                                                <option>46.5</option>
+                                                <option>47</option>
+                                                <option>47.5</option>
+                                                <option>48</option>
+                                                <option>48.5</option>
+                                                <option>49</option>
+                                                <option>49.5</option>
+                                                <option>50</option>
+                                                <option>50.5</option>
+                                                <option>51</option>
+                                                <option>51.5</option>
+                                                <option>52</option>
+                                                <option>52.5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="app-form__row">
+                                        <div class="app-form__label-wrapper">
+                                            <label for="get-fitted__pants-length" class="app-form__label">PANTS LENGTH <span class="highlight">* </span> <span class="hint--right hint--large" aria-label="We need the inseam from a standard pair of jeans you wear.  This will be the second number in the sequence."> <span class="app__info custom--info"></span></span></label>
+                                        </div>
+                                        <div class="app-form__select-wrapper">
+                                            <select name="input_pants_length_size" id="get-fitted__pants-length" class="app-form__input app-form__select" v-model="userData.input_pants_length_size">
+                                                <option value="">Select an option</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+                                                <option value="32">32</option>
+                                                <option value="33">33</option>
+                                                <option value="34">34</option>
+                                                <option value="35">35</option>
+                                                <option value="36">36</option>
+                                                <option value="37">37</option>
+                                                <option value="38">38</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="app-form__row">
+                                        <div class="app-form__label-wrapper">
+                                            <label for="get-fitted__shoe-size" class="app-form__label">SHOE SIZE <span class="highlight">*</span></label>
+                                        </div>
+                                        <div class="app-form__select-wrapper">
+                                            <select name="input_shoe_size" id="get-fitted__shoe-size" class="app-form__input app-form__select" v-model="userData.input_shoe_size">
+                                                <option value="">Select Shoe size</option>
+                                                <option>2</option>
+                                                <option>2.5</option>
+                                                <option>3</option>
+                                                <option>3.5</option>
+                                                <option>4</option>
+                                                <option>4.5</option>
+                                                <option>5</option>
+                                                <option>5.5</option>
+                                                <option>6</option>
+                                                <option>6.5</option>
+                                                <option>7</option>
+                                                <option>7.5</option>
+                                                <option>8</option>
+                                                <option>8.5</option>
+                                                <option>9</option>
+                                                <option>9.5</option>
+                                                <option>10</option>
+                                                <option>10.5</option>
+                                                <option>11</option>
+                                                <option>11.5</option>
+                                                <option>12</option>
+                                                <option>12.5</option>
+                                                <option>13</option>
+                                                <option>13.5</option>
+                                                <option>14</option>
+                                                <option>14.5</option>
+                                                <option>15</option>
+                                                <option>15.5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section v-if="currentStep === 2" class="step-slide step-item">
+                            <h2 class="step-slide__heading left">MEASUREMENTS</h2>
+                            <p class="step-slide__subtitle highlight"><strong>Note</strong>: Not required - if you have this information, it will help us focus in on your size. Do not guess!</p>
+                            <div class="step-slide__wrapper">
+                            <div class="app-form__wrapper">
+                                <div class="app-form__row">
+                                <div class="app-form__label-wrapper">
+                                    <label for="get-fitted__shirt-neck" class="app-form__label">SHIRT NECK SIZE <span class="hint--right hint--large" aria-label="This refers to the collar size on your favorite shirt. It can usually be found on the tag of the collar. Sometimes, the size located on the tag lower left size of the waist, and ranges between 14.5-20."> <span class="app__info custom--info"></span></span></label>
+                                </div>
+                                <div class="app-form__select-wrapper">
+                                    <select name="input_neck_size" id="get-fitted__shirt-neck" class="app-form__input app-form__select" v-model="userData.input_neck_size">
+                                    <option value="">Select an option</option>
+                                    <option value="14.0">14.0</option>
+                                    <option value="14.5">14.5</option>
+                                    <option value="15.0">15.0</option>
+                                    <option value="15.5">15.5</option>
+                                    <option value="16.0">16.0</option>
+                                    <option value="16.5">16.5</option>
+                                    <option value="17.0">17.0</option>
+                                    <option value="17.5">17.5</option>
+                                    <option value="18.0">18.0</option>
+                                    <option value="18.5">18.5</option>
+                                    <option value="19.0">19.0</option>
+                                    <option value="19.5">19.5</option>
+                                    <option value="20.0">20.0</option>
+                                    <option value="20.5">20.5</option>
+                                    <option value="21.0">21.0</option>
+                                    <option value="21.5">21.5</option>
+                                    <option value="22.0">22.0</option>
+                                    <option value="22.5">22.5</option>
+                                    <option value="0">I do not know / have garment</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="app-form__row">
+                                <div class="app-form__label-wrapper">
+                                    <label for="get-fitted__jacket-size" class="app-form__label">JACKET SIZE (CHEST) <span class="hint--right hint--large" aria-label="This is the number before the S/R/L on your suit jacket, and can usually can be found on a tag on the left inside pocket. The size is typically between 34-54."> <span class="app__info custom--info"></span></span></label>
+                                </div>
+                                <div class="app-form__select-wrapper">
+                                    <select name="input_chest_size" id="get-fitted__jacket-size" class="app-form__input app-form__select" v-model="userData.input_chest_size">
+                                    <option value="">Select an option</option>
+                                    <option value="32.0">32.0"</option>
+                                    <option value="32.5">32.5"</option>
+                                    <option value="33.0">33.0"</option>
+                                    <option value="33.5">33.5"</option>
+                                    <option value="34.0">34.0"</option>
+                                    <option value="34.5">34.5"</option>
+                                    <option value="35.0">35.0"</option>
+                                    <option value="35.5">35.5"</option>
+                                    <option value="36.0">36.0"</option>
+                                    <option value="36.5">36.5"</option>
+                                    <option value="37.0">37.0"</option>
+                                    <option value="37.5">37.5"</option>
+                                    <option value="38.0">38.0"</option>
+                                    <option value="38.5">38.5"</option>
+                                    <option value="39.0">39.0"</option>
+                                    <option value="39.5">39.5"</option>
+                                    <option value="40.0">40.0"</option>
+                                    <option value="40.5">40.5"</option>
+                                    <option value="41.0">41.0"</option>
+                                    <option value="41.5">41.5"</option>
+                                    <option value="42.0">42.0"</option>
+                                    <option value="42.5">42.5"</option>
+                                    <option value="43.0">43.0"</option>
+                                    <option value="43.5">43.5"</option>
+                                    <option value="44.0">44.0"</option>
+                                    <option value="44.5">44.5"</option>
+                                    <option value="45.0">45.0"</option>
+                                    <option value="45.5">45.5"</option>
+                                    <option value="46.0">46.0"</option>
+                                    <option value="46.5">46.5"</option>
+                                    <option value="47.0">47.0"</option>
+                                    <option value="47.5">47.5"</option>
+                                    <option value="48.0">48.0"</option>
+                                    <option value="48.5">48.5"</option>
+                                    <option value="49.0">49.0"</option>
+                                    <option value="49.5">49.5"</option>
+                                    <option value="50.0">50.0"</option>
+                                    <option value="50.5">50.5"</option>
+                                    <option value="51.0">51.0"</option>
+                                    <option value="51.5">51.5"</option>
+                                    <option value="52.0">52.0"</option>
+                                    <option value="52.5">52.5"</option>
+                                    <option value="53.0">53.0"</option>
+                                    <option value="53.5">53.5"</option>
+                                    <option value="54.0">54.0"</option>
+                                    <option value="54.5">54.5"</option>
+                                    <option value="0">I do not know / have garment</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="app-form__row">
+                                <div class="app-form__label-wrapper">
+                                    <label for="get-fitted__shirt-sleeve" class="app-form__label">SHIRT SLEEVE SIZE <span class="hint--right hint--large" aria-label="This can be located below the collar number on your shirt tag. The size is typically between 29-36."> <span class="app__info custom--info"></span></span></label>
+                                </div>
+                                <div class="app-form__select-wrapper">
+                                    <select name="input_sleeve_size" id="get-fitted__shirt-sleeve" class="app-form__input app-form__select" v-model="userData.input_sleeve_size">
+                                    <option value="">Select an option</option>
+                                    <option value="29.5">29.5</option>
+                                    <option value="30.0">30.0</option>
+                                    <option value="30.5">30.5</option>
+                                    <option value="31.0">31.0</option>
+                                    <option value="31.5">31.5</option>
+                                    <option value="32.0">32.0</option>
+                                    <option value="32.5">32.5</option>
+                                    <option value="33.0">33.0</option>
+                                    <option value="33.5">33.5</option>
+                                    <option value="34.0">34.0</option>
+                                    <option value="34.5">34.5</option>
+                                    <option value="35.0">35.0</option>
+                                    <option value="35.5">35.5</option>
+                                    <option value="36.0">36.0</option>
+                                    <option value="36.5">36.5</option>
+                                    <option value="37.0">37.0</option>
+                                    <option value="37.5">37.5</option>
+                                    <option value="38.0">38.0</option>
+                                    <option value="38.5">38.5</option>
+                                    <option value="0">I do not know / have garment</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </section>
+                        <section v-if="currentStep === 3" class="step-slide step-item">
+                            <h2 class="step-slide__heading">JACKET FIT</h2>
+                            <div class="step-slide__wrapper" data-items="3">
+                            <article class="step-slide__item">
+                                <input type="radio" class="step-slide__input" name="input_jacket_fit" id="step-item__jacket-relaxed" value="relaxed" checked="checked" v-model="userData.input_jacket_fit">
+                                <label for="step-item__jacket-relaxed" class="step-slide__label has-tooltip">
+                                <span class="step-slide__icon custom--jacket-fit-relaxed"></span>
+                                <h3 class="step-slide__title">Classic Fit<span class="hint--bottom-right hint--large" aria-label="Our Classic Fit Jacket, while still contoured to our body measurements, will also provide a bit of extra materials around the chest and waist of the jacket, as well as through the arms."><span class="app__info custom--info"></span></span></h3>
+                                </label>
+                            </article>
+                            <article class="step-slide__item">
+                                <input type="radio" class="step-slide__input" name="input_jacket_fit" id="step-item__jacket-fit-tailored" value="tailored fit" v-model="userData.input_jacket_fit">
+                                <label for="step-item__jacket-fit-tailored" class="step-slide__label has-tooltip">
+                                <span class="step-slide__icon custom--jacket-fit-tailored"></span>
+                                <h3 class="step-slide__title">Tailored Fit <span class="hint--bottom hint--large" aria-label="Our Tailored Fit Jacket will curve perfectly with your body create a slimming effect and have you looking your best at all times."><span class="app__info custom--info"></span></span></h3>
+                                </label>
+                            </article>
+                            <article class="step-slide__item">
+                                <input type="radio" class="step-slide__input" name="input_jacket_fit" id="step-item__jacket-fit-slim" value="super slim" v-model="userData.input_jacket_fit">
+                                <label for="step-item__jacket-fit-slim" class="step-slide__label has-tooltip">
+                                <span class="step-slide__icon custom--jacket-fit-slim"></span>
+                                <h3 class="step-slide__title">Slim Fit <span class="hint--bottom-left hint--large" aria-label="Our super slim fit will hug your body tight allowing for maximum slimming, while limiting overall mobility. High arm holes, and no extra fabric around the chest and waist will keep your body looking as slim as possible, while losing some standard comfortability."><span class="app__info custom--info"></span></span></h3>
+                                </label>
+                            </article>
+                            <div style="text-align:center"> <h4 class="step-slide__title"> <a href="https://site.snapsuits.com/static/pdfs/SnapSuitsSizeChart.pdf" target="_blank"> <u> See our Size Chart </u> </a></h4>
+                            </div>
+                            </div>
+                        </section>
+                        <section v-if="currentStep === 4" class="step-slide step-item">
+                            <h2 class="step-slide__heading">PANTS FIT</h2>
+                            <div class="step-slide__wrapper" data-items="3">
+                            <article class="step-slide__item">
+                                <input type="radio" class="step-slide__input" name="input_pants_fit" id="step-item__pants-fit-straight" value="straight leg" checked="checked" data-default="checked" v-model="userData.input_pants_fit">
+                                <label for="step-item__pants-fit-straight" class="step-slide__label has-tooltip">
+                                <span class="step-slide__icon custom--pants-fit-straight"></span>
+                                <h3 class="step-slide__title">Straight Leg <span class="hint--bottom-right hint--large" aria-label="Our relaxed fit pants allow a bit of extra room in hips and thighs and lay straight from the knee down."><span class="app__info custom--info"></span></span></h3>
+                                </label>
+                            </article>
+                            <article class="step-slide__item">
+                                <input type="radio" class="step-slide__input" name="input_pants_fit" id="step-item__pants-fit-tailored" value="tailored fit" v-model="userData.input_pants_fit">
+                                <label for="step-item__pants-fit-tailored" class="step-slide__label has-tooltip">
+                                <span class="step-slide__icon custom--pants-fit-tailored"></span>
+                                <h3 class="step-slide__title">Tailored Fit <span class="hint--bottom hint--large" aria-label="Our tailored fit rooms excess fabric from the hips, and thighs while still give you room to move around. The pants will have a classic modern taper after the knee to conform to the size of your leg."><span class="app__info custom--info"></span></span></h3>
+                                </label>
+                            </article>
+                            <article class="step-slide__item">
+                                <input type="radio" class="step-slide__input" name="input_pants_fit" id="step-item__pants-fit-slim" value="super slim" v-model="userData.input_pants_fit">
+                                <label for="step-item__pants-fit-slim" class="step-slide__label has-tooltip">
+                                <span class="step-slide__icon custom--pants-fit-slim"></span>
+                                <h3 class="step-slide__title">Slim Fit<span class="hint--bottom-left hint--large" aria-label="Our tightest fitting pants to slim you up. Heavily tapered to the ankle after the knee, and snug fitting through the waist, hips and thighs. Don’t plan on doing much running in these."><span class="app__info custom--info"></span></span></h3>
+                                </label>
+                            </article>
+                            <div style="text-align:center"> <h4 class="step-slide__title"> <a href="https://site.snapsuits.com/static/pdfs/SnapSuitsSizeChart.pdf" target="_blank"> <u> See our Size Chart </u></a></h4>
+                            </div>
+                            </div>
+                        </section>
+                        <section v-if="currentStep === 5" class="step-slide step-item">
+                            <h2 class="step-slide__heading">SHAPE</h2>
+                            <div class="step-slide__wrapper" data-items="4">
+                            <article class="step-slide__item">
+                                <input type="radio" class="step-slide__input" name="input_stomach_shape" id="step-item__stomach-big" value="big_belly" v-model="userData.input_stomach_shape">
+                                <label for="step-item__stomach-big" class="step-slide__label has-tooltip">
+                                <span class="step-slide__icon custom--stomach-big"></span>
+                                <h3 class="step-slide__title">Big Belly</h3>
+                                </label>
+                            </article>
+                            <article class="step-slide__item">
+                                <input type="radio" class="step-slide__input" name="input_stomach_shape" id="step-item__stomach-small" value="small_belly" v-model="userData.input_stomach_shape">
+                                <label for="step-item__stomach-small" class="step-slide__label has-tooltip">
+                                <span class="step-slide__icon custom--stomach-small"></span>
+                                <h3 class="step-slide__title">Small Belly</h3>
+                                </label>
+                            </article>
+                            <article class="step-slide__item">
+                                <input type="radio" class="step-slide__input" name="input_stomach_shape" id="step-item__stomach-average" value="average" checked="checked" data-default="checked" v-model="userData.input_stomach_shape">
+                                <label for="step-item__stomach-average" class="step-slide__label has-tooltip">
+                                <span class="step-slide__icon custom--stomach-average"></span>
+                                <h3 class="step-slide__title">Average</h3>
+                                </label>
+                            </article>
+                            <article class="step-slide__item">
+                                <input type="radio" class="step-slide__input" name="input_stomach_shape" id="step-item__stomach-athletic" value="athletic_cut_swol" v-model="userData.input_stomach_shape">
+                                <label for="step-item__stomach-athletic" class="step-slide__label has-tooltip">
+                                <span class="step-slide__icon custom--stomach-athletic"></span>
+                                <h3 class="step-slide__title">Athletic/Cut/Swole</h3>
+                                </label>
+                            </article>
+                            </div>
+                        </section>
+                        <section v-if="currentStep === 6" class="step-slide step-item">
+                            <h2 class="step-slide__heading left">REGISTER</h2>
+                            <p class="step-slide__subtitle">Create an account with SnapSuits, and we will send a copy of your measurements via email. We save your measurements, so you only have to do this once!</p>
+                            <div class="step-slide__wrapper">
+                                <div class="app-form__wrapper">
+                                    <div id="errors" class="errors js-errors" style="display: none;">
+                                        <ul></ul>
+                                    </div>
+                                    <div class="app-form__row">
+                                        <div class="app-form__label-wrapper">
+                                        <label for="get-fitted__register-name" class="app-form__label">FULL NAME</label>
+                                        </div>
+                                        <div class="app-form__input-wrapper">
+                                        <input type="text" name="input_name" required="required" class="js-register-first_name" id="first_name" placeholder="First Name" tabindex="0">
+                                        </div>
+                                    </div>
+                                    <div class="app-form__row">
+                                        <div class="app-form__label-wrapper">
+                                        <label for="get-fitted__register-name" class="app-form__label">EMAIL</label>
+                                        </div>
+                                        <div class="app-form__input-wrapper">
+                                        <input type="text" name="input_email" required="required" class="js-register-email" id="email" tabindex="0">
+                                        </div>
+                                    </div>
+                                    <input type="submit" name="submit" value="register" class="hidden js-register-gt-form" tabindex="0">
+                                <a href="/account/login" class="link-login highlight" tabindex="0">If you have been measured by SnapSuits before, login here</a>
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+                    <app-footer
+                        :prev-function="goToNextSlide"
+                        :next-function="goToPrevSlide"
+                        :finish-function="finishGetFitted"
+                        :is-last-slide="isLastSlide"></app-footer>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+<script>
+    const delimiters = ['[[', ']]'];
+    Vue.component('progress-bar', {
+        template: `<div class="progressbar">
+            <ol class="app__progress app__steps" :data-steps="list.length">
+                <li v-for="step in list"
+                    :key="step.id"
+                    :class="['step-item', step.id <= current ? 'is-done' : '' ]">
+                    <span class="step pointer"></span>
+                </li>
+            </ol>
+            <ol class="app__progress app__steps-labels" :data-steps="list.length">
+                <li v-for="step in list"
+                    :key="step.id"
+                    :class="['step-label ', step.id <= current ? 'is-done' : '' ]">
+                    [[ step.name ]]
+                </li>
+            </ol>
+        </div>`,
+        props: {
+            list: {
+                type: Object,
+                default: {},
+            },
+            current: {
+                type: Number,
+                default: 1,
+            },
+        },
+        delimiters,
+    });
+
+    Vue.component('app-footer', {
+        template: `<footer class="app__footer">
+          <div class="actions-left">
+            <a href="#close-alert" class="app__btn button js-popup mfp-close no-selection">cancel</a>
+          </div>
+          <div class="actions-right">
+            <span class="app__btn button no-selection btn-prev"
+                @click="nextFunction">prev</span>
+            <span v-if="!isLastSlide" class="app__btn btn-sp button button--primary no-selection m-r-0 btn-next"
+                @click="prevFunction">next</span>
+            <span v-if="isLastSlide" class="app__btn btn-sp button button--success no-selection"
+                @click="finishFunction">see my size</a>
+          </div>
+        </footer>`,
+
+        props: {
+            prevFunction: {
+                type: Function,
+                default: () => null,
+            },
+            nextFunction: {
+                type: Function,
+                default: () => null,
+            },
+            finishFunction: {
+                type: Function,
+                default: () => null,
+            },
+            isLastSlide: {
+                type: Boolean,
+                default: false,
+            },
+        },
+
+        delimiters,
+    });
+
+    new Vue({
+        el: '#app__get-fitted',
+        data: {
+            app: {
+                name: 'Get Fitted',
+                type: ''
+            },
+            currentStep: 1,
+            userData: {
+                input_height: "",
+                input_weight: "",
+                input_waist_size: "",
+                input_pants_length_size: "",
+                input_shoe_size: "",
+                input_neck_size: "",
+                input_chest_size: "",
+                input_sleeve_size: "",
+                input_jacket_fit: "",
+                input_pants_fit: "",
+                input_stomach_shape: "",
+            },
+            steps: [
+                {
+                    id: 1,
+                    name: 'Profile',
+                },
+                {
+                    id: 2,
+                    name: 'Measurements',
+                },
+                {
+                    id: 3,
+                    name: 'Jacket Fit',
+                },
+                {
+                    id: 4,
+                    name: 'Pants Fit',
+                },
+                {
+                    id: 5,
+                    name: 'Shape',
+                },
+                {
+                    id: 6,
+                    name: 'Confirmation',
+                },
+            ],
+        },
+        computed: {
+            isLastSlide() {
+                return this.currentStep === this.steps.length;
+            },
+            profileDone() {
+                return this.userData.height && this.userData.weight && this.userData.waistsSize && this.userData.pantsLength && this.userData.shoeSize;
+            },
+        },
+        updated() {
+            console.log(this.userData);
+        },
+        methods: {
+            goToNextSlide() {
+                this.currentStep < this.steps.length ? this.currentStep += 1 : this.currentStep;
+            },
+            goToPrevSlide() {
+                this.currentStep === 1 ? this.currentStep : this.currentStep -= 1;
+            },
+            finishGetFitted() {
+                console.log('you are done');
+            },
+        },
+        delimiters,
+    });
+</script>

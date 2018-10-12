@@ -32,6 +32,8 @@
     {{ 'snap-suits.css' | asset_url | stylesheet_tag }}
     {{ 'snapsuits.css' | asset_url | stylesheet_tag }}
 
+    {{ 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js' | script_tag }}
+
     <!-- Object API ================================ -->
     <script>
       window.shop = {
@@ -87,6 +89,7 @@
     <!-- Footer Scripts ================================ -->
     {{ 'vendor.js'  | asset_url | script_tag }}
     {{ 'scripts.js'  | asset_url | script_tag }}
+
     {% include 'ajaxify-cart' %}
 
     <script type="text/javascript">
